@@ -1,22 +1,24 @@
-# 🎯 PROMPT ENGINEERING - GUIDE AVANCÉ
+# 🎯 PROMPT ENGINEERING - GUIDE DE RÉFÉRENCE
 
-**Objectif** : Optimiser les interactions avec les agents IA  
-**Outils** : Cursor, Windsurf, Gemini Code Assist, Claude Code, GitHub Copilot  
-**Niveau** : Avancé
+**Objectif** : Guide de référence pour structurer les prompts  
+**Public** : Gemini Code Assist (extension VS Code)  
+**Niveau** : Référence technique
+
+**⚠️ Note** : Ce fichier est une référence. Pour configurer le Gem's, voir `/gems-knowledge/`
 
 ---
 
-## 🧠 COMPRENDRE LES AGENTS IA
+## 🧠 AGENT IA PRINCIPAL
 
-### Types d'Agents
+### Gemini Code Assist (Recommandé)
 
-| Agent | Force | Contexte Max | Idéal Pour |
-|-------|-------|--------------|------------|
-| **Cursor** | Code generation | ~200K tokens | Refactoring, migration |
-| **Windsurf** | Agentic flow | ~100K tokens | Multi-fichiers, architecture |
-| **Gemini Code Assist** | Google context | ~100K tokens | VS Code integration |
-| **Claude Code** | Reasoning | ~200K tokens | Complex logic, debugging |
-| **GitHub Copilot** | Autocomplete | ~8K tokens | Inline suggestions |
+| Caractéristique | Valeur |
+|----------------|--------|
+| **Intégration** | VS Code (extension native) |
+| **Contexte** | ~100K tokens |
+| **Forces** | Google AI + Context projet VS Code |
+| **Idéal pour** | Migration Astro, génération code, debug |
+| **Workflow** | Prompt → Code Assist → Code généré |
 
 ---
 
@@ -29,7 +31,7 @@
 
 ## Contexte
 - Projet : Confluence Digitale V6.7.2
-- Stack : Astro + React + TypeScript + Tailwind
+- Stack : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x
 - Design System : V6.7.2 "App Moderne 2025"
 - Documentation : /migration-frontend/ + /doc/
 
@@ -48,10 +50,6 @@
 ## Résultat Attendu
 - [Critère de succès 1]
 - [Critère de succès 2]
-
-## Validation
-- [ ] Checklist item 1
-- [ ] Checklist item 2
 ```
 
 ---
@@ -343,7 +341,7 @@ Correction : <div style={{ boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)' }}>
 
 ## 🔧 PROMPTS TECHNIQUES AVANCÉS
 
-### 7️⃣ MULTI-FICHIERS (Windsurf/Cursor)
+### 7️⃣ MULTI-FICHIERS (Gemini Code Assist)
 
 ```markdown
 # MULTI-FICHIERS : Migration Complète Page + Composants
@@ -568,7 +566,6 @@ Tu es un expert en migration React → Astro avec spécialisation Design System.
 
 ### Outils IA
 
-- [Cursor Docs](https://cursor.sh/docs)
 - [Windsurf](https://codeium.com/windsurf)
 - [Gemini Code Assist](https://cloud.google.com/products/gemini/code-assist)
 

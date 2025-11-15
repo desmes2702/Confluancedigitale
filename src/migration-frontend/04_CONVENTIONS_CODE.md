@@ -30,7 +30,7 @@
 
 ❌ INCORRECT
 /components/confluence-header.tsx
-/components/ConfluenceHeader.jsx
+/components/ConfluenceHeader.tsx
 /pages/AuditGratuit.astro
 /hooks/ScrollAnimation.ts
 ```

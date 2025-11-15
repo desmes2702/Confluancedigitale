@@ -2,20 +2,61 @@
 
 **Projet** : Migration React → Astro + React Islands  
 **Objectif** : Performance 100/100 + SEO optimisé  
-**Stack** : Astro + React + TypeScript + Tailwind CSS  
-**Status** : ✅ Prêt pour production
+**Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x  
+**Status** : ✅ Documentation complète pour Gemini Code Assist
 
 ---
 
-## 🎯 OBJECTIF DU DOSSIER
+## 🎯 OBJECTIF DE CE DOSSIER
 
-Ce dossier contient **TOUTE** la documentation nécessaire pour réussir la migration frontend de Confluence Digitale.
+Ce dossier est la **documentation de référence technique** pour **Gemini Code Assist** (extension VS Code).
 
-**Public cible** :
-- ✅ Agents IA (Gemini Code Assist prioritaire)
-- ✅ Développeurs Frontend
-- ✅ Architectes Solutions
-- ✅ Auditeurs Qualité
+**Rôle** : Documentation que Code Assist consulte pour générer du code conforme au Design System V6.7.2
+
+**Contenu** :
+- ✅ Design System complet (règles, contraintes, exemples)
+- ✅ Architecture Astro + React Islands
+- ✅ Conventions de code TypeScript
+- ✅ Templates prêts à l'emploi
+- ✅ Exemples de migration validés
+- ✅ Checklists de validation
+- ✅ Troubleshooting
+
+**⚠️ Note** : Pour configurer le Gem's (prompt generator), voir `/gems-knowledge/`
+
+---
+
+## 🤖 POUR GEMINI CODE ASSIST
+
+### Tu es Gemini Code Assist et tu lis cette documentation
+
+**Ta mission** : Générer du code React/Astro conforme au Design System V6.7.2
+
+**Ce que tu dois faire** :
+1. Lire cette documentation **AVANT** de générer du code
+2. Respecter **TOUTES** les règles du Design System
+3. Utiliser les templates fournis comme base
+4. Valider ton code avec les checklists
+
+**Règles CRITIQUES à respecter** (voir `03_DESIGN_SYSTEM_REFERENCE.md`) :
+- ⚠️ Playfair Display = Regular uniquement (JAMAIS font-bold)
+- ⚠️ Ombres = Inline uniquement (JAMAIS classes shadow-*)
+- ⚠️ Hero padding = pt-28 lg:pt-32
+- ⚠️ Formulaires spacing = space-y-6
+- ⚠️ Palette = 5 couleurs exclusives (#F9FAFB, #1A1A1A, #D1A65E, #10b981, #A32E3A)
+
+**Workflow** :
+```
+1. Recevoir prompt utilisateur
+   ↓
+2. Lire /migration-frontend/ (cette doc)
+   ↓
+3. Identifier contraintes applicables
+   ↓
+4. Générer code conforme
+   ↓
+5. Auto-valider avec checklists
+```
 
 ---
 
@@ -23,314 +64,376 @@ Ce dossier contient **TOUTE** la documentation nécessaire pour réussir la migr
 
 ```
 /migration-frontend/
-├── README.md                           ← Vous êtes ici (Point d'entrée)
-├── 00_INDEX.md                         ← Navigation & Index complet
+├── README.md                           ← Tu es ici (Guide pour Code Assist)
+├── 00_INDEX.md                         ← Navigation complète
+│
 ├── 01_QUICK_START.md                   ← Démarrage rapide (5 min)
-├── 02_GUIDE_TECHNIQUE.md               ← Guide technique complet
-├── 03_DESIGN_SYSTEM_REFERENCE.md       ← Référence Design System V6.7.2
-├── 04_CONVENTIONS_CODE.md              ← Standards de code
-├── 05_TEMPLATES.md                     ← Templates prêts à l'emploi
-├── 06_CHECKLIST.md                     ← Checklists de validation
-├── 07_SEO_PERFORMANCE.md               ← Optimisation SEO/Performance
-├── 08_TROUBLESHOOTING.md               ← Résolution de problèmes
-├── 09_EXEMPLES_MIGRATION.md            ← Cas concrets de migration
-├── 10_PROMPTS_AGENT_IA.md              ← Prompts pour agents IA (legacy)
-├── 11_PROMPT_ENGINEERING.md            ← Guide avancé prompt engineering
-└── 12_WORKFLOW_GEMINI.md               ← Workflow Gemini (⭐ Recommandé)
+├── 02_GUIDE_TECHNIQUE.md               ← Guide Astro + React Islands
+├── 03_DESIGN_SYSTEM_REFERENCE.md       ← ⭐ BIBLE Design System V6.7.2
+├── 04_CONVENTIONS_CODE.md              ← Standards TypeScript
+├── 05_TEMPLATES.md                     ← Templates code prêts
+├── 06_CHECKLIST.md                     ← Validation qualité
+├── 07_SEO_PERFORMANCE.md               ← Optimisation
+├── 08_TROUBLESHOOTING.md               ← Résolution erreurs
+├── 09_EXEMPLES_MIGRATION.md            ← Cas concrets validés
+│
+├── 11_PROMPT_ENGINEERING.md            ← Guide prompts (référence)
+├── 13_DEPLOYMENT_VERCEL.md             ← Déploiement
+├── 14_INTEGRATION_STRAPI.md            ← Backend Strapi
+└── VALIDATION_FINALE.md                ← Rapport validation
 ```
 
 ---
 
-## 🚀 DÉMARRAGE RAPIDE
+## 🎯 FICHIERS ESSENTIELS (À LIRE EN PRIORITÉ)
 
-### Pour Agent IA (Gemini 2.5 Pro + Code Assist)
+### 1. 03_DESIGN_SYSTEM_REFERENCE.md ⭐ CRITIQUE
 
-1. **Configurer Gem's** dans Gemini 2.5 Pro App (voir `/GEMINI_GEMS_CONFIGURATION.md`)
-2. **Installer** Gemini Code Assist dans VS Code
-3. **Lire** `/migration-frontend/12_WORKFLOW_GEMINI.md`
-4. **Envoyer prompt** au Gem's → Copier → Coller dans Code Assist
+**Contenu** :
+- 5 règles absolues (Playfair, ombres, hero, formulaires, couleurs)
+- Palette couleurs exclusive
+- Typographie (tailles, poids, polices)
+- Espacements (containers, sections, grids)
+- Composants (boutons, formulaires, cartes)
+- Responsive patterns
+- Accessibilité
 
-### Pour Développeur
-
-1. **Lire** `/migration-frontend/01_QUICK_START.md` (5 min)
-2. **Étudier** `/migration-frontend/03_DESIGN_SYSTEM_REFERENCE.md` (15 min)
-3. **Appliquer** les templates de `/migration-frontend/05_TEMPLATES.md`
-4. **Valider** avec `/migration-frontend/06_CHECKLIST.md`
-
----
-
-## 📖 ORDRE DE LECTURE RECOMMANDÉ
-
-### 🔰 Niveau Débutant (Première migration)
-
-1. **`01_QUICK_START.md`** - Comprendre l'essentiel (5 min)
-2. **`03_DESIGN_SYSTEM_REFERENCE.md`** - Connaître les règles (15 min)
-3. **`05_TEMPLATES.md`** - Utiliser les templates (10 min)
-4. **`09_EXEMPLES_MIGRATION.md`** - Voir des cas concrets (20 min)
-
-**Temps total** : ~50 minutes
+**Quand lire** : TOUJOURS avant de générer du code
 
 ---
 
-### 🎓 Niveau Intermédiaire (Déjà fait du React)
+### 2. 05_TEMPLATES.md ⭐ TEMPLATES
 
-1. **`02_GUIDE_TECHNIQUE.md`** - Comprendre Astro (20 min)
-2. **`04_CONVENTIONS_CODE.md`** - Standardiser le code (10 min)
-3. **`07_SEO_PERFORMANCE.md`** - Optimiser (15 min)
-4. **`06_CHECKLIST.md`** - Valider (5 min)
+**Contenu** :
+- Page Astro type
+- Composants React (Hero, Features, Team, FAQ, Contact Form)
+- Layouts
+- Formulaires avec validation
 
-**Temps total** : ~50 minutes
-
----
-
-### 🏆 Niveau Expert (Architecture)
-
-1. **`02_GUIDE_TECHNIQUE.md`** - Architecture complète
-2. **`07_SEO_PERFORMANCE.md`** - Core Web Vitals
-3. **`08_TROUBLESHOOTING.md`** - Debugging avancé
-4. **Documentation externe** : `/doc/` (Design System complet)
+**Quand lire** : Pour créer un nouveau composant/page
 
 ---
 
-## 🎯 CAS D'USAGE PRINCIPAUX
+### 3. 09_EXEMPLES_MIGRATION.md ⭐ EXEMPLES
 
-### Cas #1 : Migrer une page complète
+**Contenu** :
+- Migrations complètes React → Astro
+- Avant/Après
+- Explications décisions
 
-**Documents à consulter** :
-1. `09_EXEMPLES_MIGRATION.md` → Section "Page complète"
-2. `05_TEMPLATES.md` → Template page Astro
-3. `06_CHECKLIST.md` → Checklist page
-
-**Temps estimé** : 30-60 min par page
+**Quand lire** : Pour migrer une page React
 
 ---
 
-### Cas #2 : Créer un nouveau composant
+### 4. 02_GUIDE_TECHNIQUE.md ⭐ ARCHITECTURE
 
-**Documents à consulter** :
-1. `03_DESIGN_SYSTEM_REFERENCE.md` → Règles visuelles
-2. `05_TEMPLATES.md` → Template composant React
-3. `04_CONVENTIONS_CODE.md` → Standards
+**Contenu** :
+- Architecture Astro Islands
+- Quand utiliser .astro vs .tsx
+- Hydratation (client:load, client:visible)
+- Structure projet
+- Routing
 
-**Temps estimé** : 15-30 min par composant
-
----
-
-### Cas #3 : Débugger un problème
-
-**Documents à consulter** :
-1. `08_TROUBLESHOOTING.md` → Solutions aux erreurs courantes
-2. `02_GUIDE_TECHNIQUE.md` → Comprendre l'architecture
-3. Documentation Astro externe
-
-**Temps estimé** : 5-30 min selon complexité
+**Quand lire** : Pour comprendre l'architecture
 
 ---
 
-### Cas #4 : Optimiser les performances
+### 5. 06_CHECKLIST.md ⭐ VALIDATION
 
-**Documents à consulter** :
-1. `07_SEO_PERFORMANCE.md` → Optimisations
-2. `06_CHECKLIST.md` → Checklist performance
-3. Guide Lighthouse
+**Contenu** :
+- Checklist Design System
+- Checklist Performance
+- Checklist Accessibilité
+- Checklist SEO
 
-**Temps estimé** : 1-2h pour audit complet
-
----
-
-## 📊 INDICATEURS DE SUCCÈS
-
-### Performance (Lighthouse)
-
-| Métrique | Target | Status |
-|----------|--------|--------|
-| Performance | > 90 | 🎯 Obligatoire |
-| Accessibilité | > 90 | 🎯 Obligatoire |
-| Best Practices | > 90 | 🎯 Obligatoire |
-| SEO | > 90 | 🎯 Obligatoire |
-
-### Migration
-
-- ✅ 14 pages migrées
-- ✅ Zéro erreur TypeScript
-- ✅ Design System V6.7.2 respecté à 100%
-- ✅ Responsive (mobile, tablette, desktop)
-- ✅ Formulaires fonctionnels (validation)
-- ✅ SEO optimisé (meta tags, sitemap)
+**Quand lire** : Après avoir généré du code pour valider
 
 ---
 
-## 🔗 LIENS RAPIDES
+## 📖 ORDRE DE LECTURE POUR CODE ASSIST
 
-### Documentation Interne
+### Première utilisation (Setup initial)
 
-| Document | Description | Priorité |
-|----------|-------------|----------|
-| `/doc/01_DESIGN_SYSTEM_V6.7.md` | Bible du Design | ⭐⭐⭐⭐⭐ |
-| `/doc/PAGES_COMPLETE_GUIDE.md` | Structure des pages | ⭐⭐⭐⭐⭐ |
-| `/doc/FORM_VALIDATION_REFERENCE.md` | Logique formulaires | ⭐⭐⭐⭐ |
-| `/doc/TRIADE_PROFESSIONNELLE_ALIGNEMENT.md` | Concept métier | ⭐⭐⭐⭐ |
+1. **README.md** (ce fichier) - Comprendre le rôle
+2. **03_DESIGN_SYSTEM_REFERENCE.md** - Mémoriser les règles
+3. **02_GUIDE_TECHNIQUE.md** - Comprendre Astro
+4. **05_TEMPLATES.md** - Voir les patterns
 
-### Documentation Externe
-
-- [Astro Docs](https://docs.astro.build/) - Documentation officielle
-- [Astro + React](https://docs.astro.build/en/guides/integrations-guide/react/) - Intégration React
-- [Tailwind CSS](https://tailwindcss.com/docs) - Utility classes
-- [Shadcn UI](https://ui.shadcn.com/) - Composants UI
+**Temps** : ~30 min (à faire une seule fois)
 
 ---
 
-## 🛠️ OUTILS RECOMMANDÉS
+### Pour chaque génération de code
 
-### Développement
-
-- **IDE** : VS Code (avec Gemini Code Assist recommandé)
-- **Alternatives** : Cursor, Windsurf
-- **Extensions** : Astro, Tailwind IntelliSense, ESLint, Gemini Code Assist
-- **Terminal** : iTerm2, Hyper, Windows Terminal
-
-### Tests
-
-- **Lighthouse** : Audit performance
-- **axe DevTools** : Audit accessibilité
-- **Responsively** : Test responsive
-- **BrowserStack** : Test multi-navigateurs
-
-### Déploiement
-
-- **Vercel** : Hébergement recommandé
-- **Netlify** : Alternative
-- **Cloudflare Pages** : Alternative
+1. **Lire le prompt utilisateur**
+2. **Identifier le type de tâche** (migration, création, debug, etc.)
+3. **Relire section pertinente** :
+   - Migration → `09_EXEMPLES_MIGRATION.md`
+   - Nouveau composant → `05_TEMPLATES.md`
+   - Debug → `08_TROUBLESHOOTING.md`
+   - Performance → `07_SEO_PERFORMANCE.md`
+4. **Générer le code** en respectant `03_DESIGN_SYSTEM_REFERENCE.md`
+5. **Auto-valider** avec `06_CHECKLIST.md`
 
 ---
 
-## 🎓 FORMATION AGENT IA
+## 🚨 RÈGLES ABSOLUES (À RESPECTER TOUJOURS)
 
-### Configuration Gemini Code Assist (⭐ Recommandé)
+### Règle #1 : Playfair Regular uniquement
 
-**Workflow optimal** : Gemini 2.5 Pro App → Gemini Code Assist (VS Code)
+```tsx
+// ❌ INTERDIT
+<h1 className="font-playfair font-bold">
 
-**Setup** :
-1. **Créer Gem's** dans Gemini 2.5 Pro App (voir `/GEMINI_GEMS_CONFIGURATION.md`)
-2. **Installer** extension "Gemini Code Assist" dans VS Code
-3. **Lire** `/migration-frontend/12_WORKFLOW_GEMINI.md` (workflow complet)
-4. **Tester** : Gem's génère prompts → Copier → Coller dans Code Assist
-
-**Configuration automatique** : `.vscode/gemini-instructions.md` (auto-chargé)
-
----
-
-### Configuration Cursor/Windsurf (Alternatif)
-
-**Fichier** : `.cursorrules` (créer à la racine)
-
-```markdown
-# Agent Frontend - Confluence Digitale V6.7.2
-
-Tu es un expert en migration React → Astro.
-
-## Documentation Prioritaire
-1. /migration-frontend/ (tous les fichiers)
-2. /doc/01_DESIGN_SYSTEM_V6.7.md
-3. /doc/PAGES_COMPLETE_GUIDE.md
-
-## Règles ABSOLUES
-- Titres : Playfair Display Regular (jamais bold)
-- Hero Padding : pt-28 lg:pt-32
-- Ombres : style={{ boxShadow }} uniquement
-- Formulaires : space-y-6
-- Hydratation : client:load (header) ou client:visible (autres)
-
-## Workflow
-1. Analyser l'interactivité (useState, onClick → React)
-2. Choisir .tsx (interactif) ou .astro (statique)
-3. Appliquer Design System V6.7.2
-4. Valider avec checklist
+// ✅ CORRECT
+<h1 className="font-playfair">
 ```
 
-**Prompts** : Voir `/migration-frontend/10_PROMPTS_AGENT_IA.md`
+**Raison** : Identité visuelle unique Confluence Digitale
 
 ---
 
-## ⚠️ RÈGLES CRITIQUES
+### Règle #2 : Ombres inline uniquement
 
-### 🚨 À NE JAMAIS FAIRE
+```tsx
+// ❌ INTERDIT
+<div className="shadow-lg">
 
-1. ❌ Utiliser `'use client'` (syntaxe Next.js, pas Astro)
-2. ❌ Mettre `font-bold` sur Playfair Display
-3. ❌ Utiliser des classes Tailwind `shadow-*`
-4. ❌ Padding Hero autre que `pt-28 lg:pt-32`
-5. ❌ Oublier l'hydratation sur composants React
-6. ❌ Importer `.astro` dans `.tsx` (impossible)
-7. ❌ Couleurs hors palette Design System
+// ✅ CORRECT
+<div style={{ boxShadow: '0 10px 40px -10px rgba(0,0,0,0.1)' }}>
+```
 
-### ✅ Toujours Faire
-
-1. ✅ Lire `/migration-frontend/03_DESIGN_SYSTEM_REFERENCE.md`
-2. ✅ Tester responsive (mobile, tablette, desktop)
-3. ✅ Valider avec Lighthouse (> 90)
-4. ✅ Ajouter `alt` text sur toutes les images
-5. ✅ Utiliser TypeScript strict
-6. ✅ Respecter les conventions de nommage
-7. ✅ Documenter les fonctions complexes
+**Raison** : Ombres custom spécifiques au Design System
 
 ---
 
-## 📞 SUPPORT
+### Règle #3 : Hero padding pt-28 lg:pt-32
 
-### En Cas de Problème
+```tsx
+// ❌ INTERDIT
+<section className="pt-20 lg:pt-24">
 
-1. **Consulter** `/migration-frontend/08_TROUBLESHOOTING.md`
-2. **Chercher** dans la documentation Astro
-3. **Demander** sur Astro Discord
-4. **Créer** une issue GitHub (si bug)
+// ✅ CORRECT
+<section className="pt-28 lg:pt-32">
+```
 
-### Contacts
-
-- **Documentation** : `/migration-frontend/` et `/doc/`
-- **Astro Discord** : [astro.build/chat](https://astro.build/chat)
-- **Stack Overflow** : Tag `astro` + `react`
+**Raison** : Compensation hauteur header sticky
 
 ---
 
-## 🎉 VALIDATION FINALE
+### Règle #4 : Formulaires space-y-6
 
-### Avant de Considérer la Migration Terminée
+```tsx
+// ❌ INTERDIT
+<form className="space-y-4">
 
-- [ ] Toutes les pages sont migrées (14/14)
-- [ ] Lighthouse > 90 sur toutes les pages
-- [ ] Aucune erreur TypeScript (`npm run build`)
-- [ ] Responsive testé (3 breakpoints min)
-- [ ] Formulaires validés (Contact, Audit, Réservation)
-- [ ] SEO complet (title, description, sitemap)
-- [ ] Accessibilité WCAG AA
-- [ ] Design System V6.7.2 respecté à 100%
+// ✅ CORRECT
+<form className="space-y-6">
+```
 
----
-
-## 📈 ÉVOLUTION DU DOSSIER
-
-### Version 1.0 (Novembre 2025)
-
-- ✅ 13 documents créés
-- ✅ Couvre 100% de la migration
-- ✅ Templates prêts à l'emploi
-- ✅ Checklists complètes
-- ✅ Workflow Gemini optimisé
-
-### Prochaines Versions
-
-- 🔜 V1.1 : Ajout tests unitaires
-- 🔜 V1.2 : Guide CI/CD
-- 🔜 V1.3 : Monitoring production
+**Raison** : Lisibilité optimale formulaires
 
 ---
 
-**🚀 Bienvenue dans l'équipe de migration ! 💪**
+### Règle #5 : 5 couleurs exclusives
+
+```tsx
+// ❌ INTERDIT
+<div className="bg-blue-500">
+
+// ✅ CORRECT - Palette exclusive
+<div className="bg-emerald-500">      // CTA
+<div className="bg-[#D1A65E]">        // Premium Antoine
+<div className="bg-[#A32E3A]">        // Important Laly
+<div className="bg-gray-50">          // Background
+<div className="text-gray-900">       // Texte
+```
+
+**Raison** : Cohérence identité visuelle
 
 ---
 
-**Projet** : Confluence Digitale V6.7.2  
-**Date** : Novembre 2025  
-**Version** : 1.0  
-**Auteur** : Figma Make AI
+## ✅ CHECKLIST AVANT GÉNÉRATION
+
+Avant de générer du code, vérifie que tu connais :
+
+- [ ] Le Design System V6.7.2 (lu `03_DESIGN_SYSTEM_REFERENCE.md`)
+- [ ] Les 5 règles absolues (Playfair, ombres, hero, formulaires, couleurs)
+- [ ] L'architecture Astro Islands (lu `02_GUIDE_TECHNIQUE.md`)
+- [ ] Les templates disponibles (lu `05_TEMPLATES.md`)
+- [ ] Les conventions TypeScript (lu `04_CONVENTIONS_CODE.md`)
+
+---
+
+## ✅ CHECKLIST APRÈS GÉNÉRATION
+
+Après avoir généré du code, valide :
+
+- [ ] Playfair Regular (pas bold)
+- [ ] Ombres inline uniquement
+- [ ] Hero pt-28 lg:pt-32 (si hero)
+- [ ] Formulaires space-y-6 (si formulaire)
+- [ ] Palette 5 couleurs respectée
+- [ ] Container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+- [ ] TypeScript strict (pas de any)
+- [ ] Responsive mobile-first
+- [ ] Accessibilité (ARIA, focus)
+- [ ] SEO complet (si page)
+
+---
+
+## 📋 WORKFLOW TYPE
+
+### Exemple : Migrer une page React → Astro
+
+**Prompt reçu** :
+```
+Migre /pages/OffrePage.tsx vers /src/pages/offre.astro
+en respectant le Design System V6.7.2
+```
+
+**Ton workflow** :
+
+1. **Lire** `09_EXEMPLES_MIGRATION.md` (exemple migration)
+2. **Relire** `03_DESIGN_SYSTEM_REFERENCE.md` (règles)
+3. **Analyser** `/pages/OffrePage.tsx` :
+   - Identifier composants interactifs (useState, onClick) → React
+   - Identifier composants statiques → Astro
+4. **Générer** `/src/pages/offre.astro` :
+   - Frontmatter avec imports
+   - SEO data complet
+   - Structure BaseLayout
+   - Header client:load
+   - Sections client:visible
+   - Footer client:visible
+5. **Générer** composants React nécessaires
+6. **Valider** avec `06_CHECKLIST.md`
+
+**Résultat** : Code conforme Design System V6.7.2 ✅
+
+---
+
+## 📚 DOCUMENTATION COMPLÉMENTAIRE
+
+### Architecture & Structure
+
+- **`00_INDEX.md`** - Navigation complète
+- **`02_GUIDE_TECHNIQUE.md`** - Guide Astro détaillé
+- **`04_CONVENTIONS_CODE.md`** - Standards code
+
+### Références & Exemples
+
+- **`03_DESIGN_SYSTEM_REFERENCE.md`** - BIBLE (à connaître par cœur)
+- **`05_TEMPLATES.md`** - Templates prêts
+- **`09_EXEMPLES_MIGRATION.md`** - Cas concrets
+
+### Qualité & Optimisation
+
+- **`06_CHECKLIST.md`** - Validation qualité
+- **`07_SEO_PERFORMANCE.md`** - Performance
+- **`08_TROUBLESHOOTING.md`** - Debug
+
+### Avancé
+
+- **`11_PROMPT_ENGINEERING.md`** - Référence prompts
+- **`13_DEPLOYMENT_VERCEL.md`** - Déploiement
+- **`14_INTEGRATION_STRAPI.md`** - Backend
+
+---
+
+## 🎯 RÉSUMÉ POUR TOI (CODE ASSIST)
+
+### Ta mission en 3 points
+
+1. **Lire cette documentation** avant de coder
+2. **Respecter le Design System V6.7.2** à 100%
+3. **Utiliser les templates** comme base
+
+### Les 5 règles à NE JAMAIS violer
+
+1. Playfair Regular uniquement
+2. Ombres inline uniquement
+3. Hero pt-28 lg:pt-32
+4. Formulaires space-y-6
+5. 5 couleurs exclusives
+
+### Fichier le plus important
+
+**`03_DESIGN_SYSTEM_REFERENCE.md`** = BIBLE
+
+Lis-le en entier avant ta première génération de code.
+
+---
+
+## 💡 TIPS POUR GÉNÉRER DU CODE DE QUALITÉ
+
+### Toujours faire
+
+✅ Lire le Design System avant de commencer  
+✅ Utiliser les templates comme base  
+✅ Typer strictement en TypeScript (pas de any)  
+✅ Valider avec les checklists  
+✅ Tester responsive (mobile, tablet, desktop)  
+
+### Ne jamais faire
+
+❌ Violer les 5 règles absolues  
+❌ Utiliser des couleurs hors palette  
+❌ Mettre font-bold sur Playfair  
+❌ Utiliser classes shadow-*  
+❌ Oublier l'accessibilité (ARIA)  
+
+---
+
+## 🔄 MISE À JOUR
+
+**Version actuelle** : V6.7.2 "App Moderne 2025"  
+**Dernière mise à jour** : 15 Novembre 2025  
+**Status** : Production Ready ✅
+
+Si le Design System évolue, ce dossier sera mis à jour en conséquence.
+
+---
+
+## 📞 QUESTIONS FRÉQUENTES
+
+### Q: Dois-je lire toute la doc avant de coder ?
+
+**R:** Non. Lis en priorité :
+1. `README.md` (ce fichier)
+2. `03_DESIGN_SYSTEM_REFERENCE.md` (règles)
+3. Fichier spécifique à ta tâche (templates, exemples, etc.)
+
+---
+
+### Q: J'ai un doute sur une règle, que faire ?
+
+**R:** Relis `03_DESIGN_SYSTEM_REFERENCE.md` - Toutes les règles y sont documentées avec exemples.
+
+---
+
+### Q: Comment savoir si mon code est conforme ?
+
+**R:** Utilise `06_CHECKLIST.md` - Si toutes les cases sont cochées, ton code est conforme.
+
+---
+
+### Q: Où trouver des exemples de code validé ?
+
+**R:** Dans `05_TEMPLATES.md` et `09_EXEMPLES_MIGRATION.md`
+
+---
+
+## 🚀 C'EST PARTI !
+
+**Tu es Gemini Code Assist et tu as lu cette documentation ?**
+
+Parfait ! Tu as maintenant toutes les connaissances pour générer du code conforme au Design System V6.7.2 de Confluence Digitale ! 💪
+
+**Prochaine étape** : Attendre un prompt utilisateur et générer du code de qualité ! 🚀
+
+---
+
+**📦 Documentation complète pour Gemini Code Assist**  
+**🎯 Objectif** : Code parfait respectant Design System V6.7.2  
+**✅ Status** : Prêt pour production

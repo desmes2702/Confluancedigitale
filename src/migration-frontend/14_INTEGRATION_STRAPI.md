@@ -74,10 +74,10 @@ CDN_URL=https://cdn.confluence-digitale.fr
 
 ### 1.2 Configuration CORS Strapi
 
-**Fichier** : `/backend/config/middlewares.js`
+**Fichier** : `/backend/config/middlewares.ts`
 
-```javascript
-module.exports = [
+```typescript
+export default [
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -847,7 +847,7 @@ const height = image.data?.attributes?.height;
 **Symptôme** : `Access to fetch blocked by CORS policy`
 
 **Solution** :
-1. Vérifier `middlewares.js` Strapi (origin autorisé)
+1. Vérifier `middlewares.ts` Strapi (origin autorisé)
 2. Vérifier URL frontend exacte (https vs http)
 3. Redémarrer Strapi après modification
 

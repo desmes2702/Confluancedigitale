@@ -2,538 +2,388 @@
 
 **Projet** : Confluence Digitale V6.7.2 - Backend  
 **Stack** : Strapi v4 + PostgreSQL + Cloudinary + Railway  
-**Version Documentation** : 1.0 - Novembre 2025
+**Public** : Gemini Code Assist (VS Code extension)  
+**Status** : ✅ Documentation complète
 
 ---
 
-## 🎯 INTRODUCTION
+## 🎯 OBJECTIF DE CE DOSSIER
 
-Cette documentation complète couvre **tous les aspects** du backend Strapi pour Confluence Digitale V6.7.2.
+**Public cible** : **Gemini Code Assist** (extension VS Code)
 
-### Destinataires
+Ce dossier est la **documentation de référence technique** que Gemini Code Assist consulte pour générer du code backend Strapi v4 conforme au projet Confluence Digitale V6.7.2.
 
-- **Développeurs humains** : Instructions pas-à-pas
-- **Agents IA** : Gemini Code Assist (via `.vscode/gemini-instructions.md`)
-- **DevOps** : Déploiement, maintenance, backup
+**⚠️ Note** : Pour configurer le Gem's (prompt generator backend), voir `/gems-knowledge-backend/`
 
 ---
 
-## 📂 STRUCTURE DOCUMENTATION
+## 🚀 NAVIGATION RAPIDE
 
-### Configuration Initiale
+### Par Objectif (Pour Code Assist)
 
-| Fichier | Description | Priorité | Temps |
-|---------|-------------|----------|-------|
-| **`.vscode/`** | Configuration VS Code + Gemini | ⭐⭐⭐⭐⭐ | 10 min |
-| **GEMINI_BACKEND_CONFIGURATION.md** | Gem's Gemini 2.5 Pro | ⭐⭐⭐⭐⭐ | 15 min |
-| **00_WORKFLOW_GEMINI_BACKEND.md** | Workflow 4 étapes | ⭐⭐⭐⭐⭐ | 10 min |
-
-### Documentation Technique (01-09)
-
-| Fichier | Contenu | Priorité | Temps |
-|---------|---------|----------|-------|
-| **01_STRAPI_SETUP.md** | Installation Strapi (local + prod) | ⭐⭐⭐⭐⭐ | 30 min |
-| **02_CONTENT_TYPES.md** | 7 Content Types (Page, Article, etc.) | ⭐⭐⭐⭐⭐ | 45 min |
-| **03_API_ENDPOINTS.md** | Routes REST + Query params | ⭐⭐⭐⭐ | 20 min |
-| **04_AUTHENTIFICATION.md** | JWT, permissions, rôles | ⭐⭐⭐⭐ | 25 min |
-| **05_DEPLOYMENT_PRODUCTION.md** | Déploiement Railway | ⭐⭐⭐⭐⭐ | 40 min |
-| **06_DATABASE_POSTGRESQL.md** | PostgreSQL local/prod | ⭐⭐⭐ | 30 min |
-| **07_MEDIA_CLOUDINARY.md** | Upload images CDN | ⭐⭐⭐ | 25 min |
-| **08_WEBHOOKS_INTEGRATION.md** | Webhooks Vercel | ⭐⭐ | 20 min |
-| **09_MAINTENANCE_BACKUP.md** | Backup, monitoring | ⭐⭐ | 30 min |
-
-### Validation & Synthèse
-
-| Fichier | Description |
-|---------|-------------|
-| **VALIDATION_COHERENCE.md** | Audit cohérence frontend ↔ backend |
-| **README.md** | Ce fichier (index global) |
+| Objectif | Document | Temps lecture |
+|----------|----------|---------------|
+| **Comprendre le rôle** | README.md | 5 min |
+| **Content Types complets** | 02_CONTENT_TYPES.md ⭐ | 45 min |
+| **API REST Strapi** | 03_API_ENDPOINTS.md | 20 min |
+| **Setup initial** | 01_STRAPI_SETUP.md | 30 min |
+| **Déploiement** | 05_DEPLOYMENT_PRODUCTION.md | 40 min |
+| **Authentification** | 04_AUTHENTIFICATION.md | 25 min |
+| **Database** | 06_DATABASE_POSTGRESQL.md | 30 min |
+| **Media upload** | 07_MEDIA_CLOUDINARY.md | 25 min |
+| **Webhooks** | 08_WEBHOOKS_INTEGRATION.md | 20 min |
+| **Maintenance** | 09_MAINTENANCE_BACKUP.md | 30 min |
 
 ---
 
-## 🚀 QUICK START
-
-### Pour Débutants (Jamais utilisé Strapi)
-
-**Parcours recommandé** :
-
-1. ✅ **Installation** → `01_STRAPI_SETUP.md` (30 min)
-2. ✅ **Créer Content Types** → `02_CONTENT_TYPES.md` (45 min)
-3. ✅ **Tester API** → `03_API_ENDPOINTS.md` (20 min)
-4. ✅ **Permissions** → `04_AUTHENTIFICATION.md` (25 min)
-5. ✅ **Déployer** → `05_DEPLOYMENT_PRODUCTION.md` (40 min)
-
-**Temps total** : ~3 heures (backend complet fonctionnel) ✅
-
----
-
-### Pour Développeurs Expérimentés
-
-**Parcours accéléré** :
-
-1. ✅ `01_STRAPI_SETUP.md` → Installation (skim, focus PostgreSQL)
-2. ✅ `02_CONTENT_TYPES.md` → Copier schemas JSON (10 min)
-3. ✅ `05_DEPLOYMENT_PRODUCTION.md` → Railway one-click (20 min)
-
-**Temps total** : ~30 minutes (skip détails) ✅
-
----
-
-### Pour Agents IA (Gemini Code Assist)
-
-**Setup unique** :
-
-1. ✅ **Configuration Gem's** → `GEMINI_BACKEND_CONFIGURATION.md`
-2. ✅ **Workflow** → `00_WORKFLOW_GEMINI_BACKEND.md`
-3. ✅ **Instructions VS Code** → `.vscode/gemini-instructions.md` (auto-chargé)
-
-**Usage quotidien** :
-- Gemini charge automatiquement `.vscode/gemini-instructions.md`
-- Référence automatique aux 9 fichiers techniques
-- Génère code conforme aux règles absolues
-
----
-
-## 📊 ARCHITECTURE BACKEND
-
-### Stack Technique
+## 📚 STRUCTURE COMPLÈTE DU DOSSIER
 
 ```
-┌─────────────────────────────────────────────────┐
-│  FRONTEND (Astro - Vercel)                      │
-│  https://confluence-digitale.fr                 │
-└────────────┬────────────────────────────────────┘
-             │
-             │ API REST (JWT)
-             ▼
-┌─────────────────────────────────────────────────┐
-│  BACKEND (Strapi v4 - Railway)                  │
-│  https://api.confluence-digitale.fr             │
-│                                                  │
-│  ┌──────────────┐  ┌──────────────┐            │
-│  │ Content      │  │ API REST     │            │
-│  │ Types (7)    │  │ /api/*       │            │
-│  └──────────────┘  └──────────────┘            │
-└────────────┬────────────────────────────────────┘
-             │
-             ▼
-┌─────────────────────────────────────────────────┐
-│  DATABASE (PostgreSQL 15 - Railway)             │
-│  Tables : pages, articles, services, etc.       │
-└─────────────────────────────────────────────────┘
-             │
-             ▼
-┌─────────────────────────────────────────────────┐
-│  MEDIA (Cloudinary CDN)                         │
-│  Images optimisées + transformations auto       │
-└─────────────────────────────────────────────────┘
+/backend-documentation/
+├── README.md                        ← Guide pour Gemini Code Assist
+├── 00_INDEX.md                      ← Navigation (vous êtes ici)
+│
+├── 01_STRAPI_SETUP.md               ← Installation Strapi (30 min)
+├── 02_CONTENT_TYPES.md              ← ⭐⭐⭐⭐⭐ BIBLE Content Types (45 min)
+├── 03_API_ENDPOINTS.md              ← API REST configuration (20 min)
+├── 04_AUTHENTIFICATION.md           ← JWT, permissions (25 min)
+├── 05_DEPLOYMENT_PRODUCTION.md      ← Déploiement Railway (40 min)
+├── 06_DATABASE_POSTGRESQL.md        ← PostgreSQL (30 min)
+├── 07_MEDIA_CLOUDINARY.md           ← Upload images (25 min)
+├── 08_WEBHOOKS_INTEGRATION.md       ← Webhooks Vercel (20 min)
+└── 09_MAINTENANCE_BACKUP.md         ← Backup (30 min)
+```
+
+**Total** : 9 fichiers | ~4h de lecture complète
+
+---
+
+## 📖 DESCRIPTION DES FICHIERS
+
+### README.md
+
+**Public** : Gemini Code Assist  
+**Contenu** :
+- Rôle du dossier (doc référence pour Code Assist)
+- 6 règles absolues (résumé)
+- Workflow type
+- Checklist avant/après génération
+
+**Quand lire** : En premier, pour comprendre le rôle
+
+---
+
+### 00_INDEX.md (Ce fichier)
+
+**Public** : Navigation  
+**Contenu** :
+- Navigation rapide par objectif
+- Structure complète
+- Description de chaque fichier
+- Parcours recommandés
+
+**Quand lire** : Pour naviguer dans la documentation
+
+---
+
+### 01_STRAPI_SETUP.md ⏱️ 30 min
+
+**Public** : Installation  
+**Contenu** :
+- Prérequis (Node.js, PostgreSQL)
+- Installation Strapi v4
+- Configuration database
+- Variables environnement
+- Premier lancement
+- Création compte admin
+
+**Quand lire** : Setup initial projet
+
+---
+
+### 02_CONTENT_TYPES.md ⏱️ 45 min ⭐⭐⭐⭐⭐
+
+**Public** : BIBLE des Content Types  
+**Contenu** :
+- 7 Content Types complets (schemas JSON)
+  - Page (pages statiques)
+  - Article (blog posts)
+  - Service (services offerts)
+  - Testimonial (témoignages)
+  - Team Member (triade pro)
+  - FAQ (questions fréquentes)
+  - Contact (messages formulaires)
+- 3 Composants réutilisables (SEO, Feature, Hero)
+- Relations entre entités
+- Validations et contraintes
+- Permissions par rôle
+
+**Quand lire** : **TOUJOURS avant de créer/modifier un Content Type**
+
+---
+
+### 03_API_ENDPOINTS.md ⏱️ 20 min
+
+**Public** : API REST  
+**Contenu** :
+- Endpoints standards Strapi v4
+- Query parameters (populate, filters, sort, pagination)
+- Authentification JWT
+- CORS configuration
+- Rate limiting
+- Exemples requêtes complètes
+
+**Quand lire** : Pour configurer API ou tester endpoints
+
+---
+
+### 04_AUTHENTIFICATION.md ⏱️ 25 min
+
+**Public** : Sécurité  
+**Contenu** :
+- JWT authentication
+- Login/Register
+- Rôles et permissions
+- Configuration sécurité
+- Rate limiting
+- CORS
+
+**Quand lire** : Pour configurer auth/permissions
+
+---
+
+### 05_DEPLOYMENT_PRODUCTION.md ⏱️ 40 min
+
+**Public** : Déploiement  
+**Contenu** :
+- Déploiement Railway
+- Configuration production
+- Variables environnement
+- SSL/HTTPS
+- Monitoring
+- CI/CD
+
+**Quand lire** : Pour déployer en production
+
+---
+
+### 06_DATABASE_POSTGRESQL.md ⏱️ 30 min
+
+**Public** : Database  
+**Contenu** :
+- Installation PostgreSQL
+- Configuration local/production
+- Migrations
+- Seeds
+- Backups
+- Optimisations
+
+**Quand lire** : Pour setup/gérer database
+
+---
+
+### 07_MEDIA_CLOUDINARY.md ⏱️ 25 min
+
+**Public** : Media storage  
+**Contenu** :
+- Configuration Cloudinary
+- Upload images
+- Transformations
+- CDN
+- Optimisations
+
+**Quand lire** : Pour gérer uploads images
+
+---
+
+### 08_WEBHOOKS_INTEGRATION.md ⏱️ 20 min
+
+**Public** : Intégrations  
+**Contenu** :
+- Configuration webhooks
+- Webhooks Vercel (revalidation)
+- Webhooks customs
+- Événements Strapi
+- Sécurité webhooks
+
+**Quand lire** : Pour intégrer webhooks
+
+---
+
+### 09_MAINTENANCE_BACKUP.md ⏱️ 30 min
+
+**Public** : Maintenance  
+**Contenu** :
+- Stratégie backup
+- Backup database
+- Backup media
+- Monitoring
+- Logs
+- Alertes
+
+**Quand lire** : Pour setup maintenance/backup
+
+---
+
+## 🗺️ PARCOURS RECOMMANDÉS
+
+### 📘 Setup Initial (Première fois)
+
+**Objectif** : Comprendre l'environnement
+
+**Durée** : ~1h40
+
+1. **README.md** (5 min) - Comprendre le rôle de la doc
+2. **02_CONTENT_TYPES.md** (45 min) - Mémoriser les 7 Content Types
+3. **01_STRAPI_SETUP.md** (30 min) - Comprendre setup Strapi
+4. **03_API_ENDPOINTS.md** (20 min) - Voir API REST
+
+**Résultat** : Tu connais l'essentiel pour générer du code backend
+
+---
+
+### 🔄 Avant chaque génération de code
+
+**Objectif** : Rappel des règles
+
+**Durée** : 2-3 min
+
+1. **Relire les 6 règles absolues** (README.md)
+2. **Identifier le type de tâche** :
+   - Content Type → `02_CONTENT_TYPES.md`
+   - API → `03_API_ENDPOINTS.md`
+   - Auth → `04_AUTHENTIFICATION.md`
+   - Deploy → `05_DEPLOYMENT_PRODUCTION.md`
+
+---
+
+### ✅ Après chaque génération de code
+
+**Objectif** : Validation qualité
+
+**Durée** : 3-5 min
+
+**Checklist** :
+- [ ] Strapi v4 API (pas v3)
+- [ ] Nomenclature : kebab-case (API) / PascalCase (Model) / camelCase (variables)
+- [ ] Validations : type + required + constraints sur TOUS les champs
+- [ ] Component SEO si Content Type public
+- [ ] Permissions configurées
+- [ ] PostgreSQL (pas SQLite)
+- [ ] Build réussi (`npm run build`)
+- [ ] Endpoint accessible
+
+---
+
+## 🎯 FICHIERS PAR PRIORITÉ
+
+### 🔴 Priorité CRITIQUE (À lire absolument)
+
+1. **02_CONTENT_TYPES.md** - BIBLE des Content Types
+2. **README.md** - Comprendre le rôle
+3. **03_API_ENDPOINTS.md** - API REST Strapi v4
+
+---
+
+### 🟡 Priorité ÉLEVÉE (Fortement recommandé)
+
+4. **01_STRAPI_SETUP.md** - Setup Strapi
+5. **04_AUTHENTIFICATION.md** - JWT sécurité
+6. **05_DEPLOYMENT_PRODUCTION.md** - Déploiement
+
+---
+
+### 🟢 Priorité NORMALE (Selon besoin)
+
+7. **06_DATABASE_POSTGRESQL.md** - Database
+8. **07_MEDIA_CLOUDINARY.md** - Upload images
+9. **08_WEBHOOKS_INTEGRATION.md** - Webhooks
+10. **09_MAINTENANCE_BACKUP.md** - Maintenance
+
+---
+
+## 📊 STATISTIQUES DOCUMENTATION
+
+| Métrique | Valeur |
+|----------|--------|
+| **Fichiers principaux** | 9 |
+| **Temps lecture complète** | ~4h |
+| **Temps lecture essentielle** | ~1h40 |
+| **Content Types documentés** | 7 |
+| **Composants réutilisables** | 3 |
+| **Exemples code** | 50+ |
+
+---
+
+## 🔄 WORKFLOW TYPE (GEMINI CODE ASSIST)
+
+```
+1. Recevoir prompt utilisateur
+   ↓
+2. Identifier type de tâche
+   ↓
+3. Lire doc pertinente
+   - Content Type → 02_CONTENT_TYPES.md
+   - API → 03_API_ENDPOINTS.md
+   - Auth → 04_AUTHENTIFICATION.md
+   - Deploy → 05_DEPLOYMENT_PRODUCTION.md
+   ↓
+4. Relire règles absolues (README.md)
+   ↓
+5. Générer code Strapi v4 conforme
+   ↓
+6. Auto-valider (checklist)
+   ↓
+7. Retourner code validé ✅
 ```
 
 ---
 
-### 7 Content Types Principaux
+## 💡 TIPS POUR CODE ASSIST
 
-| Content Type | Slug | Usage | API Endpoint |
-|--------------|------|-------|--------------|
-| **Page** | `page` | Pages statiques (Offre, Contact) | `/api/pages` |
-| **Article** | `article` | Blog posts | `/api/articles` |
-| **Service** | `service` | Services offerts | `/api/services` |
-| **Testimonial** | `testimonial` | Témoignages clients | `/api/testimonials` |
-| **Team Member** | `team-member` | Triade (Antoine, Pascal, Laly) | `/api/team-members` |
-| **FAQ** | `faq` | Questions fréquentes | `/api/faqs` |
-| **Contact** | `contact` | Messages formulaire | `/api/contacts` |
+### Avant de coder
 
-**Détails complets** : `02_CONTENT_TYPES.md`
+✅ Lis `02_CONTENT_TYPES.md` en entier (45 min)  
+✅ Mémorise les 6 règles absolues  
+✅ Consulte schemas JSON existants  
 
----
+### Pendant le code
 
-## 🔑 CONCEPTS CLÉS
+✅ Respecte nomenclature Strapi v4  
+✅ Valide TOUS les champs (type, required, constraints)  
+✅ Ajoute Component SEO si Content Type public  
+✅ Configure permissions par rôle  
 
-### 1. Strapi CMS Headless
+### Après le code
 
-**Qu'est-ce que c'est ?**
-- CMS backend-only (pas de frontend intégré)
-- API REST automatique pour chaque Content Type
-- Admin Panel graphique pour gérer contenu
-
-**Avantages** :
-- ✅ Frontend découplé (Astro, React, Vue, etc.)
-- ✅ API REST standard (facile à consommer)
-- ✅ Évolutivité (microservices)
+✅ Valide avec checklist  
+✅ Vérifie build (`npm run build`)  
+✅ Teste endpoint API  
 
 ---
 
-### 2. Content Types vs Components
+## 📚 DOCUMENTATION EXTERNE
 
-**Content Types** :
-- Collections de données (ex: Article, Service)
-- Ont leur propre table DB
-- Endpoint API dédié
+### Configuration Gem's Backend
 
-**Components** :
-- Blocs réutilisables (ex: SEO, Feature)
-- Pas d'endpoint API propre
-- Utilisés dans Content Types
-
-**Exemple** :
 ```
-Content Type : Article
-  ├── title (string)
-  ├── slug (uid)
-  └── seo (Component SEO) ← réutilisable
-      ├── metaTitle
-      └── metaDescription
+/gems-knowledge-backend/
+├── README.md                        ← Guide configuration Gem's backend
+└── [6 fichiers de connaissances]
 ```
 
 ---
 
-### 3. Permissions & Rôles
+## 🎯 RÉSUMÉ
 
-**3 niveaux d'accès** :
+**Ce dossier contient tout ce dont Gemini Code Assist a besoin pour générer du code backend Strapi v4 conforme au projet Confluence Digitale V6.7.2.**
 
-| Rôle | Accès | Tokens | Usage |
-|------|-------|--------|-------|
-| **Public** | Lecture seule | Read-Only Token (public) | Frontend Astro |
-| **Authenticated** | CRUD limité | JWT User Token | Utilisateurs connectés |
-| **Admin** | Full control | Admin Token (secret) | Backend, Webhooks |
+**Fichier le plus important** : `02_CONTENT_TYPES.md` (BIBLE)
 
-**Configuration** : `04_AUTHENTIFICATION.md`
+**Workflow** : Lire doc → Générer code → Valider
+
+**Règles critiques** : 6 règles absolues à respecter TOUJOURS
 
 ---
 
-### 4. Webhooks Vercel
-
-**Workflow automatique** :
-
-```
-Admin publie Article (Strapi)
-  ↓
-Webhook déclenché
-  ↓
-Vercel rebuild frontend (Astro)
-  ↓
-Nouveau contenu visible (frontend)
-```
-
-**Configuration** : `08_WEBHOOKS_INTEGRATION.md`
-
----
-
-## ⚙️ WORKFLOW GEMINI (4 ÉTAPES)
-
-### Étape 1 : Gem's (Gemini 2.5 Pro App)
-
-**Créer prompt optimisé** pour Gemini Code Assist
-
-**Gem's configuré** : `GEMINI_BACKEND_CONFIGURATION.md`
-
----
-
-### Étape 2 : Code Assist (VS Code)
-
-**Coller prompt** → Gemini génère code Strapi
-
-**Auto-chargement** : `.vscode/gemini-instructions.md`
-
----
-
-### Étape 3 : Validation
-
-**Tester** :
-- API avec Thunder Client / curl
-- Database avec PostgreSQL Client
-- Logs Strapi (erreurs)
-
----
-
-### Étape 4 : Commit & Deploy
-
-**Git** :
-```bash
-git add .
-git commit -m "feat: add Service Content Type"
-git push
-```
-
-**Railway** : Auto-deploy (si configuré)
-
----
-
-## 🛠️ OUTILS RECOMMANDÉS
-
-### Extensions VS Code
-
-| Extension | Utilité | Priorité |
-|-----------|---------|----------|
-| **Gemini Code Assist** | Agent IA backend | ⭐⭐⭐⭐⭐ |
-| **ESLint** | Linter JavaScript | ⭐⭐⭐⭐⭐ |
-| **Prettier** | Formatter code | ⭐⭐⭐⭐⭐ |
-| **PostgreSQL Client** | Manager DB | ⭐⭐⭐⭐ |
-| **Thunder Client** | Tester API | ⭐⭐⭐⭐ |
-
-**Liste complète** : `.vscode/extensions.json`
-
----
-
-### SaaS & Services
-
-| Service | Usage | Plan |
-|---------|-------|------|
-| **Railway** | Hébergement Strapi + PostgreSQL | $5-20/mois |
-| **Cloudinary** | CDN images | Free tier (25 crédits) |
-| **Vercel** | Hébergement frontend Astro | Free tier |
-| **AWS S3** | Backup database (optionnel) | ~$1/mois |
-
----
-
-## 📋 CHECKLIST SETUP COMPLET
-
-### Phase 1 : Installation Local (30 min)
-
-- [ ] Node.js 20+ installé
-- [ ] PostgreSQL installé (optionnel, SQLite OK local)
-- [ ] Strapi créé (`npx create-strapi-app`)
-- [ ] Premier lancement (`npm run develop`)
-- [ ] Compte Admin créé
-- [ ] `.env` configuré
-
-**Guide** : `01_STRAPI_SETUP.md`
-
----
-
-### Phase 2 : Content Types (45 min)
-
-- [ ] Component SEO créé
-- [ ] Component Feature créé
-- [ ] Content Type Page créé
-- [ ] Content Type Article créé
-- [ ] Content Type Service créé
-- [ ] Content Type Testimonial créé
-- [ ] Content Type Team Member créé
-- [ ] Content Type FAQ créé
-- [ ] Content Type Contact créé
-
-**Guide** : `02_CONTENT_TYPES.md`
-
----
-
-### Phase 3 : Permissions (15 min)
-
-- [ ] Permissions Public configurées (find, findOne)
-- [ ] Token Read-Only créé
-- [ ] Token Admin créé (sécurisé)
-- [ ] CORS configuré (frontend autorisé)
-
-**Guide** : `04_AUTHENTIFICATION.md`
-
----
-
-### Phase 4 : Déploiement Production (40 min)
-
-- [ ] Compte Railway créé
-- [ ] PostgreSQL Railway provisionné
-- [ ] Variables env configurées (Railway)
-- [ ] Code pushé vers Git
-- [ ] Strapi déployé (Railway)
-- [ ] Database migrée
-- [ ] API accessible (https://api.confluence-digitale.fr)
-
-**Guide** : `05_DEPLOYMENT_PRODUCTION.md`
-
----
-
-### Phase 5 : Intégration Frontend (20 min)
-
-- [ ] Webhook Vercel créé
-- [ ] Webhook Strapi configuré
-- [ ] Test : Publier article → Vercel rebuild
-- [ ] Frontend consomme API Strapi
-
-**Guides** : 
-- `08_WEBHOOKS_INTEGRATION.md` (backend)
-- `/migration-frontend/14_INTEGRATION_STRAPI.md` (frontend)
-
----
-
-### Phase 6 : Maintenance (optionnel)
-
-- [ ] Backup automatique configuré (Railway)
-- [ ] Backup externe configuré (S3/Backblaze)
-- [ ] Monitoring activé (Railway metrics)
-- [ ] Alertes configurées (email/Slack)
-
-**Guide** : `09_MAINTENANCE_BACKUP.md`
-
----
-
-## 🎯 PARCOURS PAR PROFIL
-
-### Profil 1 : Développeur Full-Stack
-
-**Objectif** : Backend + Frontend intégré
-
-**Parcours** :
-1. ✅ `01_STRAPI_SETUP.md` → Installation
-2. ✅ `02_CONTENT_TYPES.md` → Structure données
-3. ✅ `03_API_ENDPOINTS.md` → Tests API
-4. ✅ `05_DEPLOYMENT_PRODUCTION.md` → Deploy Railway
-5. ✅ `08_WEBHOOKS_INTEGRATION.md` → Sync Vercel
-6. ✅ `/migration-frontend/14_INTEGRATION_STRAPI.md` → Frontend consomme API
-
-**Temps** : 4-5 heures
-
----
-
-### Profil 2 : Backend Developer
-
-**Objectif** : API Strapi pro
-
-**Parcours** :
-1. ✅ `01_STRAPI_SETUP.md` → Installation
-2. ✅ `02_CONTENT_TYPES.md` → Content Types
-3. ✅ `03_API_ENDPOINTS.md` → Routes optimisées
-4. ✅ `04_AUTHENTIFICATION.md` → Sécurité JWT
-5. ✅ `06_DATABASE_POSTGRESQL.md` → Optimisations DB
-6. ✅ `09_MAINTENANCE_BACKUP.md` → Backup pro
-
-**Temps** : 5-6 heures
-
----
-
-### Profil 3 : DevOps / SRE
-
-**Objectif** : Déploiement + Monitoring
-
-**Parcours** :
-1. ✅ `01_STRAPI_SETUP.md` → Installation (skim)
-2. ✅ `05_DEPLOYMENT_PRODUCTION.md` → Railway setup
-3. ✅ `06_DATABASE_POSTGRESQL.md` → PostgreSQL prod
-4. ✅ `08_WEBHOOKS_INTEGRATION.md` → CI/CD
-5. ✅ `09_MAINTENANCE_BACKUP.md` → Backup + Monitoring
-
-**Temps** : 3-4 heures
-
----
-
-### Profil 4 : Agent IA (Gemini)
-
-**Objectif** : Génération code automatique
-
-**Setup** :
-1. ✅ `GEMINI_BACKEND_CONFIGURATION.md` → Créer Gem's
-2. ✅ `.vscode/gemini-instructions.md` → Auto-chargé VS Code
-
-**Usage** :
-- Prompt via Gem's → Copier → Coller dans Code Assist
-- Gemini génère code conforme règles absolues
-- Tests automatiques (Thunder Client)
-
-**Temps setup** : 15 minutes (one-time)
-
----
-
-## 🔗 LIENS UTILES
-
-### Documentation Officielle
-
-- **Strapi Docs** : https://docs.strapi.io/
-- **Strapi REST API** : https://docs.strapi.io/dev-docs/api/rest
-- **Railway Docs** : https://docs.railway.app/
-- **PostgreSQL** : https://www.postgresql.org/docs/
-
-### Communauté
-
-- **Strapi Discord** : https://discord.strapi.io/
-- **Strapi Forum** : https://forum.strapi.io/
-- **Railway Community** : https://discord.gg/railway
-
-### Outils
-
-- **Thunder Client** : https://www.thunderclient.com/
-- **Cloudinary** : https://cloudinary.com/documentation
-- **Gemini Code Assist** : https://cloud.google.com/products/gemini/code-assist
-
----
-
-## ❓ FAQ RAPIDE
-
-### Q : SQLite ou PostgreSQL en dev local ?
-
-**R** : **SQLite** pour simplicité (défaut Strapi), **PostgreSQL** si tu veux environment identique prod.
-
-**Guide** : `01_STRAPI_SETUP.md` → Section "Configuration Base de Données"
-
----
-
-### Q : Comment créer un nouveau Content Type ?
-
-**R** : 2 méthodes :
-1. **UI** : Admin Panel → Content-Type Builder → Create
-2. **Code** : Créer `schema.json` (voir templates dans `02_CONTENT_TYPES.md`)
-
----
-
-### Q : Comment tester l'API ?
-
-**R** : 3 méthodes :
-1. **Thunder Client** (extension VS Code)
-2. **curl** (terminal)
-3. **Insomnia / Postman**
-
-**Exemples** : `03_API_ENDPOINTS.md`
-
----
-
-### Q : Comment sécuriser l'API ?
-
-**R** :
-- ✅ CORS strict (seul frontend autorisé)
-- ✅ Token Read-Only (public) vs Admin (secret)
-- ✅ Rate limiting (100 req/min)
-- ✅ HTTPS uniquement (production)
-
-**Guide complet** : `04_AUTHENTIFICATION.md`
-
----
-
-### Q : Combien coûte l'hébergement ?
-
-**R** :
-- **Railway** : $5-20/mois (Strapi + PostgreSQL)
-- **Cloudinary** : Free (25 crédits/mois, ~25 GB)
-- **Vercel** : Free (frontend)
-
-**Total** : ~$5-20/mois ✅
-
----
-
-### Q : Comment faire un backup ?
-
-**R** :
-- **Automatique** : Railway snapshots (7 jours gratuit)
-- **Manuel** : `pg_dump` + upload S3
-- **Script** : Voir `09_MAINTENANCE_BACKUP.md`
-
----
-
-## 📞 SUPPORT
-
-### Problème Technique
-
-1. **Consulter** : `08_TROUBLESHOOTING.md` (section dans chaque fichier)
-2. **Logs Strapi** : `railway logs` ou admin panel
-3. **Strapi Discord** : https://discord.strapi.io/
-
-### Suggestions Documentation
-
-**Contact** : Créer issue GitHub ou email admin@confluence-digitale.fr
-
----
-
-**📚 Documentation Backend Complète ! Prêt pour Développement Professionnel ! 💪**
-
----
-
-**Projet** : Confluence Digitale V6.7.2  
-**Date** : Novembre 2025  
-**Version** : 1.0
+**📚 Navigation complète | Gemini Code Assist Ready ✅**

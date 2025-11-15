@@ -1,487 +1,474 @@
-# 📑 INDEX - DOCUMENTATION MIGRATION
+# 📑 INDEX - DOCUMENTATION MIGRATION FRONTEND
 
 **Projet** : Confluence Digitale V6.7.2  
 **Version** : 1.0 - Novembre 2025  
-**Status** : ✅ Documentation Complète
+**Status** : ✅ Documentation complète pour Gemini Code Assist
 
 ---
 
-## 🎯 NAVIGATION RAPIDE
+## 🎯 OBJECTIF DE CE DOSSIER
 
-### Par Niveau d'Expertise
+**Public cible** : **Gemini Code Assist** (extension VS Code)
 
-| Niveau | Documents Recommandés | Temps |
-|--------|----------------------|-------|
-| **🔰 Débutant** | 01, 03, 05, 09, 12 | ~1h05 |
-| **🎓 Intermédiaire** | 02, 04, 07, 06 | ~50 min |
-| **🏆 Expert** | 02, 07, 08, 11, 12 | ~2h |
+Ce dossier est la **documentation de référence technique** que Gemini Code Assist consulte pour générer du code conforme au Design System V6.7.2 de Confluence Digitale.
 
-### Par Objectif
-
-| Objectif | Documents | Temps |
-|----------|-----------|-------|
-| **Démarrer rapidement** | 01_QUICK_START | 5 min |
-| **Comprendre Astro** | 02_GUIDE_TECHNIQUE | 20 min |
-| **Maîtriser Design System** | 03_DESIGN_SYSTEM_REFERENCE | 15 min |
-| **Coder proprement** | 04_CONVENTIONS_CODE | 10 min |
-| **Utiliser templates** | 05_TEMPLATES | 10 min |
-| **Valider travail** | 06_CHECKLIST | 5 min |
-| **Optimiser SEO/Perf** | 07_SEO_PERFORMANCE | 15 min |
-| **Débugger** | 08_TROUBLESHOOTING | Variable |
-| **Apprendre par l'exemple** | 09_EXEMPLES_MIGRATION | 20 min |
-| **Automatiser avec IA (legacy)** | 10_PROMPTS_AGENT_IA | 10 min |
-| **Maîtriser prompts avancés** | 11_PROMPT_ENGINEERING | 30 min |
-| **Workflow Gemini (⭐ Recommandé)** | 12_WORKFLOW_GEMINI | 15 min |
+**⚠️ Note** : Pour configurer le Gem's (prompt generator), voir `/gems-knowledge/`
 
 ---
 
-## 📚 LISTE COMPLÈTE DES DOCUMENTS
+## 🚀 NAVIGATION RAPIDE
 
-### 📖 Documentation Migration (13 fichiers)
+### Par Objectif (Pour Code Assist)
+
+| Objectif | Document | Temps lecture |
+|----------|----------|---------------|
+| **Comprendre le rôle** | README.md | 5 min |
+| **Règles Design System** | 03_DESIGN_SYSTEM_REFERENCE.md ⭐ | 15 min |
+| **Architecture Astro** | 02_GUIDE_TECHNIQUE.md | 20 min |
+| **Templates code** | 05_TEMPLATES.md | 10 min |
+| **Exemples migration** | 09_EXEMPLES_MIGRATION.md | 20 min |
+| **Validation code** | 06_CHECKLIST.md | 5 min |
+| **Debug erreurs** | 08_TROUBLESHOOTING.md | Variable |
+| **Optimisation** | 07_SEO_PERFORMANCE.md | 15 min |
+
+---
+
+## 📚 STRUCTURE COMPLÈTE DU DOSSIER
 
 ```
 /migration-frontend/
-├── 00_INDEX.md                      ← Vous êtes ici (Navigation)
-├── 01_QUICK_START.md                ← ⏱️ 5 min | Démarrage rapide
-├── 02_GUIDE_TECHNIQUE.md            ← ⏱️ 20 min | Architecture Astro
-├── 03_DESIGN_SYSTEM_REFERENCE.md    ← ⏱️ 15 min | Référence visuelle ⭐⭐⭐⭐⭐
-├── 04_CONVENTIONS_CODE.md           ← ⏱️ 10 min | Standards code
-├── 05_TEMPLATES.md                  ← ⏱️ 10 min | Copy-paste ready
-├── 06_CHECKLIST.md                  ← ⏱️ 5 min | Validation
-├── 07_SEO_PERFORMANCE.md            ← ⏱️ 15 min | Optimisation
-├── 08_TROUBLESHOOTING.md            ← ⏱️ Variable | Debugging
-├── 09_EXEMPLES_MIGRATION.md         ← ⏱️ 20 min | Cas concrets
-├── 10_PROMPTS_AGENT_IA.md           ← ⏱️ 10 min | Agents IA (legacy)
-├── 11_PROMPT_ENGINEERING.md         ← ⏱️ 30 min | Prompts avancés
-├── 12_WORKFLOW_GEMINI.md            ← ⏱️ 15 min | Workflow Gemini ⭐ Recommandé
-└── README.md                        ← Vue d'ensemble
+├── README.md                        ← Guide pour Gemini Code Assist
+├── 00_INDEX.md                      ← Navigation (vous êtes ici)
+│
+├── 01_QUICK_START.md                ← Démarrage rapide (5 min)
+├── 02_GUIDE_TECHNIQUE.md            ← Architecture Astro Islands (20 min)
+├── 03_DESIGN_SYSTEM_REFERENCE.md    ← ⭐⭐⭐⭐⭐ BIBLE Design System (15 min)
+├── 04_CONVENTIONS_CODE.md           ← Standards TypeScript (10 min)
+├── 05_TEMPLATES.md                  ← Templates prêts à utiliser (10 min)
+├── 06_CHECKLIST.md                  ← Validation qualité (5 min)
+├── 07_SEO_PERFORMANCE.md            ← Optimisation (15 min)
+├── 08_TROUBLESHOOTING.md            ← Résolution erreurs (Variable)
+├── 09_EXEMPLES_MIGRATION.md         ← Cas concrets validés (20 min)
+│
+├── 11_PROMPT_ENGINEERING.md         ← Référence prompts (30 min)
+├── 13_DEPLOYMENT_VERCEL.md          ← Déploiement production
+├── 14_INTEGRATION_STRAPI.md         ← Backend Strapi
+└── VALIDATION_FINALE.md             ← Rapport validation
 ```
 
-**Total** : ~2h45 de lecture pour maîtrise complète
+**Total** : 10 fichiers principaux | ~2h de lecture pour maîtrise complète
 
 ---
 
-## 🎨 DESIGN SYSTEM (Référence Externe)
+## 📖 DESCRIPTION DES FICHIERS
 
-```
-/doc/
-├── 01_DESIGN_SYSTEM_V6.7.md         ← ⭐⭐⭐⭐⭐ SOURCE DE VÉRITÉ
-├── PAGES_COMPLETE_GUIDE.md          ← Structure des 14 pages
-├── FORM_VALIDATION_REFERENCE.md     ← Logique formulaires
-├── TRIADE_PROFESSIONNELLE_ALIGNEMENT.md ← Concept métier
-└── [Autres docs pages...]
-```
+### README.md
+
+**Public** : Gemini Code Assist  
+**Contenu** :
+- Rôle du dossier (doc référence pour Code Assist)
+- 5 règles absolues (résumé)
+- Workflow type
+- Checklist avant/après génération
+
+**Quand lire** : En premier, pour comprendre le rôle
 
 ---
 
-## 🤖 CONFIGURATION AGENTS IA
+### 00_INDEX.md (Ce fichier)
 
-```
-/.vscode/
-├── gemini-instructions.md           ← Instructions Gemini Code Assist
-├── settings.json                    ← Config VS Code + Gemini
-├── extensions.json                  ← Extensions recommandées
-└── README.md                        ← Guide config VS Code
+**Public** : Navigation  
+**Contenu** :
+- Navigation rapide par objectif
+- Structure complète
+- Description de chaque fichier
+- Parcours recommandés
 
-/.cursorrules                        ← Instructions Cursor
-```
+**Quand lire** : Pour naviguer dans la documentation
+
+---
+
+### 01_QUICK_START.md ⏱️ 5 min
+
+**Public** : Démarrage rapide  
+**Contenu** :
+- Concept Astro Islands
+- Quand utiliser .astro vs .tsx
+- Workflow migration en 5 étapes
+- Commandes essentielles
+
+**Quand lire** : Pour comprendre rapidement les bases
+
+---
+
+### 02_GUIDE_TECHNIQUE.md ⏱️ 20 min
+
+**Public** : Architecture technique  
+**Contenu** :
+- Architecture Astro Islands détaillée
+- Structure projet
+- Routing automatique
+- Hydratation (client:load, client:visible, client:idle)
+- Layouts
+- Content Collections
+- Configuration (astro.config, tailwind.config)
+
+**Quand lire** : Pour comprendre l'architecture du projet
+
+---
+
+### 03_DESIGN_SYSTEM_REFERENCE.md ⏱️ 15 min ⭐⭐⭐⭐⭐
+
+**Public** : BIBLE du Design System  
+**Contenu** :
+- 5 règles critiques absolues
+- Palette couleurs (5 couleurs exclusives)
+- Typographie (Playfair + Inter)
+- Espacements (containers, sections, grids)
+- Ombres (inline uniquement)
+- Composants (boutons, formulaires, cartes)
+- Responsive patterns
+- Accessibilité (ARIA, contraste, focus)
+- Checklist validation
+
+**Quand lire** : **TOUJOURS avant de générer du code** - C'est le fichier le plus important
+
+**Règles critiques** :
+1. Playfair Regular uniquement (JAMAIS font-bold)
+2. Ombres inline uniquement (JAMAIS classes shadow-*)
+3. Hero padding pt-28 lg:pt-32
+4. Formulaires spacing space-y-6
+5. 5 couleurs exclusives
+
+---
+
+### 04_CONVENTIONS_CODE.md ⏱️ 10 min
+
+**Public** : Standards de code  
+**Contenu** :
+- Conventions nommage (fichiers, composants, variables)
+- Organisation imports
+- TypeScript (types, interfaces, generics)
+- Commentaires JSDoc
+- Formatage (Prettier, ESLint)
+- Git conventions
+
+**Quand lire** : Pour écrire du code propre et standardisé
+
+---
+
+### 05_TEMPLATES.md ⏱️ 10 min
+
+**Public** : Templates code  
+**Contenu** :
+- Template page Astro
+- Template composant React
+- Template layout
+- Template formulaire avec validation
+- Composants réutilisables (Hero, Features, Team, FAQ, Contact)
+
+**Quand lire** : Pour créer un nouveau composant ou page
+
+---
+
+### 06_CHECKLIST.md ⏱️ 5 min
+
+**Public** : Validation qualité  
+**Contenu** :
+- Checklist Design System
+- Checklist Architecture
+- Checklist Performance
+- Checklist Accessibilité
+- Checklist SEO
+- Checklist TypeScript
+
+**Quand lire** : Après avoir généré du code pour valider
+
+---
+
+### 07_SEO_PERFORMANCE.md ⏱️ 15 min
+
+**Public** : Optimisation  
+**Contenu** :
+- SEO (meta tags, Open Graph, Schema.org)
+- Performance (images, fonts, JavaScript)
+- Core Web Vitals
+- Lighthouse optimisation
+- Sitemap, robots.txt
+
+**Quand lire** : Pour optimiser SEO et performance
+
+---
+
+### 08_TROUBLESHOOTING.md ⏱️ Variable
+
+**Public** : Résolution erreurs  
+**Contenu** :
+- Erreurs fréquentes Astro
+- Erreurs TypeScript
+- Erreurs hydratation
+- Erreurs build
+- Solutions pas à pas
+
+**Quand lire** : Quand une erreur survient
+
+---
+
+### 09_EXEMPLES_MIGRATION.md ⏱️ 20 min
+
+**Public** : Cas concrets  
+**Contenu** :
+- Exemples complets migration React → Astro
+- Avant/Après code
+- Explications décisions
+- Patterns communs
+
+**Quand lire** : Pour migrer une page React vers Astro
+
+---
+
+### 11_PROMPT_ENGINEERING.md ⏱️ 30 min
+
+**Public** : Référence prompts  
+**Contenu** :
+- Structure prompts efficaces
+- Contexte à fournir
+- Contraintes à spécifier
+- Exemples prompts par tâche
+- Comparatif agents IA (Gemini prioritaire)
+
+**Quand lire** : Pour comprendre comment structurer les prompts (référence)
+
+---
+
+### 13_DEPLOYMENT_VERCEL.md
+
+**Public** : Déploiement  
+**Contenu** :
+- Configuration Vercel
+- Variables d'environnement
+- Build settings
+- Preview deployments
+- Custom domain
+
+**Quand lire** : Pour déployer en production
+
+---
+
+### 14_INTEGRATION_STRAPI.md
+
+**Public** : Backend CMS  
+**Contenu** :
+- Configuration Strapi
+- API REST/GraphQL
+- Content Types
+- Authentication
+- Intégration Astro
+
+**Quand lire** : Pour intégrer un backend Strapi
+
+---
+
+### VALIDATION_FINALE.md
+
+**Public** : Rapport validation  
+**Contenu** :
+- État validation documentation
+- Métriques complétude
+- Status par section
+- Changelog
+
+**Quand lire** : Pour vérifier l'état de la documentation
 
 ---
 
 ## 🗺️ PARCOURS RECOMMANDÉS
 
-### 🔰 PARCOURS DÉBUTANT (Première migration)
+### 📘 Setup Initial (Première fois)
 
-**Objectif** : Migrer sa première page en 1h
+**Objectif** : Comprendre l'environnement
 
-1. **`01_QUICK_START.md`** (5 min)
-   - Comprendre concept Astro Islands
-   - Décision .tsx vs .astro
-   - Workflow 5 étapes
+**Durée** : ~50 min
 
-2. **`03_DESIGN_SYSTEM_REFERENCE.md`** (15 min)
-   - Palette de couleurs
-   - Typographie (Playfair + Inter)
-   - Règles critiques (Hero, ombres, etc.)
+1. **README.md** (5 min) - Comprendre le rôle de la doc
+2. **03_DESIGN_SYSTEM_REFERENCE.md** (15 min) - Mémoriser les règles
+3. **02_GUIDE_TECHNIQUE.md** (20 min) - Comprendre Astro
+4. **05_TEMPLATES.md** (10 min) - Voir les patterns
 
-3. **`05_TEMPLATES.md`** (10 min)
-   - Copier template page Astro
-   - Copier template composant React
-
-4. **`09_EXEMPLES_MIGRATION.md`** (20 min)
-   - Cas #1 : Page simple
-   - Cas #3 : Composant interactif
-
-5. **`06_CHECKLIST.md`** (5 min)
-   - Valider avec checklist
-
-6. **PRATIQUE** (30 min)
-   - Migrer page Mentions Légales
-   - Tester responsive
-   - Valider Lighthouse
-
-**Résultat** : Première page migrée ! 🎉
+**Résultat** : Tu connais l'essentiel pour générer du code
 
 ---
 
-### 🎓 PARCOURS INTERMÉDIAIRE (Déjà fait du React)
+### 🔄 Avant chaque génération de code
 
-**Objectif** : Maîtriser architecture + performance
+**Objectif** : Rappel des règles
 
-1. **`02_GUIDE_TECHNIQUE.md`** (20 min)
-   - Architecture Astro complète
-   - Hydratation (client:load vs client:visible)
-   - Configuration (astro.config, tailwind.config)
+**Durée** : 2-3 min
 
-2. **`04_CONVENTIONS_CODE.md`** (10 min)
-   - Nommage fichiers
-   - Structure composant React/Astro
-   - Ordre classes Tailwind
-
-3. **`07_SEO_PERFORMANCE.md`** (15 min)
-   - Meta tags
-   - Core Web Vitals
-   - Optimisation images
-
-4. **`06_CHECKLIST.md`** (5 min)
-   - Checklist complète
-
-5. **PRATIQUE** (1h)
-   - Migrer 3 pages
-   - Atteindre Lighthouse > 90
-   - Responsive complet
-
-**Résultat** : Migration professionnelle ! 💪
+1. **Relire les 5 règles absolues** (README.md ou 03_DESIGN_SYSTEM_REFERENCE.md)
+2. **Identifier le type de tâche** :
+   - Migration → `09_EXEMPLES_MIGRATION.md`
+   - Nouveau composant → `05_TEMPLATES.md`
+   - Debug → `08_TROUBLESHOOTING.md`
+   - Performance → `07_SEO_PERFORMANCE.md`
 
 ---
 
-### 🏆 PARCOURS EXPERT (Architecture)
+### ✅ Après chaque génération de code
 
-**Objectif** : Excellence technique + automation IA
+**Objectif** : Validation qualité
 
-1. **`02_GUIDE_TECHNIQUE.md`** (20 min)
-   - Architecture avancée
-   - Performance monitoring
+**Durée** : 3-5 min
 
-2. **`07_SEO_PERFORMANCE.md`** (15 min)
-   - Optimisation avancée
-   - Budget performance
-
-3. **`08_TROUBLESHOOTING.md`** (30 min)
-   - Debugging avancé
-   - Erreurs complexes
-
-4. **`11_PROMPT_ENGINEERING.md`** (30 min)
-   - Templates prompts avancés
-   - Multi-fichiers
-   - Automation
-
-5. **PRATIQUE** (2h)
-   - Migration complète (14 pages)
-   - Performance 100/100
-   - CI/CD setup
-
-**Résultat** : Migration optimale + automation ! 🚀
+1. **Utiliser** `06_CHECKLIST.md`
+2. **Vérifier** :
+   - [ ] Playfair Regular (pas bold)
+   - [ ] Ombres inline uniquement
+   - [ ] Hero pt-28 lg:pt-32
+   - [ ] Formulaires space-y-6
+   - [ ] 5 couleurs exclusives
+   - [ ] TypeScript strict
+   - [ ] Responsive mobile-first
+   - [ ] Accessibilité complète
 
 ---
 
-## 📊 MÉTRIQUES DE SUCCÈS
+## 🎯 FICHIERS PAR PRIORITÉ
 
-### Documentation
+### 🔴 Priorité CRITIQUE (À lire absolument)
 
-- ✅ **13 fichiers** de documentation migration
-- ✅ **~5,200 lignes** de contenu
-- ✅ **6 cas concrets** d'exemples
-- ✅ **50+ templates** prêts à l'emploi
-- ✅ **Workflow Gemini** optimisé et documenté
-
-### Couverture
-
-- ✅ **100%** des règles Design System V6.7.2
-- ✅ **100%** des cas d'usage migration
-- ✅ **20+ erreurs** courantes documentées
-- ✅ **10+ prompts** optimisés par agent
-
-### Qualité
-
-- ✅ Zéro contradiction détectée
-- ✅ Tous exemples testés
-- ✅ Checklists actionnables
-- ✅ Templates copy-paste ready
+1. **03_DESIGN_SYSTEM_REFERENCE.md** - BIBLE des règles
+2. **README.md** - Comprendre le rôle
+3. **05_TEMPLATES.md** - Patterns de code
 
 ---
 
-## 🎯 CAS D'USAGE PAR DOCUMENT
+### 🟡 Priorité ÉLEVÉE (Fortement recommandé)
 
-### 01_QUICK_START.md
-
-**Utiliser si** :
-- ✅ Première migration Astro
-- ✅ Besoin comprendre rapidement (5 min)
-- ✅ Workflow simple recherché
-
-**Contient** :
-- Concept Astro Islands (30 sec)
-- Décision .tsx/.astro
-- Workflow 5 étapes
-- Templates ultra-rapides
+4. **02_GUIDE_TECHNIQUE.md** - Architecture Astro
+5. **06_CHECKLIST.md** - Validation
+6. **09_EXEMPLES_MIGRATION.md** - Cas concrets
 
 ---
 
-### 02_GUIDE_TECHNIQUE.md
+### 🟢 Priorité NORMALE (Selon besoin)
 
-**Utiliser si** :
-- ✅ Besoin comprendre architecture
-- ✅ Configuration Astro/Tailwind
-- ✅ Hydratation avancée
-- ✅ Performance optimisation
-
-**Contient** :
-- Structure projet complète
-- Config astro.config.mjs
-- Config tailwind.config.ts
-- Directives hydratation détaillées
-- Routing Astro
-- Optimisation images
+7. **01_QUICK_START.md** - Démarrage rapide
+8. **04_CONVENTIONS_CODE.md** - Standards
+9. **07_SEO_PERFORMANCE.md** - Optimisation
+10. **08_TROUBLESHOOTING.md** - Debug
 
 ---
 
-### 03_DESIGN_SYSTEM_REFERENCE.md
+### ⚪ Priorité BASSE (Référence)
 
-**Utiliser si** :
-- ✅ Besoin référence visuelle rapide
-- ✅ Validation conformité Design System
-- ✅ Couleurs/Typo/Ombres
-
-**Contient** :
-- Palette de couleurs complète
-- Typographie (Playfair + Inter)
-- Espacement (Hero, sections, formulaires)
-- Ombres prédéfinies
-- Responsive (breakpoints)
-- Composants UI (boutons, cartes, inputs)
-- Triade Professionnelle
-- Header/Footer structure
+11. **11_PROMPT_ENGINEERING.md** - Référence prompts
+12. **13_DEPLOYMENT_VERCEL.md** - Déploiement
+13. **14_INTEGRATION_STRAPI.md** - Backend
+14. **VALIDATION_FINALE.md** - État doc
 
 ---
 
-### 04_CONVENTIONS_CODE.md
+## 📊 STATISTIQUES DOCUMENTATION
 
-**Utiliser si** :
-- ✅ Standardisation code recherchée
-- ✅ Team collaboration
-- ✅ Code review
-
-**Contient** :
-- Nommage fichiers (PascalCase, kebab-case)
-- Structure composant React/Astro
-- Ordre classes Tailwind
-- Nommage variables/fonctions
-- Indentation/formatage
-- Commentaires (JSDoc)
-- TypeScript best practices
-- Imports (ordre + alias)
+| Métrique | Valeur |
+|----------|--------|
+| **Fichiers principaux** | 10 |
+| **Fichiers total** | 14 |
+| **Temps lecture complète** | ~2h |
+| **Temps lecture essentielle** | ~50 min |
+| **Exemples code** | 50+ |
+| **Checklists** | 6 |
+| **Règles Design System** | 5 critiques + 50+ détaillées |
 
 ---
 
-### 05_TEMPLATES.md
+## 🔄 WORKFLOW TYPE (GEMINI CODE ASSIST)
 
-**Utiliser si** :
-- ✅ Besoin code prêt à l'emploi
-- ✅ Gain de temps
-- ✅ Exemple concret
-
-**Contient** :
-- Template page Astro complète
-- Template composant React simple
-- Template composant React interactif
-- Template formulaire
-- Template responsive
-- Template avec SEO
-
----
-
-### 06_CHECKLIST.md
-
-**Utiliser si** :
-- ✅ Validation avant commit
-- ✅ Code review
-- ✅ Quality assurance
-
-**Contient** :
-- Checklist composant React
-- Checklist page Astro
-- Checklist Design System
-- Checklist formulaire
-- Checklist responsive
-- Checklist SEO
-- Checklist performance
-- Checklist accessibilité
+```
+1. Recevoir prompt utilisateur
+   ↓
+2. Identifier type de tâche
+   ↓
+3. Lire doc pertinente
+   - Migration → 09_EXEMPLES_MIGRATION.md
+   - Nouveau → 05_TEMPLATES.md
+   - Debug → 08_TROUBLESHOOTING.md
+   ↓
+4. Relire règles absolues (03_DESIGN_SYSTEM_REFERENCE.md)
+   ↓
+5. Générer code conforme
+   ↓
+6. Auto-valider (06_CHECKLIST.md)
+   ↓
+7. Retourner code validé ✅
+```
 
 ---
 
-### 07_SEO_PERFORMANCE.md
+## 💡 TIPS POUR CODE ASSIST
 
-**Utiliser si** :
-- ✅ Optimisation SEO
-- ✅ Lighthouse > 90 requis
-- ✅ Core Web Vitals
+### Avant de coder
 
-**Contient** :
-- Meta tags essentiels
-- Structured Data (JSON-LD)
-- Optimisation images (WebP, lazy loading)
-- Optimisation fonts
-- Optimisation CSS/JS
-- Sitemap.xml
-- Robots.txt
-- Budget performance
-- Monitoring production
+✅ Lis `03_DESIGN_SYSTEM_REFERENCE.md` en entier (15 min)  
+✅ Mémorise les 5 règles absolues  
+✅ Consulte `05_TEMPLATES.md` pour patterns  
 
----
+### Pendant le code
 
-### 08_TROUBLESHOOTING.md
+✅ Respecte à 100% le Design System  
+✅ Utilise TypeScript strict (pas de any)  
+✅ Pense mobile-first  
+✅ Ajoute ARIA labels  
 
-**Utiliser si** :
-- ✅ Erreur rencontrée
-- ✅ Bug à débugger
-- ✅ Build échoue
+### Après le code
 
-**Contient** :
-- 20+ erreurs courantes
-- Solutions détaillées
-- Erreurs Astro spécifiques
-- Erreurs React
-- Erreurs Tailwind
-- Erreurs TypeScript
-- Erreurs Design System
-- Erreurs déploiement
-- Outils debugging
+✅ Valide avec `06_CHECKLIST.md`  
+✅ Vérifie responsive (375px, 768px, 1280px)  
+✅ Teste accessibilité (keyboard navigation)  
 
 ---
 
-### 09_EXEMPLES_MIGRATION.md
+## 📚 DOCUMENTATION EXTERNE
 
-**Utiliser si** :
-- ✅ Apprentissage par l'exemple
-- ✅ Cas concret recherché
-- ✅ Avant/Après
+### Design System Source
 
-**Contient** :
-- Cas #1 : Page simple (Mentions Légales)
-- Cas #2 : Composant statique (Hero)
-- Cas #3 : Composant interactif (FAQ)
-- Cas #4 : Formulaire (Contact)
-- Cas #5 : Page complète (Landing)
-- Cas #6 : Migration progressive (stratégie)
+```
+/doc/
+├── 01_DESIGN_SYSTEM_V6.7.md         ← Source de vérité Design System
+├── PAGES_COMPLETE_GUIDE.md          ← Structure des pages
+└── [Autres docs...]
+```
 
----
+### Configuration VS Code
 
-### 10_PROMPTS_AGENT_IA.md
+```
+/.vscode/
+├── gemini-instructions.md           ← Instructions pour Code Assist
+├── settings.json                    ← Config VS Code
+└── extensions.json                  ← Extensions recommandées
+```
 
-**Utiliser si** :
-- ✅ Cursor/Windsurf utilisé
-- ✅ Automation IA recherchée
-- ✅ Prompts optimaux
+### Configuration Gem's
 
-**Contient** :
-- Prompt initial configuration
-- Prompts migration page
-- Prompts création composant
-- Prompts debug
-- Prompts validation
-- Prompts multi-fichiers
+```
+/gems-knowledge/
+├── README.md                        ← Guide configuration Gem's
+└── [7 fichiers de connaissances]
+```
 
 ---
 
-### 11_PROMPT_ENGINEERING.md
+## 🎯 RÉSUMÉ
 
-**Utiliser si** :
-- ✅ Prompts avancés recherchés
-- ✅ Optimisation workflow IA
-- ✅ Templates prompts
+**Ce dossier contient tout ce dont Gemini Code Assist a besoin pour générer du code conforme au Design System V6.7.2 de Confluence Digitale.**
 
-**Contient** :
-- Comprendre agents IA
-- Template prompt universel
-- 8 prompts cas d'usage
-- Prompts Design System
-- Prompts techniques avancés
-- Prompts Gemini Code Assist
-- Templates prompts rapides
-- Bonnes pratiques
-- Métriques succès
+**Fichier le plus important** : `03_DESIGN_SYSTEM_REFERENCE.md` (BIBLE)
+
+**Workflow** : Lire doc → Générer code → Valider
+
+**Règles critiques** : 5 règles absolues à respecter TOUJOURS
 
 ---
 
-### 12_WORKFLOW_GEMINI.md (⭐ Recommandé)
-
-**Utiliser si** :
-- ✅ Workflow Gemini 2.5 Pro + Code Assist
-- ✅ Automation optimale recherchée
-- ✅ Setup Gem's nécessaire
-
-**Contient** :
-- Modus operandi complet (4 étapes)
-- Setup Gem's dans App Gemini
-- Configuration Code Assist
-- 7 scénarios d'utilisation détaillés
-- Exemples messages pour Gem's
-- Prompts prêts à l'emploi
-- Troubleshooting
-- Métriques succès
-
----
-
-## 🔗 LIENS EXTERNES
-
-### Documentation Astro
-
-- [Astro Docs](https://docs.astro.build/)
-- [Astro + React](https://docs.astro.build/en/guides/integrations-guide/react/)
-- [Astro Islands](https://docs.astro.build/en/concepts/islands/)
-
-### Documentation Tailwind
-
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Tailwind UI](https://tailwindui.com/)
-
-### Outils
-
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
-- [WebPageTest](https://www.webpagetest.org/)
-- [Can I Use](https://caniuse.com/)
-
----
-
-## ✅ VALIDATION DOCUMENTATION
-
-### Checklist Complétude
-
-- [x] **Quick Start** : Démarrage 5 min ✅
-- [x] **Guide Technique** : Architecture complète ✅
-- [x] **Design System** : Référence exhaustive ✅
-- [x] **Conventions** : Standards code ✅
-- [x] **Templates** : Prêts à l'emploi ✅
-- [x] **Checklist** : Validation systématique ✅
-- [x] **SEO/Perf** : Optimisation complète ✅
-- [x] **Troubleshooting** : 20+ erreurs ✅
-- [x] **Exemples** : 6 cas concrets ✅
-- [x] **Prompts IA** : 3 agents configurés ✅
-- [x] **Prompt Engineering** : Guide avancé ✅
-
-### Checklist Qualité
-
-- [x] Zéro contradiction
-- [x] Exemples testés
-- [x] Checklists actionnables
-- [x] Templates fonctionnels
-- [x] Liens internes cohérents
-- [x] Progression logique
-
----
-
-**📑 Index Complet ! Navigation Optimale ! 💪**
-
-**Temps de lecture total** : ~2h45 pour maîtrise complète  
-**Documentation prête pour production** : ✅
+**📑 Navigation complète | Gemini Code Assist Ready ✅**

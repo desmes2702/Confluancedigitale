@@ -152,11 +152,10 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 
 ### ✅ 10_PROMPTS_AGENT_IA.md
 
-- [x] Prompts Cursor/Windsurf
-- [x] Configuration .cursorrules
+- [x] Prompts agents IA (legacy)
 - [x] Prompts migration page
 - [x] Prompts création composant
-- [x] Note "legacy" visible
+- [x] Note "legacy" visible en haut du fichier
 
 **Status** : ✅ Validé
 
@@ -194,7 +193,6 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 - [x] Structure 13 fichiers correcte
 - [x] 12_WORKFLOW_GEMINI.md inclus
 - [x] Section Gemini prioritaire
-- [x] Section Cursor/Windsurf alternative
 - [x] Métriques à jour (13 fichiers)
 - [x] Liens vers tous les fichiers corrects
 
@@ -232,15 +230,13 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 
 | Fichier | Lignes | Status |
 |---------|--------|--------|
-| `/GEMINI_GEMS_CONFIGURATION.md` | ~1,200 | ✅ |
-| `/README_WORKFLOW_GEMINI.md` | ~400 | ✅ |
+| `/migration-frontend/GEMINI_GEMS_CONFIGURATION.md` | ~1,200 | ✅ |
 | `/migration-frontend/12_WORKFLOW_GEMINI.md` | ~850 | ✅ |
-| `/.vscode/gemini-instructions.md` | ~3,000 | ✅ |
+| `/.vscode/gemini-instructions.md` | ~100 | ✅ |
 | `/.vscode/settings.json` | ~40 | ✅ |
 | `/.vscode/extensions.json` | ~10 | ✅ |
-| `/.vscode/README.md` | ~200 | ✅ |
 
-**Total** : 7 fichiers, ~5,700 lignes
+**Total** : 5 fichiers, ~2,200 lignes
 
 ### Cohérence Workflow
 
@@ -304,11 +300,10 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 ### Workflow Gemini
 
 - [x] GEMINI_GEMS_CONFIGURATION.md créé
-- [x] README_WORKFLOW_GEMINI.md créé
+- [x] 12_WORKFLOW_GEMINI.md créé
 - [x] .vscode/gemini-instructions.md créé
 - [x] .vscode/settings.json créé
 - [x] .vscode/extensions.json créé
-- [x] .vscode/README.md créé
 - [x] Workflow 4 étapes documenté
 
 ### Design System
@@ -331,7 +326,7 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 
 ---
 
-## 🎯 OBJECTIFS ATTEINTS
+## ✅ OBJECTIFS ATTEINTS
 
 ### Objectif #1 : Documentation Complète
 
@@ -410,9 +405,9 @@ La documentation de migration React → Astro pour Confluence Digitale V6.7.2 es
 
 ### Pour Gemini
 
-1. Setup Gem's : `/GEMINI_GEMS_CONFIGURATION.md`
+1. Setup Gem's : `/migration-frontend/GEMINI_GEMS_CONFIGURATION.md`
 2. Workflow : `/migration-frontend/12_WORKFLOW_GEMINI.md`
-3. Utilisation quotidienne : `/README_WORKFLOW_GEMINI.md`
+3. Configuration VS Code : `/.vscode/gemini-instructions.md`
 
 ### Pour Architectes
 
