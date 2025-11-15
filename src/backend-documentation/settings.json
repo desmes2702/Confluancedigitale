@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  
+  "files.associations": {
+    "*.json": "json"
+  },
+  
+  "gemini.instructionsFile": ".vscode/gemini-instructions.md",
+  "gemini.context.includeFiles": [
+    "/backend-documentation/**/*.md"
+  ]
+}

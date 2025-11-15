@@ -1,0 +1,44 @@
+{
+  "folders": [
+    {
+      "name": "🎨 Frontend (Astro + React)",
+      "path": "."
+    },
+    {
+      "name": "🗄️ Backend Documentation (Strapi)",
+      "path": "./backend-documentation"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.cache": true,
+      "**/.astro": true,
+      "**/dist": true,
+      "**/.output": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.astro": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/dist/**": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "astro-build.astro-vscode",
+      "bradlc.vscode-tailwindcss",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "GoogleCloudTools.cloudcode",
+      "cweijan.vscode-postgresql-client2",
+      "rangav.vscode-thunder-client",
+      "eamodio.gitlens"
+    ]
+  }
+}
