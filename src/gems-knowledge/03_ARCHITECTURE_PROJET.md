@@ -1,6 +1,6 @@
 # 🏗️ ARCHITECTURE PROJET - STRUCTURE TECHNIQUE
 
-**Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x  
+**Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 3.x  
 **Migration** : React → Astro (Islands Architecture)  
 **Déploiement** : Vercel
 

@@ -31,7 +31,7 @@
 
 ## Contexte
 - Projet : Confluence Digitale V6.7.2
-- Stack : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x
+- Stack : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 3.x
 - Design System : V6.7.2 "App Moderne 2025"
 - Documentation : /migration-frontend/ + /doc/
 

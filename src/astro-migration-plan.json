@@ -1,0 +1,411 @@
+{
+  "projectName": "Confluence Digitale",
+  "migrationVersion": "1.0.0",
+  "date": "2025",
+  "status": "Ready for Astro conversion",
+  "pages": {
+    "LandingPage": {
+      "source": "src/react-pages/LandingPage.tsx",
+      "destination": "src/pages/index.astro",
+      "priority": "HIGH",
+      "complexity": "HIGH",
+      "sections": {
+        "astro": [
+          "SocialProofStats",
+          "Testimonial",
+          "ProcessOverview",
+          "WhyChooseUs",
+          "FinalCTA"
+        ],
+        "islands": {
+          "HeroAnimation": {
+            "hydration": "client:load",
+            "reason": "Critical above-fold content with animations"
+          },
+          "PainPointsSection": {
+            "hydration": "client:visible",
+            "reason": "Scroll-triggered animations"
+          },
+          "PageSpeedProof": {
+            "hydration": "client:visible",
+            "reason": "Performance metrics with ArcGauge animations"
+          },
+          "SolutionsSection": {
+            "hydration": "client:visible",
+            "reason": "Card hover effects and animations"
+          },
+          "TeamBlock": {
+            "hydration": "client:visible",
+            "reason": "Team triad with stagger animations"
+          },
+          "FAQ": {
+            "hydration": "client:visible",
+            "reason": "DSAccordion with expand/collapse"
+          }
+        }
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSButton",
+        "DSBadge"
+      ],
+      "inlineSVGIcons": [
+        "CheckCircle2Icon",
+        "ArrowRightIcon"
+      ],
+      "dependencies": {
+        "motion": "Only in islands",
+        "hooks": "None in Astro components"
+      },
+      "notes": "Header and Footer placeholders to be replaced by Astro Layout components"
+    },
+    "OffrePage": {
+      "source": "src/react-pages/OffrePage.tsx",
+      "destination": "src/pages/offre.astro",
+      "priority": "HIGH",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "PricingCards",
+          "ComparisonTable",
+          "Guarantees",
+          "FAQCTA"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSButton"
+      ],
+      "inlineSVGIcons": [
+        "CheckCircleIcon",
+        "XIcon",
+        "TrendingUpIcon",
+        "ZapIcon",
+        "ShieldIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static page, no islands needed"
+    },
+    "MethodePage": {
+      "source": "src/react-pages/MethodePage.tsx",
+      "destination": "src/pages/methode.astro",
+      "priority": "MEDIUM",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "ProcessSteps",
+          "Timeline",
+          "Benefits",
+          "TechnologiesTools",
+          "CaseStudyTeaser",
+          "FinalCTA"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSPanel",
+        "DSButton"
+      ],
+      "inlineSVGIcons": [
+        "CheckCircle2Icon",
+        "ArrowRightIcon",
+        "ZapIcon",
+        "UsersIcon",
+        "TargetIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static page with DSPanel for process steps"
+    },
+    "ContactPage": {
+      "source": "src/react-pages/ContactPage.tsx",
+      "destination": "src/pages/contact.astro",
+      "priority": "HIGH",
+      "complexity": "MEDIUM",
+      "sections": {
+        "astro": [
+          "Hero",
+          "ContactInfo",
+          "Map",
+          "AlternativeContactMethods"
+        ],
+        "islands": {
+          "ContactForm": {
+            "hydration": "client:load",
+            "reason": "Form with state management and validation"
+          }
+        }
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSPanel"
+      ],
+      "inlineSVGIcons": [
+        "PhoneIcon",
+        "MailIcon",
+        "MapPinIcon",
+        "MessageSquareIcon",
+        "ClockIcon"
+      ],
+      "dependencies": {
+        "motion": "None in Astro, only in island",
+        "hooks": "useState in ContactForm island"
+      },
+      "notes": "ContactForm island handles all form logic"
+    },
+    "ReservationPage": {
+      "source": "src/react-pages/ReservationPage.tsx",
+      "destination": "src/pages/reservation.astro",
+      "priority": "HIGH",
+      "complexity": "MEDIUM",
+      "sections": {
+        "astro": [
+          "Hero",
+          "ProcessSteps",
+          "Benefits",
+          "FAQ",
+          "Testimonial",
+          "CTA"
+        ],
+        "islands": {
+          "ReservationForm": {
+            "hydration": "client:load",
+            "reason": "Form with state, validation, and DSSelect"
+          }
+        }
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSPanel"
+      ],
+      "inlineSVGIcons": [
+        "CircleDotIcon",
+        "CheckCircle2Icon",
+        "CalendarIcon"
+      ],
+      "dependencies": {
+        "motion": "None in Astro, only in island",
+        "hooks": "useState in ReservationForm island"
+      },
+      "notes": "ReservationForm island uses DSInput, DSSelect, DSCheckbox"
+    },
+    "AuditGratuitPage": {
+      "source": "src/react-pages/AuditGratuitPage.tsx",
+      "destination": "src/pages/audit-gratuit.astro",
+      "priority": "HIGH",
+      "complexity": "HIGH",
+      "sections": {
+        "astro": [
+          "Hero",
+          "WhyAudit",
+          "Benefits",
+          "CTA"
+        ],
+        "islands": {
+          "AuditForm": {
+            "hydration": "client:load",
+            "reason": "Form with URL validation"
+          },
+          "ArcGauge": {
+            "hydration": "client:visible",
+            "reason": "Animated gauge with motion/react"
+          },
+          "AuditResults": {
+            "hydration": "client:visible",
+            "reason": "Results display with stagger animations"
+          }
+        }
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSPanel"
+      ],
+      "inlineSVGIcons": [],
+      "dependencies": {
+        "motion": "In ArcGauge and AuditResults islands",
+        "hooks": "useState in AuditForm and parent orchestration"
+      },
+      "notes": "Complex page with 3 islands sharing state - needs parent orchestration"
+    },
+    "EtudesDeCasPage": {
+      "source": "src/react-pages/EtudesDeCasPage.tsx",
+      "destination": "src/pages/etudes-de-cas.astro",
+      "priority": "MEDIUM",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "CaseStudiesGrid",
+          "TeamSection",
+          "CTA"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSButton"
+      ],
+      "inlineSVGIcons": [
+        "TrendingUpIcon",
+        "GaugeIcon",
+        "ArrowRightIcon",
+        "TargetIcon",
+        "ZapIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static page showcasing case studies"
+    },
+    "MentionsLegalesPage": {
+      "source": "src/react-pages/MentionsLegalesPage.tsx",
+      "destination": "src/pages/mentions-legales.astro",
+      "priority": "LOW",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "LegalContent"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader"
+      ],
+      "inlineSVGIcons": [
+        "ScaleIcon",
+        "ShieldIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static legal page"
+    },
+    "PolitiqueConfidentialitePage": {
+      "source": "src/react-pages/PolitiqueConfidentialitePage.tsx",
+      "destination": "src/pages/politique-confidentialite.astro",
+      "priority": "LOW",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "PrivacyContent"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader"
+      ],
+      "inlineSVGIcons": [
+        "ShieldIcon",
+        "LockIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static legal page"
+    },
+    "CGVPage": {
+      "source": "src/react-pages/CGVPage.tsx",
+      "destination": "src/pages/cgv.astro",
+      "priority": "LOW",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "Hero",
+          "TermsContent"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSSectionHeader"
+      ],
+      "inlineSVGIcons": [
+        "FileTextIcon",
+        "CheckCircleIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static legal page"
+    },
+    "NotFoundPage": {
+      "source": "src/react-pages/NotFoundPage.tsx",
+      "destination": "src/pages/404.astro",
+      "priority": "LOW",
+      "complexity": "LOW",
+      "sections": {
+        "astro": [
+          "ErrorContent",
+          "Suggestions",
+          "ActionButtons"
+        ],
+        "islands": {}
+      },
+      "uiComponents": [
+        "DSButton"
+      ],
+      "inlineSVGIcons": [
+        "AlertTriangleIcon",
+        "HomeIcon",
+        "ArrowRightIcon"
+      ],
+      "dependencies": {
+        "motion": "None",
+        "hooks": "None"
+      },
+      "notes": "100% static error page"
+    }
+  },
+  "globalComponents": {
+    "Header": {
+      "type": "Astro component",
+      "path": "src/components/Header.astro",
+      "notes": "Replace all header placeholders"
+    },
+    "Footer": {
+      "type": "Astro component",
+      "path": "src/components/Footer.astro",
+      "notes": "Replace all footer placeholders"
+    },
+    "Layout": {
+      "type": "Astro layout",
+      "path": "src/layouts/BaseLayout.astro",
+      "notes": "Base layout with Header and Footer"
+    }
+  },
+  "migrationOrder": [
+    "1. Legal pages (Mentions, Politique, CGV, 404) - LOW complexity",
+    "2. Static content pages (Offre, Methode, EtudesDeCas) - LOW complexity",
+    "3. Form pages (Contact, Reservation) - MEDIUM complexity",
+    "4. Complex page (AuditGratuit) - HIGH complexity with state sharing",
+    "5. Landing page - HIGH complexity with 6 islands"
+  ],
+  "summary": {
+    "totalPages": 11,
+    "staticPages": 6,
+    "pagesWithIslands": 5,
+    "totalIslands": 11,
+    "estimatedTime": "8-12 hours for complete migration"
+  }
+}

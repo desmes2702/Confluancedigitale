@@ -3,6 +3,28 @@
 
 ---
 
+## ⚠️ NOTE IMPORTANTE - MIGRATION ASTRO
+
+**Cette documentation décrit la version React pure (SPA) - obsolète**
+
+Pour la **version Astro actuelle** (migration frontend), consultez :
+👉 **`/migration-frontend/05C_TEMPLATE_PAGE_CONTACT.md`**
+
+**Différences clés** :
+- **Architecture** : React pur → Astro + React Islands
+- **Fichier page** : `/pages/ConfluenceContactPage.tsx` → `/src/pages/contact.astro`
+- **Composant formulaire** : Intégré → `/src/components/forms/ContactForm.tsx` (extrait)
+- **Hydratation** : N/A → `client:load` pour formulaire, `client:only` pour carte infos
+
+**Cette documentation reste valide pour** :
+- Structure visuelle (layout 2 colonnes)
+- Copywriting (badges, titres, CTA)
+- Coordonnées de contact
+- Champs formulaire
+- Design System V6.7
+
+---
+
 ## 📋 RÉFÉRENCE DESIGN SYSTEM
 
 **⚠️ Pour les éléments génériques du Design System V6.7**, consultez :
@@ -46,7 +68,7 @@ Permettre aux prospects et clients de contacter Confluence Digitale de manière 
 │    │              │ • Email          │  │
 │    │              │ • Téléphone      │  │
 │    │              │ • Adresse        │  │
-│    │              │ • Horaires       │  │
+���    │              │ • Horaires       │  │
 │    └──────────────┴──────────────────┘  │
 ├─────────────────────────────────────────┤
 │ ConfluenceFooterV6_2                    │

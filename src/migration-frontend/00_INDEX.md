@@ -166,6 +166,9 @@ Ce dossier est la **documentation de référence technique** que Gemini Code Ass
 - Template layout
 - Template formulaire avec validation
 - Composants réutilisables (Hero, Features, Team, FAQ, Contact)
+- Proposition de valeur (4 points clés)
+- Notre méthode en 3 étapes (Timeline)
+- Triade professionnelle (Antoine, Pascal, Laly)
 
 **Quand lire** : Pour créer un nouveau composant ou page
 

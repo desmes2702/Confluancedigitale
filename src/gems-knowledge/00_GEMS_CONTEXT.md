@@ -48,7 +48,7 @@ Quand l'utilisateur te demande quelque chose, tu génères :
 
 ## 📍 Contexte Projet
 - **Projet** : Confluence Digitale V6.7.2
-- **Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x
+- **Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 3.x
 - **Design System** : V6.7.2 "App Moderne 2025"
 
 ## 🎨 Contraintes Design System OBLIGATOIRES
@@ -130,7 +130,7 @@ Quand l'utilisateur te demande quelque chose, tu génères :
 
 ## 📍 Contexte Projet
 - Projet : Confluence Digitale V6.7.2
-- Stack : Astro 5.x + React 18 + TypeScript + Tailwind 4.x
+- Stack : Astro 5.x + React 18 + TypeScript + Tailwind 3.x
 - Design System : V6.7.2 "App Moderne 2025"
 
 ## 🎨 Contraintes Design System OBLIGATOIRES
@@ -270,7 +270,7 @@ Tu maîtrises :
 ✅ **React Islands** : Hydratation client:load, client:visible  
 ✅ **Design System V6.7.2** : Toutes les règles par cœur  
 ✅ **TypeScript** : Types stricts, interfaces  
-✅ **Tailwind 4.x** : Classes utility-first  
+✅ **Tailwind 3.x** : Classes utility-first  
 ✅ **SEO** : Meta tags, Open Graph, Schema.org  
 ✅ **Performance** : Lighthouse, Core Web Vitals  
 ✅ **Accessibilité** : ARIA, keyboard navigation  

@@ -115,7 +115,7 @@ const team = [
 
 ## 📄 PAGES DU SITE
 
-### Structure Site (7 pages principales)
+### Structure Site (8 pages principales)
 
 1. **/** (Homepage)
    - Hero avec CTA
@@ -123,6 +123,7 @@ const team = [
    - Processus en 3 étapes
    - Triade professionnelle
    - Social proof
+   - FAQ (questions fréquentes)
    - CTA final
 
 2. **/offre** (Offre)
@@ -131,30 +132,155 @@ const team = [
    - Ce qui est inclus
    - FAQ pricing
 
-3. **/realisations** (Études de cas)
+3. **/audit-gratuit** (Audit Gratuit)
+   - Formulaire d'audit (URL site, email, secteur)
+   - Explication de ce qu'on analyse (Performance, SEO, UX, Mobile)
+   - Promesse de retour sous 48h
+   - Social proof (avis clients)
+   - FAQ audit
+
+4. **/realisations** (Études de cas)
    - Portfolio projets clients
    - Filtres par secteur
    - Résultats chiffrés
 
-4. **/processus** (Processus)
+5. **/processus** (Méthode / Processus)
    - Workflow en 5 étapes
    - Timeline projet
    - Méthodologie
+   - Note : Lien dans navigation = "Méthode"
 
-5. **/equipe** (Équipe)
+6. **/equipe** (Équipe)
    - Triade professionnelle (détaillée)
    - Valeurs de l'agence
    - Histoire
 
-6. **/blog** (Blog)
+7. **/blog** (Blog)
    - Articles conseils
    - Catégories
    - SEO content
 
-7. **/contact** (Contact)
+8. **/contact** (Contact)
    - Formulaire contact
    - Coordonnées
    - Carte/adresse
+
+### Pages Légales (obligatoires)
+
+9. **/mentions-legales** (Mentions Légales)
+   - Informations légales obligatoires
+   - Éditeur du site
+   - Hébergeur
+   - Responsable publication
+   - 100% statique
+
+10. **/cgv** (Conditions Générales de Vente)
+    - CGV complètes
+    - Conditions d'abonnement
+    - Conditions de résiliation
+    - 100% statique
+
+11. **/politique-confidentialite** (Politique de Confidentialité)
+    - RGPD
+    - Données collectées
+    - Cookies
+    - Droits utilisateurs
+    - 100% statique
+
+---
+
+## ❓ FAQ - QUESTIONS FRÉQUENTES
+
+### FAQ Homepage (5-7 questions essentielles)
+
+Section FAQ à placer **avant le CTA final** sur la page d'accueil pour lever les dernières objections.
+
+#### Questions recommandées
+
+**1. Pourquoi un abonnement plutôt qu'un paiement unique ?**
+> L'abonnement vous permet d'avoir un site professionnel sans investissement initial de 3000-5000€. Vous bénéficiez en plus de l'hébergement, de la maintenance, des mises à jour et du support technique inclus. C'est une solution clé en main sans mauvaise surprise.
+
+**2. Que se passe-t-il après les 24 mois d'engagement ?**
+> Après 24 mois, vous pouvez continuer l'abonnement au même tarif (149€/mois), arrêter le service, ou récupérer votre site pour l'héberger vous-même. Vous restez totalement flexible.
+
+**3. Puis-je modifier mon site après sa mise en ligne ?**
+> Absolument ! Votre abonnement inclut 2 heures de modifications de contenu par mois (textes, images, ajouts de pages simples). Pour des modifications plus importantes, nous établissons un devis adapté.
+
+**4. Combien de temps faut-il pour créer mon site ?**
+> En moyenne, un site vitrine professionnel est livré en 4 à 6 semaines. Cela dépend de la complexité de votre projet et de la rapidité de vos retours. Laly, votre chef de projet, vous accompagne à chaque étape.
+
+**5. Est-ce que mon site sera optimisé pour Google (SEO) ?**
+> Oui, tous nos sites sont optimisés pour le référencement naturel dès leur création : structure technique SEO, vitesse de chargement optimale, responsive design, et contenus optimisés. Vous pouvez aussi souscrire à notre accompagnement SEO sur-mesure.
+
+**6. Que se passe-t-il si j'ai un problème technique ?**
+> Notre équipe technique (Pascal) assure une maintenance proactive. En cas de problème, notre support réactif intervient sous 24h maximum. Vous avez aussi Laly comme interlocutrice privilégiée pour toute question.
+
+**7. Puis-je voir des exemples de sites que vous avez créés ?**
+> Bien sûr ! Consultez notre page [Réalisations](/realisations) pour découvrir nos projets clients avec des résultats concrets et chiffrés.
+
+### Format Technique FAQ
+
+Structure de données recommandée pour le composant FAQ :
+
+```tsx
+interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+const faqData: FAQItem[] = [
+  {
+    id: 1,
+    question: "Pourquoi un abonnement plutôt qu'un paiement unique ?",
+    answer: "L'abonnement vous permet d'avoir un site professionnel sans investissement initial de 3000-5000€. Vous bénéficiez en plus de l'hébergement, de la maintenance, des mises à jour et du support technique inclus. C'est une solution clé en main sans mauvaise surprise."
+  },
+  {
+    id: 2,
+    question: "Que se passe-t-il après les 24 mois d'engagement ?",
+    answer: "Après 24 mois, vous pouvez continuer l'abonnement au même tarif (149€/mois), arrêter le service, ou récupérer votre site pour l'héberger vous-même. Vous restez totalement flexible."
+  },
+  {
+    id: 3,
+    question: "Puis-je modifier mon site après sa mise en ligne ?",
+    answer: "Absolument ! Votre abonnement inclut 2 heures de modifications de contenu par mois (textes, images, ajouts de pages simples). Pour des modifications plus importantes, nous établissons un devis adapté."
+  },
+  {
+    id: 4,
+    question: "Combien de temps faut-il pour créer mon site ?",
+    answer: "En moyenne, un site vitrine professionnel est livré en 4 à 6 semaines. Cela dépend de la complexité de votre projet et de la rapidité de vos retours. Laly, votre chef de projet, vous accompagne à chaque étape."
+  },
+  {
+    id: 5,
+    question: "Est-ce que mon site sera optimisé pour Google (SEO) ?",
+    answer: "Oui, tous nos sites sont optimisés pour le référencement naturel dès leur création : structure technique SEO, vitesse de chargement optimale, responsive design, et contenus optimisés. Vous pouvez aussi souscrire à notre accompagnement SEO sur-mesure."
+  },
+  {
+    id: 6,
+    question: "Que se passe-t-il si j'ai un problème technique ?",
+    answer: "Notre équipe technique (Pascal) assure une maintenance proactive. En cas de problème, notre support réactif intervient sous 24h maximum. Vous avez aussi Laly comme interlocutrice privilégiée pour toute question."
+  },
+  {
+    id: 7,
+    question: "Puis-je voir des exemples de sites que vous avez créés ?",
+    answer: "Bien sûr ! Consultez notre page [Réalisations](/realisations) pour découvrir nos projets clients avec des résultats concrets et chiffrés."
+  }
+];
+```
+
+### Design FAQ
+
+**Composant** : Accordéon interactif
+- Une seule question ouverte à la fois
+- Animation douce (transition-all duration-300)
+- Icône ChevronDown (rotation 180° quand ouvert)
+- Accessibilité ARIA (aria-expanded, aria-controls)
+
+**Styling** :
+- Background blanc avec ombre inline
+- Spacing : space-y-4 entre les questions
+- Padding : p-6 pour chaque question
+- Border-radius : rounded-lg
 
 ---
 

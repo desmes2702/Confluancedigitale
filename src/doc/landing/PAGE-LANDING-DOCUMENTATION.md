@@ -3,6 +3,30 @@
 
 ---
 
+## ⚠️ NOTE IMPORTANTE - MIGRATION ASTRO
+
+**Cette documentation décrit la version React pure (SPA) - obsolète**
+
+Pour la **version Astro actuelle** (migration frontend), consultez :
+👉 **`/migration-frontend/05D_TEMPLATE_PAGE_LANDING.md`**
+
+**Différences clés** :
+- **Architecture** : React pur → Astro + React Islands
+- **Fichier page** : `/pages/ConfluenceLandingPage.tsx` → `/src/pages/index.astro`
+- **Composants** : Monolithique → 7 sections séparées (.astro + .tsx)
+- **Hydratation** : N/A → Sélective (`client:visible` pour FAQ et CTA)
+- **Sections** : Toutes React → 5 Astro statiques + 2 React interactives
+
+**Cette documentation reste valide pour** :
+- Structure visuelle (7 sections)
+- Copywriting (titres, sous-titres, textes, CTA)
+- Data arrays (otherAgencies, confluenceOffers, painPoints, solutions, proofStats)
+- Animations (Motion, délais, transitions)
+- Design System V6.7
+- Parcours utilisateur
+
+---
+
 ## 📋 RÉFÉRENCE DESIGN SYSTEM
 
 **⚠️ Pour les éléments génériques du Design System V6.7** (palette couleurs, typographie, ombres, espacements, animations, responsive, accessibilité), consultez :
@@ -60,7 +84,7 @@ Page d'accueil principale de Confluence Digitale. Présente le problème (sites 
 │    - Bloc conversion ultime             │
 ├─────────────────────────────────────────┤
 │ ConfluenceFooterV6_2                    │
-└─────────────────────────────────────────┘
+└─────────────────────────────��───────────┘
 ```
 
 ---
@@ -162,7 +186,7 @@ Créer un contraste radical entre "Autres agences" (rouges) et "Nous" (verts).
 ```
 ┌──────────────────────────────────────────────┐
 │         Autres Agences Web     │    Nous     │
-├────────────────────────────────┼─────────────┤
+├────────────────────────────────┼─────────��───┤
 │ ❌ Promesses floues            │ ✓ Garantie  │
 │ ❌ Site lent (4-8s)            │ ✓ < 1s      │
 │ ❌ Dépendance totale           │ ✓ Autonomie │

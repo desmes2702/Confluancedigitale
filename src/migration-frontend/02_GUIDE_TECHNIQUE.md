@@ -16,8 +16,7 @@
 │                                        │
 │  ┌──────────┐  ┌──────────┐  ┌─────┐ │
 │  │  React   │  │  React   │  │React│ │
-│  │  Island  │  │  Island  │  │ Isl.│ │
-│  │ (Header) │  │  (FAQ)   │  │(Form)│ │
+│  │  Island  │  │  (FAQ)   │  │(Form)│ │
 │  └──────────┘  └──────────┘  └─────┘ │
 │                                        │
 │  HTML Statique (0 KB JavaScript)      │
@@ -44,11 +43,23 @@
 │   └── favicon.ico           # Favicon
 │
 ├── src/
-│   ├── components/            # Composants React + Astro
-│   │   ├── layout/           # Header, Footer, Logo
-│   │   ├── sections/         # Sections réutilisables
-│   │   ├── forms/            # Formulaires
-│   │   └── ui/               # Shadcn UI (Button, Input...)
+│   ├── components/           # Composants React
+│   │   ├── layout/
+│   │   │   ├── ConfluenceHeaderV6_7.tsx
+│   │   │   └── ConfluenceFooterV6_2.tsx
+│   │   ├── sections/
+│   │   │   ├── ConfluenceHero.tsx
+│   │   │   ├── ConfluenceFeatures.tsx
+│   │   │   ├── ConfluenceTeamBlock.tsx
+│   │   │   └── ConfluenceFAQ.tsx
+│   │   ├── forms/
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── AuditForm.tsx
+│   │   ├── cookies/             # 🍪 RGPD
+│   │   │   ├── CookieBanner.tsx
+│   │   │   ├── CookieSettingsModal.tsx
+│   │   │   └── CookieManager.tsx
+│   │   └── ui/                  # ShadCN components
 │   │
 │   ├── layouts/              # Layouts Astro
 │   │   └── BaseLayout.astro  # Layout de base (SEO, meta)
@@ -56,8 +67,15 @@
 │   ├── pages/                # Routes Astro
 │   │   ├── index.astro       # Landing Page (/)
 │   │   ├── offre.astro       # Page Offre (/offre)
-│   │   ├── contact.astro     # Page Contact (/contact)
-│   │   └── [...].astro       # 14 pages au total
+│   │   ├── audit-gratuit.astro # Audit Gratuit
+│   │   ├── realisations.astro # Études de cas
+│   │   ├── processus.astro   # Processus (Navigation: "Méthode")
+│   │   ├── equipe.astro      # Équipe
+│   │   ├── blog.astro        # Blog
+│   │   ├── contact.astro     # Contact
+│   │   ├── mentions-legales.astro # Mentions légales
+│   │   ├── cgv.astro         # CGV
+│   │   └── politique-confidentialite.astro # RGPD (11 pages)
 │   │
 │   ├── hooks/                # Hooks React
 │   │   └── useScrollAnimation.ts
@@ -237,6 +255,7 @@ const {
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <!-- ⚠️ ENCODAGE UTF-8 OBLIGATOIRE - Toujours en premier pour éviter les mojibake -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     

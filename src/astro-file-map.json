@@ -1,0 +1,560 @@
+{
+  "layouts": {
+    "BaseLayout.astro": {
+      "path": "src/layouts/BaseLayout.astro",
+      "purpose": "Main layout with Header and Footer",
+      "props": [
+        "title: string",
+        "description?: string",
+        "headerTransparent?: boolean"
+      ],
+      "children": [
+        "Header",
+        "slot",
+        "Footer"
+      ],
+      "imports": [
+        "import Header from '@/components/Header.astro'",
+        "import Footer from '@/components/Footer.astro'"
+      ],
+      "example": "---\nimport Header from '@/components/Header.astro';\nimport Footer from '@/components/Footer.astro';\n\ninterface Props {\n  title: string;\n  description?: string;\n  headerTransparent?: boolean;\n}\n\nconst { title, description, headerTransparent = false } = Astro.props;\n---\n<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width\" />\n  <title>{title} - Confluence Digitale</title>\n  {description && <meta name=\"description\" content={description} />}\n</head>\n<body>\n  <Header transparent={headerTransparent} />\n  <slot />\n  <Footer />\n</body>\n</html>"
+    }
+  },
+  "pages": {
+    "index.astro": {
+      "path": "src/pages/index.astro",
+      "title": "Confluence Digitale - Agence Web Performance",
+      "layout": "BaseLayout",
+      "headerTransparent": true,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "island",
+          "component": "HeroAnimation",
+          "hydration": "client:load"
+        },
+        {
+          "name": "PainPoints",
+          "type": "island",
+          "component": "PainPointsSection",
+          "hydration": "client:visible"
+        },
+        {
+          "name": "PageSpeed",
+          "type": "island",
+          "component": "PageSpeedProof",
+          "hydration": "client:visible"
+        },
+        {
+          "name": "Solutions",
+          "type": "island",
+          "component": "SolutionsSection",
+          "hydration": "client:visible"
+        },
+        {
+          "name": "SocialProof",
+          "type": "astro",
+          "description": "Stats and testimonial section"
+        },
+        {
+          "name": "Team",
+          "type": "island",
+          "component": "TeamBlock",
+          "hydration": "client:visible"
+        },
+        {
+          "name": "Process",
+          "type": "astro",
+          "description": "4-step process overview"
+        },
+        {
+          "name": "WhyChooseUs",
+          "type": "astro",
+          "description": "6 reasons to choose us"
+        },
+        {
+          "name": "FAQ",
+          "type": "island",
+          "component": "FAQ",
+          "hydration": "client:visible"
+        },
+        {
+          "name": "FinalCTA",
+          "type": "astro",
+          "description": "Final call-to-action"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { HeroAnimation } from '@/components/islands/HeroAnimation'",
+        "import { PainPointsSection } from '@/components/islands/PainPointsSection'",
+        "import { PageSpeedProof } from '@/components/islands/PageSpeedProof'",
+        "import { SolutionsSection } from '@/components/islands/SolutionsSection'",
+        "import { TeamBlock } from '@/components/islands/TeamBlock'",
+        "import { FAQ } from '@/components/islands/FAQ'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSButton"
+      ]
+    },
+    "offre.astro": {
+      "path": "src/pages/offre.astro",
+      "title": "Nos Offres - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero with DSSectionHeader"
+        },
+        {
+          "name": "PricingCards",
+          "type": "astro",
+          "description": "3 pricing cards with DSCard"
+        },
+        {
+          "name": "ComparisonTable",
+          "type": "astro",
+          "description": "Feature comparison table"
+        },
+        {
+          "name": "Guarantees",
+          "type": "astro",
+          "description": "Our guarantees section"
+        },
+        {
+          "name": "FAQCTA",
+          "type": "astro",
+          "description": "FAQ link and CTA"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSCard } from '@/components/ui/DSCard'",
+        "import { DSBadge } from '@/components/ui/DSBadge'",
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSButton"
+      ],
+      "islands": [],
+      "notes": "100% static page, no islands needed"
+    },
+    "methode.astro": {
+      "path": "src/pages/methode.astro",
+      "title": "Notre Méthode - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero section"
+        },
+        {
+          "name": "ProcessSteps",
+          "type": "astro",
+          "description": "4 steps with DSPanel"
+        },
+        {
+          "name": "Timeline",
+          "type": "astro",
+          "description": "Visual timeline"
+        },
+        {
+          "name": "Benefits",
+          "type": "astro",
+          "description": "Our commitments"
+        },
+        {
+          "name": "Technologies",
+          "type": "astro",
+          "description": "Modern tech stack"
+        },
+        {
+          "name": "CaseStudy",
+          "type": "astro",
+          "description": "Teaser for case studies"
+        },
+        {
+          "name": "FinalCTA",
+          "type": "astro",
+          "description": "CTA section"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSPanel } from '@/components/ui/DSPanel'",
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSPanel",
+        "DSButton"
+      ],
+      "islands": [],
+      "notes": "100% static page with DSPanel for process visualization"
+    },
+    "contact.astro": {
+      "path": "src/pages/contact.astro",
+      "title": "Contact - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero section"
+        },
+        {
+          "name": "ContactForm",
+          "type": "island",
+          "component": "ContactForm",
+          "hydration": "client:load"
+        },
+        {
+          "name": "ContactInfo",
+          "type": "astro",
+          "description": "Phone, email, address with DSCard"
+        },
+        {
+          "name": "Map",
+          "type": "astro",
+          "description": "Map placeholder and transport info"
+        },
+        {
+          "name": "AlternativeContact",
+          "type": "astro",
+          "description": "Other ways to contact us"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { ContactForm } from '@/components/islands/ContactForm'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSCard } from '@/components/ui/DSCard'",
+        "import { DSPanel } from '@/components/ui/DSPanel'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSPanel"
+      ],
+      "islands": [
+        "ContactForm (client:load)"
+      ]
+    },
+    "reservation.astro": {
+      "path": "src/pages/reservation.astro",
+      "title": "Réserver un Appel - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero section"
+        },
+        {
+          "name": "ReservationForm",
+          "type": "island",
+          "component": "ReservationForm",
+          "hydration": "client:load"
+        },
+        {
+          "name": "ProcessSteps",
+          "type": "astro",
+          "description": "How it works (3 steps)"
+        },
+        {
+          "name": "Benefits",
+          "type": "astro",
+          "description": "What you'll get"
+        },
+        {
+          "name": "FAQ",
+          "type": "astro",
+          "description": "Quick FAQ grid"
+        },
+        {
+          "name": "Testimonial",
+          "type": "astro",
+          "description": "Client testimonial"
+        },
+        {
+          "name": "CTA",
+          "type": "astro",
+          "description": "Final CTA"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { ReservationForm } from '@/components/islands/ReservationForm'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSPanel } from '@/components/ui/DSPanel'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSPanel"
+      ],
+      "islands": [
+        "ReservationForm (client:load)"
+      ]
+    },
+    "audit-gratuit.astro": {
+      "path": "src/pages/audit-gratuit.astro",
+      "title": "Audit Gratuit - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero section"
+        },
+        {
+          "name": "AuditForm",
+          "type": "island",
+          "component": "AuditForm",
+          "hydration": "client:load"
+        },
+        {
+          "name": "ArcGauge",
+          "type": "island",
+          "component": "ArcGauge",
+          "hydration": "client:visible",
+          "notes": "Displayed conditionally based on audit results"
+        },
+        {
+          "name": "AuditResults",
+          "type": "island",
+          "component": "AuditResults",
+          "hydration": "client:visible",
+          "notes": "Displayed conditionally after audit"
+        },
+        {
+          "name": "WhyAudit",
+          "type": "astro",
+          "description": "Benefits of audit"
+        },
+        {
+          "name": "CTA",
+          "type": "astro",
+          "description": "Final CTA"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { AuditForm } from '@/components/islands/AuditForm'",
+        "import { ArcGauge } from '@/components/islands/ArcGauge'",
+        "import { AuditResults } from '@/components/islands/AuditResults'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSCard } from '@/components/ui/DSCard'",
+        "import { DSBadge } from '@/components/ui/DSBadge'",
+        "import { DSPanel } from '@/components/ui/DSPanel'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSPanel"
+      ],
+      "islands": [
+        "AuditForm (client:load)",
+        "ArcGauge (client:visible)",
+        "AuditResults (client:visible)"
+      ],
+      "notes": "COMPLEX: 3 islands need state coordination - may need parent wrapper island"
+    },
+    "etudes-de-cas.astro": {
+      "path": "src/pages/etudes-de-cas.astro",
+      "title": "Études de Cas - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero section"
+        },
+        {
+          "name": "CaseStudiesGrid",
+          "type": "astro",
+          "description": "Grid of case studies with DSCard"
+        },
+        {
+          "name": "Team",
+          "type": "astro",
+          "description": "Team section"
+        },
+        {
+          "name": "CTA",
+          "type": "astro",
+          "description": "Final CTA"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'",
+        "import { DSCard } from '@/components/ui/DSCard'",
+        "import { DSBadge } from '@/components/ui/DSBadge'",
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader",
+        "DSCard",
+        "DSBadge",
+        "DSButton"
+      ],
+      "islands": [],
+      "notes": "100% static page showcasing portfolio"
+    },
+    "mentions-legales.astro": {
+      "path": "src/pages/mentions-legales.astro",
+      "title": "Mentions Légales - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero with DSSectionHeader"
+        },
+        {
+          "name": "LegalContent",
+          "type": "astro",
+          "description": "Legal text content"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader"
+      ],
+      "islands": [],
+      "notes": "Simple legal page"
+    },
+    "politique-confidentialite.astro": {
+      "path": "src/pages/politique-confidentialite.astro",
+      "title": "Politique de Confidentialité - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero with DSSectionHeader"
+        },
+        {
+          "name": "PrivacyContent",
+          "type": "astro",
+          "description": "Privacy policy content"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader"
+      ],
+      "islands": [],
+      "notes": "Simple legal page"
+    },
+    "cgv.astro": {
+      "path": "src/pages/cgv.astro",
+      "title": "Conditions Générales de Vente - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "Hero",
+          "type": "astro",
+          "description": "Hero with DSSectionHeader"
+        },
+        {
+          "name": "TermsContent",
+          "type": "astro",
+          "description": "Terms and conditions content"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSSectionHeader } from '@/components/ui/DSSectionHeader'"
+      ],
+      "dsComponents": [
+        "DSSectionHeader"
+      ],
+      "islands": [],
+      "notes": "Simple legal page"
+    },
+    "404.astro": {
+      "path": "src/pages/404.astro",
+      "title": "Page Introuvable - Confluence Digitale",
+      "layout": "BaseLayout",
+      "headerTransparent": false,
+      "sections": [
+        {
+          "name": "ErrorContent",
+          "type": "astro",
+          "description": "404 error message and suggestions"
+        },
+        {
+          "name": "ActionButtons",
+          "type": "astro",
+          "description": "Navigation buttons with DSButton"
+        }
+      ],
+      "imports": [
+        "import BaseLayout from '@/layouts/BaseLayout.astro'",
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "dsComponents": [
+        "DSButton"
+      ],
+      "islands": [],
+      "notes": "Simple error page"
+    }
+  },
+  "components": {
+    "Header.astro": {
+      "path": "src/components/Header.astro",
+      "purpose": "Main navigation header",
+      "props": [
+        "transparent?: boolean"
+      ],
+      "imports": [
+        "import { DSButton } from '@/components/ui/DSButton'"
+      ],
+      "notes": "Responsive navigation with logo, menu items, CTA buttons"
+    },
+    "Footer.astro": {
+      "path": "src/components/Footer.astro",
+      "purpose": "Footer with links and info",
+      "props": [],
+      "imports": [
+        "None - pure HTML/Tailwind"
+      ],
+      "notes": "Footer with company info, links, social media"
+    }
+  },
+  "summary": {
+    "totalPages": 11,
+    "totalLayouts": 1,
+    "totalComponents": 2,
+    "totalIslands": 11,
+    "staticPages": 6,
+    "pagesWithIslands": 5
+  }
+}

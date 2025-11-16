@@ -454,10 +454,10 @@ export default function ResponsiveSection() {
 3 experts qui incarnent les valeurs de Confluence Digitale :
 
 | Profil | Rôle | Couleur | Périmètre |
-|--------|------|---------|-----------|
-| **Antoine** | Architecte UX/UI | Or `#D1A65E` | Performance 100/100, Design |
-| **Pascal** | Conseiller Numérique | Vert `#10b981` | Stratégie, ROI, Zéro Jargon |
-| **Laly** | Enseignante | Rouge `#A32E3A` | Formation Strapi, Autonomie |
+|--------|------|---------|-----------||
+| **Antoine** | Cofondateur & Designer | Or `#D1A65E` | Design UX/UI, Performance 100/100 |
+| **Pascal** | Cofondateur & Développeur | Vert `#10b981` | Développement technique, Optimisation |
+| **Laly** | Chargée de Projet | Rouge `#A32E3A` | Formation Strapi, Autonomie, Support |
 
 ### Utilisation
 
@@ -479,7 +479,7 @@ export default function ResponsiveSection() {
     "Un site web doit générer du business, pas des questions."
   </p>
   <footer className="text-sm text-gray-600">
-    — Pascal, Conseiller Numérique
+    — Pascal, Cofondateur & Développeur
   </footer>
 </blockquote>
 ```

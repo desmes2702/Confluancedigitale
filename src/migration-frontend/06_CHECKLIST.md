@@ -306,10 +306,13 @@
 ### Conformité
 
 - [ ] **RGPD**
-  - [ ] Bannière cookies présente
+  - [ ] Bannière cookies présente et fonctionnelle
+  - [ ] Modale de paramétrage des cookies accessible
+  - [ ] Consentement enregistré dans localStorage
+  - [ ] Google Analytics chargé uniquement si consentement
   - [ ] Politique de confidentialité
   - [ ] Mentions légales
-  - [ ] CGV (si e-commerce)
+  - [ ] CGV (si applicable)
 
 - [ ] **Sécurité**
   - [ ] HTTPS forcé
@@ -334,6 +337,7 @@
   - [ ] Aucune erreur TypeScript
   - [ ] Tests passent (si tests)
   - [ ] Aucun TODO critique
+  - [ ] **Encodage UTF-8 vérifié** (tous les fichiers)
 
 - [ ] **Configuration**
   - [ ] Variables d'environnement configurées
@@ -373,16 +377,10 @@
 
 ### Validation Ultime
 
-- [ ] ✅ **14 pages migrées et fonctionnelles**
+- [ ] ✅ **11 pages migrées et fonctionnelles** (8 principales + 3 légales)
 - [ ] ✅ **Lighthouse > 90 sur toutes les pages**
 - [ ] ✅ **Design System V6.7.2 respecté à 100%**
 - [ ] ✅ **Responsive testé (mobile, tablette, desktop)**
-- [ ] ✅ **Formulaires validés et fonctionnels**
-- [ ] ✅ **SEO complet (title, description, sitemap)**
-- [ ] ✅ **Accessibilité WCAG AA**
-- [ ] ✅ **Zéro erreur TypeScript**
-- [ ] ✅ **Placeholders remplacés (photos, téléphone)**
-- [ ] ✅ **Légal complet (mentions, CGV, RGPD)**
 
 ---
 

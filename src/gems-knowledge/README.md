@@ -143,6 +143,22 @@ Ce dossier contient **TOUTES les connaissances** que ton Gem's frontend doit ma�
 
 ---
 
+### 08_GEMINI_AGENT_MODE.md
+**Mode Agent Gemini Code Assist - Guide Complet**
+
+- Configuration du mode Agent dans VS Code
+- Configuration des outils intégrés
+- Serveurs MCP (Model Context Protocol)
+- Fichiers de contexte (GEMINI.md)
+- Commandes disponibles
+- Mode YOLO (auto-approbation)
+- Prompts recommandés
+- Configuration clé API
+
+**Quand utiliser** : Pour configurer et utiliser le mode Agent de Gemini Code Assist
+
+---
+
 ## 🚀 COMMENT UTILISER CETTE BASE DE CONNAISSANCES
 
 ### Pour configurer ton Gem's

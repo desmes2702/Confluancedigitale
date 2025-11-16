@@ -2,7 +2,7 @@
 
 **Projet** : Migration React → Astro + React Islands  
 **Objectif** : Performance 100/100 + SEO optimisé  
-**Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 4.x  
+**Stack** : Astro 5.x + React 18 + TypeScript 5.x + Tailwind 3.x  
 **Status** : ✅ Documentation complète pour Gemini Code Assist
 
 ---
@@ -38,7 +38,7 @@ Ce dossier est la **documentation de référence technique** pour **Gemini Code 
 3. Utiliser les templates fournis comme base
 4. Valider ton code avec les checklists
 
-**Règles CRITIQUES à respecter** (voir `03_DESIGN_SYSTEM_REFERENCE.md`) :
+**Règles CRITIQUES  respecter** (voir `03_DESIGN_SYSTEM_REFERENCE.md`) :
 - ⚠️ Playfair Display = Regular uniquement (JAMAIS font-bold)
 - ⚠️ Ombres = Inline uniquement (JAMAIS classes shadow-*)
 - ⚠️ Hero padding = pt-28 lg:pt-32
@@ -60,28 +60,19 @@ Ce dossier est la **documentation de référence technique** pour **Gemini Code 
 
 ---
 
-## 📚 STRUCTURE DU DOSSIER
+## 📚 TABLE DES MATIÈRES
 
-```
-/migration-frontend/
-├── README.md                           ← Tu es ici (Guide pour Code Assist)
-├── 00_INDEX.md                         ← Navigation complète
-│
-├── 01_QUICK_START.md                   ← Démarrage rapide (5 min)
-├── 02_GUIDE_TECHNIQUE.md               ← Guide Astro + React Islands
-├── 03_DESIGN_SYSTEM_REFERENCE.md       ← ⭐ BIBLE Design System V6.7.2
-├── 04_CONVENTIONS_CODE.md              ← Standards TypeScript
-├── 05_TEMPLATES.md                     ← Templates code prêts
-├── 06_CHECKLIST.md                     ← Validation qualité
-├── 07_SEO_PERFORMANCE.md               ← Optimisation
-├── 08_TROUBLESHOOTING.md               ← Résolution erreurs
-├── 09_EXEMPLES_MIGRATION.md            ← Cas concrets validés
-│
-├── 11_PROMPT_ENGINEERING.md            ← Guide prompts (référence)
-├── 13_DEPLOYMENT_VERCEL.md             ← Déploiement
-├── 14_INTEGRATION_STRAPI.md            ← Backend Strapi
-└── VALIDATION_FINALE.md                ← Rapport validation
-```
+1. [Quick Start](01_QUICK_START.md) - Démarrage rapide
+2. [Guide Technique](02_GUIDE_TECHNIQUE.md) - Architecture Astro + React
+3. [Design System](03_DESIGN_SYSTEM_REFERENCE.md) - Couleurs, typo, spacing
+4. [Conventions Code](04_CONVENTIONS_CODE.md) - Nommage et structure
+5. [Templates](05_TEMPLATES.md) - Composants prêts à l'emploi
+6. **[Templates Cookies & RGPD](05B_TEMPLATES_COOKIES_RGPD.md)** - Bannière + Modale cookies ✨ NOUVEAU
+7. **[Template Page Contact](05C_TEMPLATE_PAGE_CONTACT.md)** - Page Contact complète ✨ NOUVEAU
+8. **[Template Page Landing](05D_TEMPLATE_PAGE_LANDING.md)** - Landing (7 sections) ✨ NOUVEAU
+9. [Checklist](06_CHECKLIST.md) - Validation complète
+10. [SEO & Performance](07_SEO_PERFORMANCE.md) - Optimisation
+11. [Exemples Migration](09_EXEMPLES_MIGRATION.md) - Cas pratiques
 
 ---
 
@@ -107,6 +98,9 @@ Ce dossier est la **documentation de référence technique** pour **Gemini Code 
 **Contenu** :
 - Page Astro type
 - Composants React (Hero, Features, Team, FAQ, Contact Form)
+- Proposition de valeur (4 points clés)
+- Notre méthode en 3 étapes (Timeline)
+- Triade professionnelle (Antoine, Pascal, Laly)
 - Layouts
 - Formulaires avec validation
 
@@ -267,7 +261,7 @@ Avant de générer du code, vérifie que tu connais :
 
 ## ✅ CHECKLIST APRÈS GÉNÉRATION
 
-Après avoir généré du code, valide :
+Après avoir génré du code, valide :
 
 - [ ] Playfair Regular (pas bold)
 - [ ] Ombres inline uniquement

@@ -10,13 +10,41 @@
 ### Règles Générales
 
 | Type de Fichier | Convention | Exemple |
-|----------------|-----------|---------|
+|----------------|-----------|------------|
 | **Composant React** | PascalCase + `.tsx` | `ConfluenceHeaderV6_7.tsx` |
 | **Page Astro** | kebab-case + `.astro` | `audit-gratuit.astro` |
 | **Hook React** | camelCase + `.ts` | `useScrollAnimation.ts` |
 | **Utility** | camelCase + `.ts` | `gdprConsent.ts` |
 | **Type/Interface** | PascalCase + `.ts` | `FormTypes.ts` |
 | **Layout Astro** | PascalCase + `.astro` | `BaseLayout.astro` |
+
+### ⚠️ ENCODAGE UTF-8 OBLIGATOIRE
+
+**CRITIQUE** : Tous les fichiers doivent être encodés en UTF-8 (sans BOM) pour éviter les mojibake.
+
+```
+✅ TOUJOURS
+- Encoder en UTF-8 (sans BOM)
+- Vérifier l'encodage dans VS Code (barre du bas)
+- Utiliser <meta charset="UTF-8" /> dans tous les HTML
+
+❌ JAMAIS
+- ISO-8859-1, Latin-1, Windows-1252
+- UTF-8 avec BOM (sauf exception)
+- Encodages Windows par défaut
+```
+
+**Configuration VS Code** (`.vscode/settings.json`) :
+```json
+{
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false
+}
+```
+
+**Vérification Encodage** :
+- VS Code : Barre du bas, clic sur encodage → "Save with Encoding" → UTF-8
+- Terminal : `file -i fichier.tsx` (devrait afficher `charset=utf-8`)
 
 ### Exemples Concrets
 
