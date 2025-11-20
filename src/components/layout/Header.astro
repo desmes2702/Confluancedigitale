@@ -1,0 +1,274 @@
+---
+import Logo from "../ui/Logo.astro";
+
+const navItems = [
+    { id: "offre", label: "L'Offre", href: "/offre" },
+    { id: "methode", label: "Notre Méthode", href: "/methode" },
+    {
+        id: "qui-sommes-nous",
+        label: "Qui sommes-nous ?",
+        href: "/#qui-sommes-nous",
+    }, // Assuming anchor on home or separate page. Legacy used ID.
+    { id: "etudes-de-cas", label: "Nos Réalisations", href: "/etudes-de-cas" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: none;"
+>
+    <div class="container mx-auto px-0">
+        <div class="flex items-center justify-between h-20 px-4 sm:px-6">
+            <!-- Logo -->
+            <a
+                href="/"
+                class="group hover:opacity-80 transition-opacity flex-shrink-0 cursor-pointer"
+            >
+                <Logo variant="horizontal" size="sm" colorScheme="color" />
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+                {
+                    navItems.map((item) => (
+                        <a
+                            href={item.href}
+                            class:list={[
+                                "text-[#1A1A1A] hover:text-[#D1A65E] transition-colors relative group pl-4 whitespace-nowrap cursor-pointer",
+                                { "text-[#D1A65E]": currentPath === item.href },
+                            ]}
+                        >
+                            {currentPath === item.href && (
+                                <span class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#D1A65E] rounded-full" />
+                            )}
+                            {item.label}
+                        </a>
+                    ))
+                }
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 sm:gap-4 lg:gap-6">
+                <!-- Contact - Desktop only -->
+                <a
+                    href="/contact"
+                    class="max-md:hidden text-[#1A1A1A] hover:text-[#D1A65E] transition-colors whitespace-nowrap cursor-pointer"
+                >
+                    Contact
+                </a>
+
+                <!-- CTA Audit Gratuit -->
+                <a
+                    href="/audit-gratuit"
+                    class="inline-flex items-center justify-center bg-[#10b981] hover:bg-[#059669] text-white px-3 sm:px-4 lg:px-6 py-2 hover:scale-105 transition-all duration-300 whitespace-nowrap text-sm sm:text-base cursor-pointer rounded-lg font-medium"
+                    style="box-shadow: none;"
+                >
+                    Audit Gratuit
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button
+                    id="mobile-menu-toggle"
+                    class="lg:hidden p-2 text-[#1A1A1A] hover:text-[#D1A65E] relative z-[60] flex-shrink-0 cursor-pointer"
+                    aria-label="Ouvrir le menu"
+                >
+                    <div class="relative w-6 h-6">
+                        <svg
+                            id="icon-menu"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-6 h-6 transition-opacity duration-300 absolute inset-0"
+                            ><line x1="4" x2="20" y1="12" y2="12"></line><line
+                                x1="4"
+                                x2="20"
+                                y1="6"
+                                y2="6"></line><line
+                                x1="4"
+                                x2="20"
+                                y1="18"
+                                y2="18"></line></svg
+                        >
+                        <svg
+                            id="icon-close"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-6 h-6 transition-opacity duration-300 opacity-0 absolute inset-0"
+                            ><path d="M18 6 6 18"></path><path d="m6 6 18 18"
+                            ></path></svg
+                        >
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu Overlay & Panel -->
+<div
+    id="mobile-menu-overlay"
+    class="fixed inset-0 bg-black/20 z-40 lg:hidden hidden transition-opacity duration-300 opacity-0"
+>
+</div>
+
+<div
+    id="mobile-menu-panel"
+    class="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm z-50 lg:hidden translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-y-auto"
+    style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: none; border-left: 1px solid rgba(229, 231, 235, 0.5);"
+>
+    <div class="flex flex-col h-full">
+        <!-- Header du Panel -->
+        <div
+            class="px-6 h-20 flex items-center justify-end border-b border-[#E5E7EB]"
+        >
+            <button
+                id="mobile-menu-close"
+                class="p-2 text-[#1A1A1A] hover:text-[#D1A65E] hover:bg-[#F9FAFB] rounded-xl transition-all cursor-pointer"
+                aria-label="Fermer le menu"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-6 h-6"
+                    ><path d="M18 6 6 18"></path><path d="m6 6 18 18"
+                    ></path></svg
+                >
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex-1 p-6 overflow-y-auto">
+            <div class="flex flex-col gap-2">
+                {
+                    navItems.map((item) => (
+                        <a
+                            href={item.href}
+                            class:list={[
+                                "text-left px-6 py-4 rounded-xl transition-all relative cursor-pointer mobile-nav-link",
+                                currentPath === item.href
+                                    ? "text-[#D1A65E]"
+                                    : "text-[#1A1A1A] hover:bg-[#F9FAFB] hover:text-[#D1A65E]",
+                            ]}
+                            style="font-family: 'Inter', sans-serif;"
+                        >
+                            {currentPath === item.href && (
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#D1A65E] rounded-full" />
+                            )}
+                            {item.label}
+                        </a>
+                    ))
+                }
+
+                <!-- Contact (Mobile only) -->
+                <a
+                    href="/contact"
+                    class:list={[
+                        "text-left px-6 py-4 rounded-xl transition-all relative cursor-pointer mobile-nav-link",
+                        currentPath === "/contact"
+                            ? "text-[#D1A65E]"
+                            : "text-[#1A1A1A] hover:bg-[#F9FAFB] hover:text-[#D1A65E]",
+                    ]}
+                    style="font-family: 'Inter', sans-serif;"
+                >
+                    {
+                        currentPath === "/contact" && (
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#D1A65E] rounded-full" />
+                        )
+                    }
+                    Contact
+                </a>
+            </div>
+        </nav>
+
+        <!-- CTA Section -->
+        <div class="p-6 border-t border-[#E5E7EB]">
+            <a
+                href="/audit-gratuit"
+                class="block w-full bg-[#10b981] hover:bg-[#059669] text-white py-4 mb-4 transition-all duration-300 hover:scale-[1.02] cursor-pointer rounded-lg text-center font-medium"
+                style="box-shadow: 0 4px 20px 0 rgba(16, 185, 129, 0.3);"
+            >
+                <span class="text-lg">Audit Gratuit</span>
+            </a>
+
+            <p class="text-xs text-gray-500 text-center">
+                Réponse sous 48h • 100% Gratuit • Sans engagement
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const closeBtn = document.getElementById("mobile-menu-close");
+    const overlay = document.getElementById("mobile-menu-overlay");
+    const panel = document.getElementById("mobile-menu-panel");
+    const iconMenu = document.getElementById("icon-menu");
+    const iconClose = document.getElementById("icon-close");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    function openMenu() {
+        overlay?.classList.remove("hidden");
+        // Force reflow
+        void overlay?.offsetWidth;
+        overlay?.classList.remove("opacity-0");
+
+        panel?.classList.remove("translate-x-full");
+
+        iconMenu?.classList.add("opacity-0");
+        iconClose?.classList.remove("opacity-0");
+
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+        overlay?.classList.add("opacity-0");
+        panel?.classList.add("translate-x-full");
+
+        iconMenu?.classList.remove("opacity-0");
+        iconClose?.classList.add("opacity-0");
+
+        document.body.style.overflow = "";
+
+        setTimeout(() => {
+            overlay?.classList.add("hidden");
+        }, 300);
+    }
+
+    toggleBtn?.addEventListener("click", () => {
+        if (panel?.classList.contains("translate-x-full")) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    });
+
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
+
+    // Close menu when clicking a link
+    mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+</script>

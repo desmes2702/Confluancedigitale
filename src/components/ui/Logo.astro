@@ -1,0 +1,232 @@
+---
+interface Props {
+    variant?: "full" | "icon" | "horizontal";
+    size?: "sm" | "md" | "lg" | "xl";
+    colorScheme?:
+        | "color"
+        | "monochrome-dark"
+        | "monochrome-light"
+        | "gold-white"
+        | "gold-white-light";
+    class?: string;
+}
+
+const {
+    variant = "full",
+    size = "md",
+    colorScheme = "color",
+    class: className = "",
+} = Astro.props;
+
+// Size configurations
+const sizes = {
+    sm: { icon: 32, width: 120, height: 140 },
+    md: { icon: 48, width: 180, height: 200 },
+    lg: { icon: 64, width: 240, height: 280 },
+    xl: { icon: 96, width: 320, height: 360 },
+};
+
+const currentSize = sizes[size];
+
+// Color configurations
+const colors = {
+    color: {
+        primary: "#1A1A1A", // Noir Mat
+        accent: "#D1A65E", // Or/Cuivre
+        text: "#1A1A1A",
+    },
+    "monochrome-dark": {
+        primary: "#1A1A1A",
+        accent: "#1A1A1A",
+        text: "#1A1A1A",
+    },
+    "monochrome-light": {
+        primary: "#FFFFFF",
+        accent: "#FFFFFF",
+        text: "#FFFFFF",
+    },
+    "gold-white": {
+        primary: "#FFFFFF", // Blanc pour les formes
+        accent: "#D1A65E", // Or/Cuivre pour l'accent
+        text: "#1A1A1A", // Noir Mat pour le texte
+    },
+    "gold-white-light": {
+        primary: "#FFFFFF", // Blanc pour les formes
+        accent: "#D1A65E", // Or/Cuivre pour l'accent
+        text: "#FFFFFF", // Blanc pour le texte
+    },
+};
+
+const currentColors = colors[colorScheme];
+---
+
+{
+    variant === "icon" && (
+        <svg
+            width={currentSize.icon}
+            height={currentSize.icon}
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class={className}
+        >
+            <path
+                d="M 20 30 L 45 50 L 20 70 Z"
+                fill={currentColors.primary}
+                opacity="0.9"
+            />
+            <path
+                d="M 80 30 L 55 50 L 80 70 Z"
+                fill={currentColors.primary}
+                opacity="0.9"
+            />
+            <path
+                d="M 50 35 L 58 50 L 50 50 L 50 65 L 42 50 L 50 50 Z"
+                fill={currentColors.accent}
+            />
+            <circle
+                cx="50"
+                cy="50"
+                r="12"
+                fill={currentColors.accent}
+                opacity="0.15"
+            />
+        </svg>
+    )
+}
+
+{
+    variant === "horizontal" && (
+        <div class:list={["flex items-center gap-3", className]}>
+            <svg
+                width={currentSize.icon}
+                height={currentSize.icon}
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M 20 30 L 45 50 L 20 70 Z"
+                    fill={currentColors.primary}
+                    opacity="0.9"
+                />
+                <path
+                    d="M 80 30 L 55 50 L 80 70 Z"
+                    fill={currentColors.primary}
+                    opacity="0.9"
+                />
+                <path
+                    d="M 50 35 L 58 50 L 50 50 L 50 65 L 42 50 L 50 50 Z"
+                    fill={currentColors.accent}
+                />
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="12"
+                    fill={currentColors.accent}
+                    opacity="0.15"
+                />
+            </svg>
+
+            <div class="flex flex-col">
+                <div
+                    class="tracking-tight leading-none"
+                    style={`
+          font-family: 'Playfair Display', serif;
+          font-size: ${size === "sm" ? "1.25rem" : size === "md" ? "1.5rem" : size === "lg" ? "2rem" : "2.5rem"};
+          color: ${currentColors.text};
+          font-weight: 600;
+        `}
+                >
+                    Confluence
+                </div>
+                <div
+                    class="tracking-wide leading-none mt-0.5"
+                    style={`
+          font-family: 'Inter', sans-serif;
+          font-size: ${size === "sm" ? "0.75rem" : size === "md" ? "0.875rem" : size === "lg" ? "1rem" : "1.25rem"};
+          color: ${currentColors.text};
+          font-weight: 500;
+          letter-spacing: 0.05em;
+        `}
+                >
+                    DIGITALE
+                </div>
+            </div>
+        </div>
+    )
+}
+
+{
+    variant === "full" && (
+        <div class:list={["flex flex-col items-center", className]}>
+            <svg
+                width={currentSize.icon}
+                height={currentSize.icon}
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="mb-4"
+            >
+                <path
+                    d="M 20 30 L 45 50 L 20 70 Z"
+                    fill={currentColors.primary}
+                    opacity="0.9"
+                />
+                <path
+                    d="M 80 30 L 55 50 L 80 70 Z"
+                    fill={currentColors.primary}
+                    opacity="0.9"
+                />
+                <path
+                    d="M 50 35 L 58 50 L 50 50 L 50 65 L 42 50 L 50 50 Z"
+                    fill={currentColors.accent}
+                />
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="12"
+                    fill={currentColors.accent}
+                    opacity="0.15"
+                />
+            </svg>
+
+            <div class="flex flex-col items-center text-center">
+                <div
+                    class="tracking-tight leading-none"
+                    style={`
+          font-family: 'Playfair Display', serif;
+          font-size: ${size === "sm" ? "1.5rem" : size === "md" ? "2rem" : size === "lg" ? "2.5rem" : "3rem"};
+          color: ${currentColors.text};
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        `}
+                >
+                    Confluence
+                </div>
+
+                <div
+                    class="my-2"
+                    style={`
+          width: ${size === "sm" ? "60px" : size === "md" ? "80px" : size === "lg" ? "100px" : "120px"};
+          height: 1px;
+          background: linear-gradient(90deg, transparent, ${currentColors.accent}, transparent);
+        `}
+                />
+
+                <div
+                    class="tracking-widest leading-none"
+                    style={`
+          font-family: 'Inter', sans-serif;
+          font-size: ${size === "sm" ? "0.875rem" : size === "md" ? "1rem" : size === "lg" ? "1.25rem" : "1.5rem"};
+          color: ${currentColors.text};
+          font-weight: 500;
+          letter-spacing: 0.15em;
+        `}
+                >
+                    DIGITALE
+                </div>
+            </div>
+        </div>
+    )
+}

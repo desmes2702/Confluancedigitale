@@ -1,0 +1,107 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { HeroAnimation } from "../components/islands/HeroAnimation";
+import { PainPointsSection } from "../components/islands/PainPointsSection";
+import { PageSpeedProof } from "../components/islands/PageSpeedProof";
+import { SolutionsSection } from "../components/islands/SolutionsSection";
+import { TeamBlock } from "../components/islands/TeamBlock";
+import { FAQ } from "../components/islands/FAQ";
+import TrustBand from "../components/features/TrustBand.astro";
+import FinalCTA from "../components/features/FinalCTA.astro";
+import { GDPRBanner } from "../components/features/GDPRBanner";
+
+// FAQ Data from Legacy ConfluenceLandingPage.tsx
+const faqData = [
+  {
+    id: "1",
+    question: "L'offre à 0€ de setup et 149€/mois, c'est tout inclus ?",
+    answer:
+      "Oui. Le 0€ de setup couvre la création complète. Les 149€/mois couvrent l'hébergement, la maintenance, et le support illimité de Laly. Zéro surprise, zéro frais caché.",
+  },
+  {
+    id: "2",
+    question: "Comment pouvez-vous garantir un score de 100/100 ?",
+    answer:
+      "Parce que notre architecte, <strong>Antoine</strong>, ne 'répare' pas un site lent. Il construit avec des technologies (Astro) qui sont nativement conçues pour la performance maximale. C'est une garantie technique, pas une promesse marketing.",
+  },
+  {
+    id: "3",
+    question: "Vais-je pouvoir modifier mon site moi-même sans 'tout casser' ?",
+    answer:
+      "Oui. C'est la garantie de <strong>Laly</strong>, notre Enseignante. Vous gérez votre contenu (textes, photos) via Strapi, qui est simple d'accès. Le design (la structure) est verrouillé par Antoine. Vous avez la liberté sans le risque.",
+  },
+  {
+    id: "4",
+    question: "Pourquoi un engagement de 24 mois ?",
+    answer:
+      "C'est notre garantie mutuelle. Cet engagement nous permet de financer votre site à 0€ et de vous garantir l'exclusivité territoriale de <strong>Pascal</strong> (nous refusons vos concurrents). C'est un partenariat, pas une simple prestation.",
+  },
+];
+---
+
+<MainLayout title="Confluence Digitale - Transformation Digitale TPE/PME">
+  <!-- Hero Section (Island) -->
+  <HeroAnimation client:load />
+
+  <!-- Pain Points Section (Island) - Moved up as per Legacy -->
+  <PainPointsSection client:visible />
+
+  <!-- Performance Proof (Island) -->
+  <PageSpeedProof client:visible />
+
+  <!-- Solutions Section (Island) -->
+  <SolutionsSection client:visible />
+
+  <!-- Team Section (Island) - With Triade Title -->
+  <section class="relative py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-4">
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A]"
+          style="font-family: 'Playfair Display', serif; font-weight: 400;"
+        >
+          L'Équipe qui Garantit cette Méthode
+        </h2>
+      </div>
+      <p
+        class="text-center mb-12 max-w-3xl mx-auto text-base md:text-lg lg:text-xl text-gray-700"
+      >
+        Derrière chaque étape, il y a un expert dédié. Nous lions nos garanties
+        à nos visages.
+      </p>
+      <TeamBlock client:visible />
+    </div>
+  </section>
+
+  <!-- Trust Band (Static) - Moved down as per flow logic if needed, but keeping here as per legacy structure it was separate? 
+       Actually in legacy: Hero -> PainPoints -> PageSpeedProof -> Solutions -> TeamBlock -> FAQ -> FinalCTA.
+       TrustBand was separate in legacy components but not used in ConfluenceLandingPage? 
+       Wait, ConfluenceLandingPage imports ConfluenceTeamBlock, ConfluencePageSpeedProof, etc.
+       It DOES NOT import ConfluenceTrustBand. It seems TrustBand was replaced by PageSpeedProof in V5.25.
+       I will comment out TrustBand to match legacy exactly if it's not there.
+       Checking ConfluenceLandingPage.tsx... it does NOT use ConfluenceTrustBand.
+       It uses ConfluencePageSpeedProof.
+       So I will REMOVE TrustBand from index.astro to match legacy.
+  -->
+
+  <!-- FAQ Section (Island with SSR data) -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-playfair font-medium mb-4">
+          Questions Fréquentes
+        </h2>
+        <p class="text-gray-600">
+          Tout ce que vous devez savoir avant de demander votre audit gratuit.
+        </p>
+      </div>
+      <FAQ client:visible questions={faqData} />
+    </div>
+  </section>
+
+  <!-- Final CTA (Static) -->
+  <FinalCTA />
+
+  <!-- GDPR Banner -->
+  <GDPRBanner client:load />
+</MainLayout>

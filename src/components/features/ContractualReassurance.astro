@@ -1,0 +1,70 @@
+---
+import { DSBadge } from "../ui/DSBadge";
+
+const guarantees = [
+    {
+        title: "Mise en ligne 30j",
+        description: "Engagement contractuel sur les délais de livraison.",
+        icon: "calendar",
+    },
+    {
+        title: "Satisfaction 100%",
+        description: "Révisions illimitées jusqu'à validation complète.",
+        icon: "star",
+    },
+    {
+        title: "Performance Garantie",
+        description: "Score Google PageSpeed > 90/100 assuré.",
+        icon: "zap",
+    },
+    {
+        title: "Support Réactif",
+        description: "Réponse sous 24h ouvrées garantie.",
+        icon: "support",
+    },
+];
+---
+
+<section
+    class="py-16 bg-white border border-gray-100 rounded-2xl shadow-sm my-12"
+>
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <DSBadge variant="contractual" size="md" className="mb-4"
+                >Garantie Contractuelle</DSBadge
+            >
+            <h2 class="text-3xl font-playfair font-medium text-[#1A1A1A]">
+                Votre sérénité est notre priorité
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+                guarantees.map((item) => (
+                    <div class="text-center p-4">
+                        <div class="w-12 h-12 mx-auto bg-[#A32E3A]/10 rounded-full flex items-center justify-center text-[#A32E3A] mb-4">
+                            {/* Icons placeholder */}
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 13l4 4L19 7"
+                                />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-[#1A1A1A] mb-2">
+                            {item.title}
+                        </h3>
+                        <p class="text-gray-600 text-sm">{item.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

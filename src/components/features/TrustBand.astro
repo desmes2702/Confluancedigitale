@@ -1,0 +1,121 @@
+---
+// TrustBand.astro
+---
+
+<section
+    class="relative py-20 md:py-24 bg-white border-t border-b border-premium/20"
+>
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto text-center mb-12">
+            <h2
+                class="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4"
+                style="font-family: 'Playfair Display', serif; font-weight: 400;"
+            >
+                L'obsession du <span class="text-premium">score parfait</span>.
+            </h2>
+        </div>
+
+        {/* Trust Indicators */}
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {/* Indicator 1 - Performance */}
+            <div class="text-center space-y-4">
+                <div class="flex justify-center">
+                    <div
+                        class="w-20 h-20 bg-premium/10 rounded-2xl flex items-center justify-center shadow-lg"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-10 h-10 text-premium"
+                            ><path d="m12 14 4-4"></path><path
+                                d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg
+                        >
+                    </div>
+                </div>
+                <div>
+                    <p class="text-6xl md:text-7xl text-premium mb-2">100</p>
+                    <p class="text-xl text-gray-900">Performance</p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Garantie de vitesse maximale
+                    </p>
+                </div>
+            </div>
+
+            {/* Indicator 2 - Autonomie */}
+            <div class="text-center space-y-4">
+                <div class="flex justify-center">
+                    <div
+                        class="w-20 h-20 bg-premium/10 rounded-2xl flex items-center justify-center shadow-lg"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-10 h-10 text-premium"
+                            ><rect
+                                width="18"
+                                height="11"
+                                x="3"
+                                y="11"
+                                rx="2"
+                                ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"
+                            ></path></svg
+                        >
+                    </div>
+                </div>
+                <div>
+                    <p class="text-6xl md:text-7xl text-premium mb-2">0%</p>
+                    <p class="text-xl text-gray-900">Dépendance</p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Vous gérez tout, sans code
+                    </p>
+                </div>
+            </div>
+
+            {/* Indicator 3 - Visibilité */}
+            <div class="text-center space-y-4">
+                <div class="flex justify-center">
+                    <div
+                        class="w-20 h-20 bg-premium/10 rounded-2xl flex items-center justify-center shadow-lg"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-10 h-10 text-premium"
+                            ><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"
+                            ></polyline><polyline points="16 7 22 7 22 13"
+                            ></polyline></svg
+                        >
+                    </div>
+                </div>
+                <div>
+                    <p class="text-6xl md:text-7xl text-premium mb-2">+40%</p>
+                    <p class="text-xl text-gray-900">Visibilité Locale</p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Position Google moyenne
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

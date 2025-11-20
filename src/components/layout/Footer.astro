@@ -1,0 +1,352 @@
+---
+import Logo from "../ui/Logo.astro";
+
+const navLinks = [
+    { id: "offre", label: "L'Offre", href: "/offre" },
+    { id: "methode", label: "Notre Méthode", href: "/methode" },
+    { id: "etudes-de-cas", label: "Nos Réalisations", href: "/etudes-de-cas" },
+];
+
+const secondaryLinks = [
+    {
+        id: "etudes-de-cas",
+        label: "Blog / Études de cas",
+        href: "/etudes-de-cas",
+    },
+    {
+        id: "qui-sommes-nous",
+        label: "Qui sommes-nous ?",
+        href: "/#qui-sommes-nous",
+    },
+];
+
+const legalLinks = [
+    {
+        id: "mentions-legales",
+        label: "Mentions Légales",
+        href: "/mentions-legales",
+    },
+    {
+        id: "politique-confidentialite",
+        label: "Politique de Confidentialité",
+        href: "/politique-confidentialite",
+    },
+    { id: "cgv", label: "Conditions Générales de Vente", href: "/cgv" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<footer class="bg-[#1A1A1A] border-t border-[#D1A65E]/20">
+    <div class="container mx-auto px-4 sm:px-6 py-10 md:py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Grille 4 Colonnes -->
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8 md:mb-12"
+            >
+                <!-- COLONNE 1 : AGENCE -->
+                <div>
+                    <a
+                        href="/"
+                        class="block mb-4 md:mb-6 hover:opacity-80 transition-opacity cursor-pointer"
+                    >
+                        <Logo
+                            variant="horizontal"
+                            size="sm"
+                            colorScheme="gold-white-light"
+                        />
+                    </a>
+
+                    <p class="text-sm text-gray-400 mb-4 md:mb-6">
+                        Sites web ultra-performants pour artisans et TPE/PME.
+                        <br />
+                        <strong class="text-[#10b981]"
+                            >Performance garantie 100/100.</strong
+                        >
+                    </p>
+
+                    <!-- Adresse -->
+                    <div class="space-y-2 md:space-y-3 text-sm text-gray-400">
+                        <div class="flex items-start gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-4 h-4 text-[#D1A65E] flex-shrink-0 mt-0.5"
+                                ><path
+                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                                ></path><circle cx="12" cy="10" r="3"
+                                ></circle></svg
+                            >
+                            <div>
+                                <p>Montayral, 47500</p>
+                                <p class="text-xs text-gray-500 mt-1">
+                                    Zone d'intervention : 30km
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Téléphone -->
+                        <div class="flex items-center gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-4 h-4 text-[#10b981] flex-shrink-0"
+                                ><path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                ></path></svg
+                            >
+                            <a
+                                href="tel:06XXXXXXXX"
+                                class="hover:text-[#10b981] transition-colors cursor-pointer"
+                            >
+                                <strong>06 XX XX XX XX</strong>
+                                <span class="text-xs">(Ligne directe)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLONNE 2 : NAVIGATION -->
+                <div>
+                    <h3 class="text-sm md:text-base text-white mb-4 md:mb-6">
+                        Navigation
+                    </h3>
+
+                    <!-- Liens Principaux -->
+                    <ul
+                        class="space-y-2 md:space-y-3 text-sm text-gray-400 mb-4 md:mb-6"
+                    >
+                        {
+                            navLinks.map((link) => (
+                                <li>
+                                    <a
+                                        href={link.href}
+                                        class:list={[
+                                            "hover:text-[#D1A65E] transition-colors text-left relative group cursor-pointer block",
+                                            {
+                                                "text-[#D1A65E]":
+                                                    currentPath === link.href,
+                                            },
+                                        ]}
+                                    >
+                                        {link.label}
+                                        {currentPath === link.href && (
+                                            <span class="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#D1A65E] rounded-full" />
+                                        )}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+
+                    <!-- Liens Secondaires -->
+                    <ul
+                        class="space-y-2 md:space-y-3 text-sm text-gray-500 border-t border-gray-700 pt-4 md:pt-6"
+                    >
+                        {
+                            secondaryLinks.map((link) => (
+                                <li>
+                                    <a
+                                        href={link.href}
+                                        class="hover:text-[#D1A65E] transition-colors text-left cursor-pointer block"
+                                    >
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+
+                <!-- COLONNE 3 : NOS EXPERTS -->
+                <div>
+                    <h3 class="text-sm md:text-base text-white mb-4 md:mb-6">
+                        Nos Experts
+                    </h3>
+
+                    <div class="space-y-3">
+                        <!-- Mini-Carte Antoine -->
+                        <a
+                            href="/#qui-sommes-nous"
+                            class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
+                            style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #D1A65E;"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1737575655055-e3967cbefd03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjI1MDU0NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                                alt="Antoine, Garant Performance"
+                                class="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                            />
+                            <div class="text-left">
+                                <div class="text-sm text-white">Antoine</div>
+                                <div class="text-xs text-gray-400">
+                                    Architecte UX/UI
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Mini-Carte Pascal -->
+                        <a
+                            href="/#qui-sommes-nous"
+                            class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
+                            style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #10b981;"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1709715357564-ab64e091ead9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1hcmtldGluZyUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NjI0MTk0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                                alt="Pascal, Garant Stratégie"
+                                class="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                            />
+                            <div class="text-left">
+                                <div class="text-sm text-white">Pascal</div>
+                                <div class="text-xs text-gray-400">
+                                    Conseiller Numérique (RENM)
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Mini-Carte Laly -->
+                        <a
+                            href="/#qui-sommes-nous"
+                            class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
+                            style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #A32E3A;"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1544972917-3529b113a469?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFjaGVyJTIwcHJvZmVzc2lvbmFsJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYyNDc1NDY0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                                alt="Laly, Garante Sérénité"
+                                class="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                            />
+                            <div class="text-left">
+                                <div class="text-sm text-white">Laly</div>
+                                <div class="text-xs text-gray-400">
+                                    Enseignante spécialisée
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- COLONNE 4 : LÉGAL -->
+                <div>
+                    <h3 class="text-sm md:text-base text-white mb-4 md:mb-6">
+                        Légal
+                    </h3>
+                    <ul class="space-y-2 md:space-y-3 text-sm text-gray-400">
+                        {
+                            legalLinks.map((link) => (
+                                <li>
+                                    <a
+                                        href={link.href}
+                                        class:list={[
+                                            "hover:text-[#D1A65E] transition-colors text-left relative group cursor-pointer block",
+                                            {
+                                                "text-[#D1A65E]":
+                                                    currentPath === link.href,
+                                            },
+                                        ]}
+                                    >
+                                        {link.label}
+                                        {currentPath === link.href && (
+                                            <span class="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#D1A65E] rounded-full" />
+                                        )}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                        <li>
+                            <button
+                                class="hover:text-[#D1A65E] transition-colors text-left cursor-pointer text-gray-500"
+                            >
+                                Paramètres de confidentialité
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Bloc Transparence Contractuelle -->
+                    <div
+                        class="mt-6 p-4 rounded-lg border border-[#A32E3A]/30 bg-[#A32E3A]/10"
+                    >
+                        <div class="flex items-start gap-3">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                ><path
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"
+                                ></path><path d="m9 12 2 2 4-4"></path></svg
+                            >
+                            <div>
+                                <h4 class="text-sm text-white font-medium mb-1">
+                                    Transparence Totale
+                                </h4>
+                                <p class="text-xs text-gray-400">
+                                    Contrats clairs, sans frais cachés.
+                                    Engagement de résultat écrit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIGNE INFÉRIEURE -->
+            <div class="pt-6 md:pt-8 border-t border-[#D1A65E]/10">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center gap-4"
+                >
+                    <p
+                        class="text-xs md:text-sm text-gray-500 text-center md:text-left"
+                    >
+                        © 2025 Confluence Digitale. Tous droits réservés.
+                    </p>
+
+                    <div class="flex items-center gap-4">
+                        <!-- GDPR Badge Static -->
+                        <div
+                            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#10b981]/10 border border-[#10b981]/20"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-3 h-3 text-[#10b981]"
+                                ><path
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"
+                                ></path><path d="m9 12 2 2 4-4"></path></svg
+                            >
+                            <span
+                                class="text-[10px] font-medium text-[#10b981] uppercase tracking-wider"
+                                >RGPD Compliant</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
