@@ -1,0 +1,89 @@
+# -------------------------------------
+# 1. DÉPENDANCES & SYSTÈME
+# -------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+.directory
+
+# -------------------------------------
+# 2. BUILD & ASTRO (Racine)
+# -------------------------------------
+# Dossier de build production Astro
+dist/
+
+# Cache de développement Astro
+.astro/
+
+# Types générés automatiquement par Astro
+src/env.d.ts
+
+# -------------------------------------
+# 3. SÉCURITÉ & ENVIRONNEMENT (CRITIQUE)
+# -------------------------------------
+# Contient tes clés API Strapi et tokens Vercel
+.env
+.env.production
+.env.development
+.env.local
+.env.test
+
+# Exception : on garde le template d'exemple s'il existe pour l'équipe
+!.env.example
+
+# -------------------------------------
+# 4. VERCEL & DÉPLOIEMENT
+# -------------------------------------
+# Cache et configuration locale Vercel
+.vercel/
+
+# Output de build Vercel (si build local)
+.output/
+
+# -------------------------------------
+# 5. STRAPI & BACKEND (Si fichiers locaux)
+# -------------------------------------
+# Backups de base de données locaux
+dump.json
+exports/
+data/
+
+# Fichiers temporaires Strapi
+.strapi-updater.json
+strapi-admin.log
+
+# -------------------------------------
+# 6. DOSSIER _LEGACY_REACT (Nettoyage)
+# -------------------------------------
+# On ignore les dépendances lourdes du dossier source
+_LEGACY_REACT/node_modules/
+_LEGACY_REACT/dist/
+_LEGACY_REACT/build/
+_LEGACY_REACT/.vite/
+_LEGACY_REACT/.vercel/
+_LEGACY_REACT/coverage/
+_LEGACY_REACT/.env
+_LEGACY_REACT/.env.local
+
+# -------------------------------------
+# 7. IDE & ÉDITEURS
+# -------------------------------------
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# Google Antigravity / Project IDX
+.idx/
+!.idx/dev.nix
+
+# JetBrains
+.idea/
+*.iml
