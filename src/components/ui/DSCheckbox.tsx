@@ -1,11 +1,12 @@
 import React from 'react';
 
-interface DSCheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    label: string;
+interface DSCheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+    label?: React.ReactNode;
     error?: string;
+    onCheckedChange?: (checked: boolean) => void;
 }
 
-export const DSCheckbox: React.FC<DSCheckboxProps> = ({ label, error, className = '', id, ...props }) => {
+export const DSCheckbox: React.FC<DSCheckboxProps> = ({ label, error, className = '', id, onCheckedChange, ...props }) => {
     const inputId = id || props.name;
 
     return (
@@ -21,14 +22,17 @@ export const DSCheckbox: React.FC<DSCheckboxProps> = ({ label, error, className 
               disabled:opacity-50 disabled:cursor-not-allowed
               ${className}
             `}
+                        onChange={(e) => onCheckedChange?.(e.target.checked)}
                         {...props}
                     />
                 </div>
-                <div className="ml-3 text-sm">
-                    <label htmlFor={inputId} className="font-medium text-gray-700 select-none">
-                        {label}
-                    </label>
-                </div>
+                {label && (
+                    <div className="ml-3 text-sm">
+                        <label htmlFor={inputId} className="font-medium text-gray-700 select-none">
+                            {label}
+                        </label>
+                    </div>
+                )}
             </div>
             {error && <p className="mt-1 text-sm text-red-500 ml-7">{error}</p>}
         </div>

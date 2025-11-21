@@ -27,32 +27,35 @@
     <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-5xl mx-auto text-center">
             {/* Urgency Badge */}
-            <div
-                class="inline-flex items-center gap-2 bg-premium/10 backdrop-blur-sm border border-premium/30 rounded-full px-6 py-3 mb-8"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="w-5 h-5 text-premium"
-                    ><path
-                        d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
-                    ></path><path d="M12 9v4"></path><path d="M12 17h.01"
-                    ></path></svg
+            <div class="flex justify-center">
+                <div
+                    class="inline-flex items-center gap-2 bg-premium/10 backdrop-blur-sm border border-premium/30 rounded-full px-6 py-3 mb-8"
                 >
-                <span class="text-premium text-sm">Places limitées</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="w-5 h-5 text-premium"
+                    >
+                        <path
+                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+                        ></path>
+                        <path d="M12 9v4"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                    <span class="text-premium text-sm">Places limitées</span>
+                </div>
             </div>
 
             {/* Main Urgency Message */}
             <h2
-                class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-6 leading-tight"
-                style="font-family: 'Playfair Display', serif; font-weight: 400;"
+                class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-6 leading-tight font-playfair font-normal"
             >
                 Nous ne prenons qu'un <span class="text-premium"
                     >client par métier</span
@@ -66,7 +69,7 @@
             </p>
 
             {/* Massive CTA - Vert Performance */}
-            <div class="mb-12">
+            <div class="mb-12 flex justify-center">
                 <a
                     href="/audit-gratuit"
                     class="inline-flex items-center bg-cta hover:bg-[#059669] text-white px-12 py-8 text-lg md:text-xl group shadow-2xl hover:shadow-cta/30 hover:scale-105 transition-all duration-300 rounded-xl cursor-pointer"
@@ -85,9 +88,10 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         class="w-6 h-6 group-hover:translate-x-1 transition-transform"
-                        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
-                        ></path></svg
                     >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </a>
             </div>
 

@@ -38,7 +38,7 @@ export const FAQ: React.FC<FAQProps> = ({ questions = defaultQuestions }) => {
     const items = questions.map(q => ({
         id: q.id,
         title: q.question,
-        content: <p className="text-gray-600 leading-relaxed">{q.answer}</p>
+        content: <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: q.answer }} />
     }));
 
     return (

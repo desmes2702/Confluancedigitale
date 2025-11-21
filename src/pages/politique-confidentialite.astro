@@ -1,0 +1,398 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { PageHeader } from "../components/ui/PageHeader";
+import { Reveal } from "../components/ui/Reveal";
+import { UserCheck, Database, Lock, Eye, Shield, Menu } from "lucide-react";
+import { GDPRStatus } from "../components/islands/GDPRStatus";
+import { GDPRSettings } from "../components/islands/GDPRSettings";
+
+const sections = [
+    { id: "qui-sommes-nous", label: "Qui sommes-nous", icon: UserCheck },
+    { id: "donnees-collectees", label: "Données collectées", icon: Database },
+    { id: "outils-techniques", label: "Outils techniques", icon: Lock },
+    { id: "vos-droits", label: "Vos droits", icon: Eye },
+    { id: "contact", label: "Nous contacter", icon: Shield },
+];
+---
+
+<MainLayout
+    title="Politique de Confidentialité | Confluence Digitale"
+    description="Politique de confidentialité et gestion des données personnelles (RGPD) de Confluence Digitale."
+>
+    <PageHeader
+        client:load
+        title="Politique de Confidentialité & RGPD"
+        highlight="Confidentialité"
+        subtitle="Transparence totale sur la collecte et l'utilisation de vos données personnelles."
+    />
+
+    {/* Table des Matières Sticky */}
+    <section
+        class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-[#E5E7EB] shadow-sm"
+    >
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="py-4 overflow-x-auto">
+                    <div
+                        class="flex items-center gap-2 md:gap-4 min-w-max md:min-w-0 md:justify-center"
+                    >
+                        <Menu
+                            className="w-4 h-4 text-gray-400 flex-shrink-0"
+                            strokeWidth={1.5}
+                        />
+                        {
+                            sections.map((section) => (
+                                <a
+                                    href={`#${section.id}`}
+                                    class="text-sm px-4 py-2 rounded-lg whitespace-nowrap transition-all text-[#1A1A1A] hover:bg-[#F9FAFB] hover:text-[#D1A65E]"
+                                >
+                                    {section.label}
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Contenu Principal */}
+    <section class="relative py-16 md:py-24 px-4 bg-[#F9FAFB]">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto space-y-12">
+                {/* Section 1 - Qui sommes-nous */}
+                <Reveal client:visible>
+                    <div
+                        id="qui-sommes-nous"
+                        class="rounded-2xl p-8 bg-white border border-[#E5E7EB] scroll-mt-32"
+                        style={{
+                            boxShadow: "0 2px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div class="flex items-start gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center flex-shrink-0"
+                            >
+                                <UserCheck
+                                    className="w-6 h-6 text-[#D1A65E]"
+                                    strokeWidth={1.5}
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-3xl text-[#1A1A1A] mb-2 font-playfair font-normal"
+                                >
+                                    Qui sommes-nous ?
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            <p>
+                                <strong class="text-[#1A1A1A]"
+                                    >Confluence Digitale</strong
+                                > est une agence web spécialisée dans la création
+                                de sites performants pour TPE et PME.
+                            </p>
+                            <p>
+                                Responsable du traitement : <strong
+                                    class="text-[#1A1A1A]"
+                                    >Confluence Digitale</strong
+                                ><br />
+                                Siège social : Fumel, France<br />
+                                Email : <a
+                                    href="mailto:contact@confluence-digitale.fr"
+                                    class="text-[#D1A65E] hover:underline"
+                                    >contact@confluence-digitale.fr</a
+                                >
+                            </p>
+                        </div>
+                    </div>
+                </Reveal>
+
+                {/* Section 2 - Données collectées */}
+                <Reveal client:visible delay={0.1}>
+                    <div
+                        id="donnees-collectees"
+                        class="rounded-2xl p-8 bg-white border border-[#E5E7EB] scroll-mt-32"
+                        style={{
+                            boxShadow: "0 2px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div class="flex items-start gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center flex-shrink-0"
+                            >
+                                <Database
+                                    className="w-6 h-6 text-[#D1A65E]"
+                                    strokeWidth={1.5}
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-3xl text-[#1A1A1A] mb-2 font-playfair font-normal"
+                                >
+                                    Quelles données collectons-nous ?
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            <p>
+                                Nous collectons uniquement les données
+                                nécessaires au bon fonctionnement de nos
+                                services :
+                            </p>
+
+                            <div class="space-y-3">
+                                <div class="pl-4 border-l-2 border-[#D1A65E]">
+                                    <h3 class="text-lg text-[#1A1A1A] mb-2">
+                                        Données de contact
+                                    </h3>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>Nom et prénom</li>
+                                        <li>Adresse email</li>
+                                        <li>Numéro de téléphone</li>
+                                        <li>Nom de l'entreprise</li>
+                                    </ul>
+                                </div>
+
+                                <div class="pl-4 border-l-2 border-[#D1A65E]">
+                                    <h3 class="text-lg text-[#1A1A1A] mb-2">
+                                        Données techniques (cookies)
+                                    </h3>
+                                    <ul class="list-disc pl-5 space-y-1">
+                                        <li>Adresse IP</li>
+                                        <li>Type de navigateur</li>
+                                        <li>Pages visitées</li>
+                                        <li>
+                                            Préférences de consentement RGPD
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+
+                {/* Section 3 - Outils techniques */}
+                <Reveal client:visible delay={0.2}>
+                    <div
+                        id="outils-techniques"
+                        class="rounded-2xl p-8 bg-white border border-[#E5E7EB] scroll-mt-32"
+                        style={{
+                            boxShadow: "0 2px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div class="flex items-start gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center flex-shrink-0"
+                            >
+                                <Lock
+                                    className="w-6 h-6 text-[#D1A65E]"
+                                    strokeWidth={1.5}
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-3xl text-[#1A1A1A] mb-2 font-playfair font-normal"
+                                >
+                                    Outils techniques & cookies
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            <p>Nous utilisons les outils suivants :</p>
+
+                            <div class="space-y-3">
+                                <div class="pl-4 border-l-2 border-[#D1A65E]">
+                                    <h3 class="text-lg text-[#1A1A1A] mb-2">
+                                        Cookies strictement nécessaires
+                                    </h3>
+                                    <p>
+                                        Ces cookies sont indispensables au
+                                        fonctionnement du site (consentement
+                                        RGPD, session, sécurité).
+                                    </p>
+                                </div>
+
+                                <div class="pl-4 border-l-2 border-[#D1A65E]">
+                                    <h3 class="text-lg text-[#1A1A1A] mb-2">
+                                        Cookies analytiques (optionnels)
+                                    </h3>
+                                    <p>
+                                        Avec votre consentement, nous utilisons
+                                        des outils d'analyse pour améliorer nos
+                                        services. Vous pouvez refuser ces
+                                        cookies à tout moment.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Widget GDPR */}
+                            <div class="mt-6 p-6 bg-[#F9FAFB] rounded-xl">
+                                <GDPRStatus client:visible />
+                                <div class="mt-4">
+                                    <GDPRSettings client:visible />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+
+                {/* Section 4 - Vos droits */}
+                <Reveal client:visible delay={0.3}>
+                    <div
+                        id="vos-droits"
+                        class="rounded-2xl p-8 bg-white border border-[#E5E7EB] scroll-mt-32"
+                        style={{
+                            boxShadow: "0 2px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div class="flex items-start gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center flex-shrink-0"
+                            >
+                                <Eye
+                                    className="w-6 h-6 text-[#D1A65E]"
+                                    strokeWidth={1.5}
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-3xl text-[#1A1A1A] mb-2 font-playfair font-normal"
+                                >
+                                    Vos droits RGPD
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            <p>
+                                Conformément au RGPD, vous disposez des droits
+                                suivants :
+                            </p>
+
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-[#10b981] mt-1">✓</span>
+                                    <span
+                                        ><strong class="text-[#1A1A1A]"
+                                            >Droit d'accès :</strong
+                                        > Vous pouvez demander une copie de vos données.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-[#10b981] mt-1">✓</span>
+                                    <span
+                                        ><strong class="text-[#1A1A1A]"
+                                            >Droit de rectification :</strong
+                                        > Vous pouvez corriger vos données inexactes.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-[#10b981] mt-1">✓</span>
+                                    <span
+                                        ><strong class="text-[#1A1A1A]"
+                                            >Droit à l'effacement :</strong
+                                        > Vous pouvez demander la suppression de
+                                        vos données.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-[#10b981] mt-1">✓</span>
+                                    <span
+                                        ><strong class="text-[#1A1A1A]"
+                                            >Droit d'opposition :</strong
+                                        > Vous pouvez refuser l'utilisation de vos
+                                        données.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-[#10b981] mt-1">✓</span>
+                                    <span
+                                        ><strong class="text-[#1A1A1A]"
+                                            >Droit à la portabilité :</strong
+                                        > Vous pouvez récupérer vos données dans
+                                        un format réutilisable.</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </Reveal>
+
+                {/* Section 5 - Contact */}
+                <Reveal client:visible delay={0.4}>
+                    <div
+                        id="contact"
+                        class="rounded-2xl p-8 bg-white border border-[#E5E7EB] scroll-mt-32"
+                        style={{
+                            boxShadow: "0 2px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div class="flex items-start gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center flex-shrink-0"
+                            >
+                                <Shield
+                                    className="w-6 h-6 text-[#D1A65E]"
+                                    strokeWidth={1.5}
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-3xl text-[#1A1A1A] mb-2 font-playfair font-normal"
+                                >
+                                    Nous contacter
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-gray-700">
+                            <p>
+                                Pour toute question concernant vos données
+                                personnelles ou pour exercer vos droits :
+                            </p>
+
+                            <div class="p-6 bg-[#F9FAFB] rounded-xl">
+                                <p class="mb-2">
+                                    <strong class="text-[#1A1A1A]"
+                                        >Email :</strong
+                                    >{" "}
+                                    <a
+                                        href="mailto:rgpd@confluence-digitale.fr"
+                                        class="text-[#D1A65E] hover:underline"
+                                    >
+                                        rgpd@confluence-digitale.fr
+                                    </a>
+                                </p>
+                                <p>
+                                    <strong class="text-[#1A1A1A]"
+                                        >Délai de réponse :</strong
+                                    > 30 jours maximum
+                                </p>
+                            </div>
+
+                            <p class="text-sm">
+                                En cas de litige non résolu, vous pouvez
+                                introduire une réclamation auprès de la CNIL :{
+                                    " "
+                                }
+                                <a
+                                    href="https://www.cnil.fr"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-[#D1A65E] hover:underline"
+                                >
+                                    www.cnil.fr
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+        </div>
+    </section>
+</MainLayout>

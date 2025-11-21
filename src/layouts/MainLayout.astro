@@ -6,9 +6,16 @@ import Footer from "../components/layout/Footer.astro";
 interface Props {
   title: string;
   description?: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
 }
 
-const { title, description = "Transformation digitale TPE/PME" } = Astro.props;
+const {
+  title,
+  description = "Agence Web Performance - Transformation digitale garantie pour TPE/PME. Score 100/100 Lighthouse, visibilité Google en 14 jours.",
+  showHeader = true,
+  showFooter = true,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -23,10 +30,10 @@ const { title, description = "Transformation digitale TPE/PME" } = Astro.props;
   <body
     class="bg-background text-text-primary antialiased flex flex-col min-h-screen"
   >
-    <Header />
-    <main class="flex-grow pt-20">
+    {showHeader && <Header />}
+    <main class={`flex-grow ${showHeader ? "pt-20" : ""}`}>
       <slot />
     </main>
-    <Footer />
+    {showFooter && <Footer />}
   </body>
 </html>

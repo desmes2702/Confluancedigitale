@@ -12,4 +12,12 @@ export default defineConfig({
     react(),
     tailwind({ applyBaseStyles: false }), // On gère le CSS nous-mêmes
   ],
+  image: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 });

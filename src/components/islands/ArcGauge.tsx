@@ -29,7 +29,7 @@ export function ArcGauge({ currentStep, totalSteps }: ArcGaugeProps) {
                 viewBox="0 0 200 120"
                 className="overflow-visible"
             >
-                {/* Arc de fond (Or/Cuivre à 10% d'opacité) - V4.9 */}
+                {/* Arc de fond (Or/Cuivre à 10% d'opacité) */}
                 <path
                     d="M 20 100 A 80 80 0 0 1 180 100"
                     fill="none"
@@ -38,7 +38,7 @@ export function ArcGauge({ currentStep, totalSteps }: ArcGaugeProps) {
                     strokeLinecap="round"
                 />
 
-                {/* Arc de progression (Or/Cuivre solide avec animation) - V4.9 */}
+                {/* Arc de progression (Or/Cuivre solide avec animation) */}
                 <motion.path
                     d="M 20 100 A 80 80 0 0 1 180 100"
                     fill="none"
@@ -62,7 +62,7 @@ export function ArcGauge({ currentStep, totalSteps }: ArcGaugeProps) {
                     className="text-3xl md:text-4xl"
                     style={{ fontFamily: 'Playfair Display, serif', fill: '#D1A65E', fontWeight: 400 }}
                 >
-                    {percentage}%
+                    {Math.round(percentage)}%
                 </text>
             </svg>
         </div>

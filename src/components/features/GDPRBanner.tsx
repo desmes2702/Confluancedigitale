@@ -6,34 +6,38 @@ export const GDPRBanner = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const consent = localStorage.getItem('confluence-gdpr-consent');
-        if (!consent) {
-            // Show banner after a small delay
-            const timer = setTimeout(() => setIsVisible(true), 1000);
-            return () => clearTimeout(timer);
-        }
+        const checkConsent = () => {
+            const consent = localStorage.getItem('confluence-gdpr-consent');
+            if (!consent) {
+                // Show banner after a small delay
+                const timer = setTimeout(() => setIsVisible(true), 1000);
+                return () => clearTimeout(timer);
+            }
+        };
+
+        checkConsent();
+
+        const handleOpenSettings = () => setIsVisible(true);
+        window.addEventListener('open-gdpr-settings', handleOpenSettings);
+
+        return () => {
+            window.removeEventListener('open-gdpr-settings', handleOpenSettings);
+        };
     }, []);
 
-    const handleAccept = () => {
+    const saveConsent = (analytics: boolean, performance: boolean) => {
         const consentData = {
             timestamp: new Date().toISOString(),
-            analytics: true,
-            performance: true
+            analytics,
+            performance
         };
         localStorage.setItem('confluence-gdpr-consent', JSON.stringify(consentData));
+        window.dispatchEvent(new CustomEvent('confluence-gdpr-update'));
         setIsVisible(false);
-        // Here we would initialize analytics
     };
 
-    const handleDecline = () => {
-        const consentData = {
-            timestamp: new Date().toISOString(),
-            analytics: false,
-            performance: false
-        };
-        localStorage.setItem('confluence-gdpr-consent', JSON.stringify(consentData));
-        setIsVisible(false);
-    };
+    const handleAccept = () => saveConsent(true, true);
+    const handleDecline = () => saveConsent(false, false);
 
     if (!isVisible) return null;
 

@@ -1,5 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Logo from "../ui/Logo.astro";
+import antoineImg from "../../assets/team/antoine.jpg";
+import pascalImg from "../../assets/team/pascal.jpg";
+import lalyImg from "../../assets/team/laly.jpg";
 
 const navLinks = [
     { id: "offre", label: "L'Offre", href: "/offre" },
@@ -185,9 +189,13 @@ const currentPath = Astro.url.pathname;
                             class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
                             style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #D1A65E;"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1737575655055-e3967cbefd03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjI1MDU0NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                            <Image
+                                src={antoineImg}
                                 alt="Antoine, Garant Performance"
+                                width={40}
+                                height={40}
+                                loading="lazy"
+                                densities={[1.5, 2]}
                                 class="w-10 h-10 rounded-full object-cover flex-shrink-0"
                             />
                             <div class="text-left">
@@ -204,9 +212,13 @@ const currentPath = Astro.url.pathname;
                             class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
                             style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #10b981;"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1709715357564-ab64e091ead9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1hcmtldGluZyUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NjI0MTk0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                            <Image
+                                src={pascalImg}
                                 alt="Pascal, Garant Stratégie"
+                                width={40}
+                                height={40}
+                                loading="lazy"
+                                densities={[1.5, 2]}
                                 class="w-10 h-10 rounded-full object-cover flex-shrink-0"
                             />
                             <div class="text-left">
@@ -223,9 +235,13 @@ const currentPath = Astro.url.pathname;
                             class="w-full flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-opacity hover:opacity-80"
                             style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #A32E3A;"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1544972917-3529b113a469?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFjaGVyJTIwcHJvZmVzc2lvbmFsJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYyNDc1NDY0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                            <Image
+                                src={lalyImg}
                                 alt="Laly, Garante Sérénité"
+                                width={40}
+                                height={40}
+                                loading="lazy"
+                                densities={[1.5, 2]}
                                 class="w-10 h-10 rounded-full object-cover flex-shrink-0"
                             />
                             <div class="text-left">

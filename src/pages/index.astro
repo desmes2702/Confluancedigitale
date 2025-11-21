@@ -6,7 +6,6 @@ import { PageSpeedProof } from "../components/islands/PageSpeedProof";
 import { SolutionsSection } from "../components/islands/SolutionsSection";
 import { TeamBlock } from "../components/islands/TeamBlock";
 import { FAQ } from "../components/islands/FAQ";
-import TrustBand from "../components/features/TrustBand.astro";
 import FinalCTA from "../components/features/FinalCTA.astro";
 import { GDPRBanner } from "../components/features/GDPRBanner";
 
@@ -57,8 +56,7 @@ const faqData = [
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-4">
         <h2
-          class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A]"
-          style="font-family: 'Playfair Display', serif; font-weight: 400;"
+          class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] font-playfair font-normal"
         >
           L'Équipe qui Garantit cette Méthode
         </h2>
@@ -73,22 +71,11 @@ const faqData = [
     </div>
   </section>
 
-  <!-- Trust Band (Static) - Moved down as per flow logic if needed, but keeping here as per legacy structure it was separate? 
-       Actually in legacy: Hero -> PainPoints -> PageSpeedProof -> Solutions -> TeamBlock -> FAQ -> FinalCTA.
-       TrustBand was separate in legacy components but not used in ConfluenceLandingPage? 
-       Wait, ConfluenceLandingPage imports ConfluenceTeamBlock, ConfluencePageSpeedProof, etc.
-       It DOES NOT import ConfluenceTrustBand. It seems TrustBand was replaced by PageSpeedProof in V5.25.
-       I will comment out TrustBand to match legacy exactly if it's not there.
-       Checking ConfluenceLandingPage.tsx... it does NOT use ConfluenceTrustBand.
-       It uses ConfluencePageSpeedProof.
-       So I will REMOVE TrustBand from index.astro to match legacy.
-  -->
-
   <!-- FAQ Section (Island with SSR data) -->
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-playfair font-medium mb-4">
+        <h2 class="text-3xl md:text-4xl font-playfair font-normal mb-4">
           Questions Fréquentes
         </h2>
         <p class="text-gray-600">

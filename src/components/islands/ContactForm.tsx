@@ -1,35 +1,169 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast, Toaster } from 'sonner';
-import { Mail, MessageSquare, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { motion } from 'motion/react';
-
-interface ContactFormData {
-    email: string;
-    message: string;
-    rgpdConsent: boolean;
-}
+import { useState } from "react";
+import { Mail, MessageSquare, AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
+import { DSButton } from "../ui/DSButton";
+import { DSInput } from "../ui/DSInput";
+import { DSTextarea } from "../ui/DSTextarea";
+import { DSCheckbox } from "../ui/DSCheckbox";
+import { toast } from "sonner";
 
 export const ContactForm = () => {
-    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactFormData>();
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    // État du formulaire
+    const [formData, setFormData] = useState({
+        email: "",
+        message: "",
+        rgpdConsent: false
+    });
 
-    const onSubmit = async (data: ContactFormData) => {
+    // États des interactions
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errors, setErrors] = useState({
+        email: false,
+        message: false,
+        rgpdConsent: false
+    });
+    const [touched, setTouched] = useState({
+        email: false,
+        message: false,
+        rgpdConsent: false
+    });
+    const [errorMessage, setErrorMessage] = useState("");
+
+    // Validation Email Regex
+    const validateEmail = (email: string): boolean => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    // Validation individuelle d'un champ
+    const validateField = (name: string, value: string | boolean): boolean => {
+        switch (name) {
+            case 'email':
+                return typeof value === 'string' && value.trim() !== "" && validateEmail(value);
+            case 'message':
+                return typeof value === 'string' && value.trim() !== "";
+            case 'rgpdConsent':
+                return value === true;
+            default:
+                return true;
+        }
+    };
+
+    // Vérifier si le formulaire est entièrement valide
+    const isFormValid = (): boolean => {
+        return (
+            validateField('email', formData.email) &&
+            validateField('message', formData.message) &&
+            validateField('rgpdConsent', formData.rgpdConsent)
+        );
+    };
+
+    // Validation Client (Instantanée)
+    const validateForm = (): boolean => {
+        const newErrors = {
+            email: !validateField('email', formData.email),
+            message: !validateField('message', formData.message),
+            rgpdConsent: !validateField('rgpdConsent', formData.rgpdConsent)
+        };
+
+        setErrors(newErrors);
+
+        // Marquer tous les champs comme touchés
+        setTouched({
+            email: true,
+            message: true,
+            rgpdConsent: true
+        });
+
+        const hasErrors = Object.values(newErrors).some(error => error);
+
+        if (hasErrors) {
+            setErrorMessage("Veuillez corriger les champs en rouge.");
+            return false;
+        }
+
+        setErrorMessage("");
+        return true;
+    };
+
+    // Soumission du formulaire
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsSubmitting(true);
+        setErrorMessage("");
+
         try {
             // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // Simuler un succès (95% du temps)
+                    if (Math.random() > 0.05) {
+                        resolve(true);
+                    } else {
+                        reject(new Error("API Error"));
+                    }
+                }, 1500);
+            });
 
-            // Success state
+            setIsSubmitting(false);
             setIsSubmitted(true);
+
             toast.success("Message envoyé !", {
                 description: "Nous vous recontactons sous 48h maximum."
             });
-            reset();
+
         } catch (error) {
+            setIsSubmitting(false);
+            setErrorMessage("Une erreur est survenue. Veuillez réessayer plus tard.");
+
             toast.error("Erreur d'envoi", {
                 description: "Une erreur est survenue. Veuillez réessayer plus tard."
             });
         }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+
+        const isValid = validateField(name, value);
+        setErrors({
+            ...errors,
+            [name]: !isValid
+        });
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name } = e.target;
+        setTouched({
+            ...touched,
+            [name]: true
+        });
+    };
+
+    const handleCheckboxChange = (checked: boolean) => {
+        setFormData({
+            ...formData,
+            rgpdConsent: checked
+        });
+
+        setTouched({
+            ...touched,
+            rgpdConsent: true
+        });
+
+        setErrors({
+            ...errors,
+            rgpdConsent: !checked
+        });
     };
 
     if (isSubmitted) {
@@ -41,8 +175,7 @@ export const ContactForm = () => {
                     </div>
                 </div>
                 <h4
-                    className="text-xl md:text-2xl text-[#1A1A1A]"
-                    style={{ fontFamily: 'Playfair Display, serif', fontWeight: 400 }}
+                    className="text-xl md:text-2xl text-[#1A1A1A] font-playfair font-normal"
                 >
                     Merci !
                 </h4>
@@ -55,130 +188,146 @@ export const ContactForm = () => {
     }
 
     return (
-        <div className="space-y-6">
-            <Toaster position="top-center" />
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                {/* Email */}
-                <div>
-                    <label className="block text-sm text-[#1A1A1A] mb-2">
-                        Votre email *
-                    </label>
-                    <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D1D5DB]" strokeWidth={1.5} />
-                        <input
-                            type="email"
-                            placeholder="contact@exemple.fr"
-                            className={`w-full pl-11 pr-11 py-2 rounded-lg border bg-[#F9FAFB] cursor-text transition-all duration-200 outline-none ${errors.email
-                                    ? 'border-[#A32E3A] focus:border-[#A32E3A] focus:ring-1 focus:ring-[#A32E3A]'
-                                    : 'border-[#E5E7EB] focus:border-[#D1A65E] focus:ring-1 focus:ring-[#D1A65E]'
-                                }`}
-                            {...register('email', {
-                                required: 'Veuillez saisir un email valide.',
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: 'Veuillez saisir un email valide.'
-                                }
-                            })}
-                        />
-                    </div>
-                    {errors.email && (
-                        <p className="text-xs text-[#A32E3A] mt-1 flex items-center gap-1">
-                            <AlertCircle className="w-3 h-3" />
-                            {errors.email.message}
-                        </p>
-                    )}
-                </div>
-
-                {/* Message */}
-                <div>
-                    <label className="block text-sm text-[#1A1A1A] mb-2">
-                        Votre message *
-                    </label>
-                    <div className="relative">
-                        <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-[#D1D5DB]" strokeWidth={1.5} />
-                        <textarea
-                            placeholder="Décrivez votre projet, vos questions..."
-                            rows={5}
-                            className={`w-full pl-11 pr-11 py-2 rounded-lg border bg-[#F9FAFB] cursor-text transition-all duration-200 outline-none ${errors.message
-                                    ? 'border-[#A32E3A] focus:border-[#A32E3A] focus:ring-1 focus:ring-[#A32E3A]'
-                                    : 'border-[#E5E7EB] focus:border-[#D1A65E] focus:ring-1 focus:ring-[#D1A65E]'
-                                }`}
-                            {...register('message', { required: 'Ce champ est requis.' })}
-                        />
-                    </div>
-                    {errors.message && (
-                        <p className="text-xs text-[#A32E3A] mt-1 flex items-center gap-1">
-                            <AlertCircle className="w-3 h-3" />
-                            {errors.message.message}
-                        </p>
-                    )}
-                </div>
-
-                {/* Checkbox RGPD */}
-                <div className={`flex items-start gap-3 p-3 rounded-lg ${errors.rgpdConsent ? 'bg-[#A32E3A]/5 border border-[#A32E3A]/20' : ''
-                    }`}>
-                    <input
-                        type="checkbox"
-                        id="rgpd-consent"
-                        className={`mt-1 rounded border-gray-300 text-[#10b981] focus:ring-[#10b981] ${errors.rgpdConsent ? 'border-[#A32E3A]' : ''
+        <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Champ Email */}
+            <div>
+                <label className="block text-sm text-[#1A1A1A] mb-2">
+                    Votre email *
+                </label>
+                <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D1D5DB]" strokeWidth={1.5} />
+                    <DSInput
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="contact@exemple.fr"
+                        required
+                        className={`pl-11 pr-11 ${errors.email && touched.email
+                                ? 'border-[#A32E3A] focus:border-[#A32E3A] focus:ring-[#A32E3A]'
+                                : !errors.email && touched.email && formData.email
+                                    ? 'border-[#10b981] focus:border-[#10b981] focus:ring-[#10b981]'
+                                    : ''
                             }`}
-                        {...register('rgpdConsent', { required: 'Vous devez accepter cette condition pour continuer.' })}
                     />
-                    <label
-                        htmlFor="rgpd-consent"
-                        className="text-xs md:text-sm text-gray-700 leading-relaxed cursor-pointer"
-                    >
-                        J'accepte que mes informations soient utilisées pour être recontacté.{' '}
-                        <span className="text-gray-500">
-                            (Conformément à notre{' '}
-                            <a
-                                href="/politique-confidentialite"
-                                className="text-[#D1A65E] hover:underline"
-                            >
-                                politique de confidentialité
-                            </a>
-                            .)
-                        </span>
-                    </label>
+                    {!errors.email && touched.email && formData.email && (
+                        <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#10b981]" strokeWidth={2} />
+                    )}
                 </div>
-                {errors.rgpdConsent && (
-                    <p className="text-xs text-[#A32E3A] flex items-center gap-1">
+                {errors.email && touched.email && (
+                    <p className="text-xs text-[#A32E3A] mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
-                        {errors.rgpdConsent.message}
+                        Veuillez saisir un email valide.
                     </p>
                 )}
+            </div>
 
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full py-5 text-base rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isSubmitting
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-[#10b981] hover:bg-[#059669] text-white hover:scale-[1.02]'
-                        }`}
-                    style={
-                        isSubmitting
-                            ? undefined
-                            : { boxShadow: '0 4px 16px 0 rgba(16, 185, 129, 0.2)' }
-                    }
-                >
-                    {isSubmitting ? (
-                        <>
-                            <Loader2 className="w-5 h-5 animate-spin" />
-                            Envoi en cours...
-                        </>
-                    ) : (
-                        <>
-                            Envoyer
-                            <Send className="w-5 h-5" strokeWidth={2} />
-                        </>
+            {/* Champ Message */}
+            <div>
+                <label className="block text-sm text-[#1A1A1A] mb-2">
+                    Votre message *
+                </label>
+                <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-[#D1D5DB]" strokeWidth={1.5} />
+                    <DSTextarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="Décrivez votre projet, vos questions..."
+                        rows={5}
+                        required
+                        className={`pl-11 pr-11 ${errors.message && touched.message
+                                ? 'border-[#A32E3A] focus:border-[#A32E3A] focus:ring-[#A32E3A]'
+                                : !errors.message && touched.message && formData.message
+                                    ? 'border-[#10b981] focus:border-[#10b981] focus:ring-[#10b981]'
+                                    : ''
+                            }`}
+                    />
+                    {!errors.message && touched.message && formData.message && (
+                        <CheckCircle2 className="absolute right-3 top-3 w-5 h-5 text-[#10b981]" strokeWidth={2} />
                     )}
-                </button>
+                </div>
+                {errors.message && touched.message && (
+                    <p className="text-xs text-[#A32E3A] mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" />
+                        Ce champ est requis.
+                    </p>
+                )}
+            </div>
 
-                <p className="text-xs text-gray-500 text-center">
-                    En soumettant ce formulaire, vous acceptez d'être recontacté par Confluence Digitale.
+            {/* Checkbox RGPD */}
+            <div className={`flex items-start gap-3 p-3 rounded-lg ${errors.rgpdConsent ? 'bg-[#A32E3A]/5 border border-[#A32E3A]/20' : ''
+                }`}>
+                <DSCheckbox
+                    id="rgpd-consent"
+                    checked={formData.rgpdConsent}
+                    onCheckedChange={handleCheckboxChange}
+                    className={errors.rgpdConsent ? 'border-[#A32E3A]' : ''}
+                />
+                <label
+                    htmlFor="rgpd-consent"
+                    className="text-xs md:text-sm text-gray-700 leading-relaxed cursor-pointer"
+                >
+                    J'accepte que mes informations soient utilisées pour être recontacté.{' '}
+                    <span className="text-gray-500">
+                        (Conformément à notre{' '}
+                        <a
+                            href="/politique-confidentialite"
+                            className="text-[#D1A65E] hover:underline"
+                        >
+                            politique de confidentialité
+                        </a>
+                        .)
+                    </span>
+                </label>
+            </div>
+            {errors.rgpdConsent && (
+                <p className="text-xs text-[#A32E3A] flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    Vous devez accepter cette condition pour continuer.
                 </p>
-            </form>
-        </div>
+            )}
+
+            {/* Message d'Erreur Global */}
+            {errorMessage && (
+                <div className="p-3 rounded-lg bg-[#A32E3A]/5 border border-[#A32E3A]/20">
+                    <p className="text-sm text-[#A32E3A] flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        {errorMessage}
+                    </p>
+                </div>
+            )}
+
+            {/* Bouton Envoyer */}
+            <DSButton
+                type="submit"
+                variant="primary"
+                disabled={isSubmitting || !isFormValid()}
+                className="w-full py-5 text-base rounded-xl"
+                style={
+                    isSubmitting || !isFormValid()
+                        ? undefined
+                        : { boxShadow: '0 4px 16px 0 rgba(16, 185, 129, 0.2)' }
+                }
+            >
+                {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Envoi en cours...
+                    </span>
+                ) : (
+                    <span className="flex items-center justify-center gap-2">
+                        Envoyer
+                        <Send className="w-5 h-5" strokeWidth={2} />
+                    </span>
+                )}
+            </DSButton>
+
+            <p className="text-xs text-gray-500 text-center">
+                En soumettant ce formulaire, vous acceptez d'être recontacté par Confluence Digitale.
+            </p>
+        </form>
     );
 };

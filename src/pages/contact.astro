@@ -1,0 +1,246 @@
+---
+import { Image } from "astro:assets";
+import MainLayout from "../layouts/MainLayout.astro";
+import { PageHeader } from "../components/ui/PageHeader";
+import { Reveal } from "../components/ui/Reveal";
+import { ContactForm } from "../components/islands/ContactForm";
+import { TeamBlock } from "../components/islands/TeamBlock";
+import { Phone, Mail, MapPin } from "lucide-react";
+---
+
+<MainLayout
+    title="Contact | Confluence Digitale"
+    description="Contactez Confluence Digitale. Réponse sous 48h garantie. Ligne directe et formulaire zéro friction."
+>
+    <PageHeader
+        client:load
+        title="Laissez-nous un"
+        highlight="Message"
+        subtitle="Une question ? Un projet ? Envoyez-nous simplement votre email et votre message. Nous vous répondons sous 48h."
+    />
+
+    {/* 2. CARTE UNIFIÉE CONTACT */}
+    <section class="relative py-12 sm:py-16 md:py-20 px-4 bg-[#F9FAFB]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <Reveal client:visible width="100%">
+                    <div
+                        class="rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] p-8"
+                        style={{
+                            boxShadow: "0 4px 16px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                    >
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16"
+                        >
+                            {/* COLONNE 1 (GAUCHE) - LA CONFIANCE */}
+                            <div class="space-y-6">
+                                <div>
+                                    <h3
+                                        class="text-2xl md:text-3xl text-[#1A1A1A] mb-3 font-playfair font-normal"
+                                    >
+                                        Vous préférez le <span
+                                            class="text-[#D1A65E]"
+                                            >contact direct</span
+                                        > ?
+                                    </h3>
+                                    <p
+                                        class="text-sm md:text-base text-gray-700"
+                                    >
+                                        Pas de formulaire anonyme. Un humain
+                                        répond.
+                                    </p>
+                                </div>
+
+                                {/* Bloc Ligne Directe */}
+                                <div
+                                    class="rounded-xl p-6 bg-[#F9FAFB] border border-[#E5E7EB]"
+                                    style={{
+                                        boxShadow:
+                                            "0 2px 8px 0 rgba(0, 0, 0, 0.02)",
+                                    }}
+                                >
+                                    <div class="flex items-start gap-3">
+                                        <div
+                                            class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#10b981]/10 flex items-center justify-center"
+                                        >
+                                            <Phone
+                                                className="w-6 h-6 text-[#10b981]"
+                                                strokeWidth={1.5}
+                                            />
+                                        </div>
+                                        <div class="flex-1">
+                                            <p
+                                                class="text-xs text-gray-600 mb-1"
+                                            >
+                                                Ligne Directe
+                                            </p>
+                                            <a
+                                                href="tel:06XXXXXXXX"
+                                                class="text-xl text-[#1A1A1A] hover:text-[#10b981] transition-colors"
+                                            >
+                                                06 XX XX XX XX
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Bloc Email Direct */}
+                                <div
+                                    class="rounded-xl p-6 bg-[#F9FAFB] border border-[#E5E7EB]"
+                                    style={{
+                                        boxShadow:
+                                            "0 2px 8px 0 rgba(0, 0, 0, 0.02)",
+                                    }}
+                                >
+                                    <div class="flex items-start gap-3">
+                                        <div
+                                            class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#D1A65E]/10 flex items-center justify-center"
+                                        >
+                                            <Mail
+                                                className="w-6 h-6 text-[#D1A65E]"
+                                                strokeWidth={1.5}
+                                            />
+                                        </div>
+                                        <div class="flex-1">
+                                            <p
+                                                class="text-xs text-gray-600 mb-1"
+                                            >
+                                                Email Direct
+                                            </p>
+                                            <a
+                                                href="mailto:contact@confluence-digitale.fr"
+                                                class="text-lg text-[#1A1A1A] hover:text-[#D1A65E] transition-colors break-all"
+                                            >
+                                                contact@confluence-digitale.fr
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Note de confiance */}
+                                <div class="pt-2">
+                                    <p class="text-xs md:text-sm text-gray-600">
+                                        <strong class="text-[#10b981]"
+                                            >Réponse garantie sous 48h.</strong
+                                        > Souvent bien avant.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* COLONNE 2 (DROITE) - LE FORMULAIRE */}
+                            <div class="space-y-6">
+                                <div>
+                                    <h3
+                                        class="text-2xl md:text-3xl text-[#1A1A1A] mb-3 font-playfair font-normal"
+                                    >
+                                        Laissez-nous un <span
+                                            class="text-[#D1A65E]">message</span
+                                        >
+                                    </h3>
+                                    <p
+                                        class="text-sm md:text-base text-gray-700"
+                                    >
+                                        Nous reviendrons vers vous rapidement.
+                                    </p>
+                                </div>
+
+                                <ContactForm client:load />
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+        </div>
+    </section>
+
+    {/* 3. SECTION TRIADE D'EXPERTS */}
+    <section class="relative py-12 sm:py-16 md:py-20 px-4 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <Reveal client:visible width="100%">
+                    <TeamBlock client:visible />
+                </Reveal>
+            </div>
+        </div>
+    </section>
+
+    {/* 4. SECTION "OÙ NOUS TROUVER" */}
+    <section class="relative py-12 sm:py-16 md:py-20 px-4 bg-[#F9FAFB]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                {/* Titre et Adresse */}
+                <div class="text-center mb-8 md:mb-12">
+                    <h2
+                        class="text-3xl sm:text-4xl md:text-5xl text-[#1A1A1A] mb-4 font-playfair font-normal"
+                    >
+                        Où nous trouver
+                    </h2>
+                    <div
+                        class="flex items-center justify-center gap-2 text-base md:text-lg text-gray-700"
+                    >
+                        <MapPin
+                            className="w-5 h-5 text-[#D1A65E]"
+                            strokeWidth={1.5}
+                        />
+                        <p>Montayral, 47500</p>
+                    </div>
+                </div>
+
+                {/* Carte Statique Cliquable */}
+                <Reveal client:visible width="100%">
+                    <div class="max-w-4xl mx-auto">
+                        <a
+                            href="https://www.google.com/maps/place/Montayral,+47500"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="block group relative overflow-hidden rounded-2xl border border-[#E5E7EB] hover:border-[#D1A65E] transition-all duration-300"
+                            style={{
+                                boxShadow: "0 4px 16px 0 rgba(0, 0, 0, 0.04)",
+                            }}
+                        >
+                            {/* Image statique de carte */}
+                            <Image
+                                src="https://images.unsplash.com/photo-1754299356969-2b7d4ffefd9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXAlMjBsb2NhdGlvbiUyMHBpbnxlbnwxfHx8fDE3NjIzOTg0MzN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                                alt="Carte - Montayral, 47500"
+                                width={1080}
+                                height={607}
+                                loading="lazy"
+                                class="w-full h-auto object-cover aspect-[16/9]"
+                            />
+
+                            {/* Overlay avec CTA au hover */}
+                            <div
+                                class="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/10 transition-all duration-300 flex items-center justify-center"
+                            >
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white rounded-xl px-6 py-3 shadow-lg"
+                                >
+                                    <p
+                                        class="text-sm text-[#1A1A1A] flex items-center gap-2"
+                                    >
+                                        <MapPin
+                                            className="w-4 h-4 text-[#10b981]"
+                                            strokeWidth={2}
+                                        />
+                                        Voir l'itinéraire sur Google Maps
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        {/* Note de confiance locale */}
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-600">
+                                <span class="text-[#10b981]"
+                                    >📍 Ancrage local.</span
+                                > Nous sommes basés dans le Lot-et-Garonne et accompagnons
+                                les TPE/PME de la région.
+                            </p>
+                        </div>
+                    </div>
+                </Reveal>
+            </div>
+        </div>
+    </section>
+</MainLayout>

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.95,
+    "actual": 0.51,
+    "values": [
+      0.51
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:4321/"
+  },
+  {
+    "name": "minScore",
+    "expected": 1,
+    "actual": 0.95,
+    "values": [
+      0.95
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "accessibility",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:4321/"
+  },
+  {
+    "name": "minScore",
+    "expected": 1,
+    "actual": 0.91,
+    "values": [
+      0.91
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "seo",
+    "auditId": "categories",
+    "level": "error",
+    "url": "http://localhost:4321/"
+  }
+]

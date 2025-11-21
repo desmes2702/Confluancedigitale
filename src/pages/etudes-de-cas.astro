@@ -1,0 +1,205 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import PageHeader from "../components/ui/PageHeader.astro";
+import { Reveal } from "../components/ui/Reveal";
+import { TeamBlock } from "../components/islands/TeamBlock";
+import FinalCTA from "../components/features/FinalCTA.astro";
+import {
+    MessageSquare,
+    PhoneCall,
+    CalendarCheck,
+    ArrowRight,
+} from "lucide-react";
+
+const caseStudies = [
+    {
+        id: "couvreur-lot-et-garonne",
+        sector: "Artisan",
+        title: "Couvreur - Lot-et-Garonne",
+        notifIcon: "message",
+        notifTitle: "Nouveau Devis (via Site Web)",
+        notifMessage:
+            "Bonjour, j'aurais besoin d'un devis pour refaire ma toiture à Fumel...",
+        conversion: "+45 devis/mois",
+        performance: "Score 100/100",
+    },
+    {
+        id: "plombier-villeneuve",
+        sector: "Artisan",
+        title: "Plombier - Villeneuve-sur-Lot",
+        notifIcon: "phone",
+        notifTitle: "Appel Entrant (via Google Local)",
+        notifMessage:
+            "Le prospect a cliqué pour appeler (Urgence fuite d'eau Villeneuve-sur-Lot).",
+        conversion: "+38 appels/mois",
+        performance: "Score 100/100",
+    },
+    {
+        id: "restaurant-agen",
+        sector: "Restaurant",
+        title: "Restaurant - Agen",
+        notifIcon: "calendar",
+        notifTitle: "Nouvelle Réservation (via Site Web)",
+        notifMessage: "Table pour 4 personnes, Samedi 19h. Nom: Dupont.",
+        conversion: "+120 réservations/mois",
+        performance: "Score 100/100",
+    },
+];
+---
+
+<MainLayout
+    title="Études de Cas | Confluence Digitale"
+    description="Découvrez comment nos clients TPE/PME ont transformé leur visibilité en moins de 14 jours."
+>
+    <PageHeader
+        title="Ils Sont Passés du"
+        highlight="Invisible"
+        subtitle="au Visible sur Google. Découvrez comment nos clients TPE/PME ont transformé leur visibilité en moins de 14 jours."
+    />
+
+    {/* 2. ÉTUDES DE CAS */}
+    <section class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <Reveal client:visible width="100%">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                    >
+                        {
+                            caseStudies.map((study) => (
+                                <div class="group">
+                                    <div class="rounded-2xl p-6 md:p-8 bg-white border border-[#E5E7EB] hover:border-[#D1A65E] transition-all duration-300 hover:scale-[1.02] h-full flex flex-col shadow-[0_4px_24px_0_rgba(0,0,0,0.04)]">
+                                        {/* Badge Secteur */}
+                                        <div class="inline-flex items-center gap-2 bg-[#D1A65E]/10 rounded-full px-3 py-1.5 mb-4 self-start">
+                                            <span class="text-xs md:text-sm text-[#D1A65E]">
+                                                {study.sector}
+                                            </span>
+                                        </div>
+
+                                        {/* Titre */}
+                                        <h3 class="text-xl md:text-2xl text-[#1A1A1A] mb-6 font-playfair font-normal">
+                                            {study.title}
+                                        </h3>
+
+                                        {/* Mock-up Smartphone */}
+                                        <div class="mb-6 flex-grow flex items-center justify-center">
+                                            <div class="relative w-full max-w-[280px] rounded-3xl border-4 border-gray-200 bg-gray-50 p-4 aspect-[9/16]">
+                                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-gray-200 rounded-b-2xl" />
+                                                <div class="relative z-10 h-full flex flex-col justify-start pt-8">
+                                                    <div class="bg-white rounded-2xl p-4 border border-[#E5E7EB] shadow-[0_8px_24px_0_rgba(0,0,0,0.12)]">
+                                                        <div class="flex items-center gap-3 mb-3">
+                                                            <div class="w-10 h-10 rounded-full bg-[#10b981]/10 flex items-center justify-center flex-shrink-0">
+                                                                {study.notifIcon ===
+                                                                    "message" && (
+                                                                    <MessageSquare
+                                                                        className="w-5 h-5 text-[#10b981]"
+                                                                        strokeWidth={
+                                                                            2
+                                                                        }
+                                                                    />
+                                                                )}
+                                                                {study.notifIcon ===
+                                                                    "phone" && (
+                                                                    <PhoneCall
+                                                                        className="w-5 h-5 text-[#10b981]"
+                                                                        strokeWidth={
+                                                                            2
+                                                                        }
+                                                                    />
+                                                                )}
+                                                                {study.notifIcon ===
+                                                                    "calendar" && (
+                                                                    <CalendarCheck
+                                                                        className="w-5 h-5 text-[#10b981]"
+                                                                        strokeWidth={
+                                                                            2
+                                                                        }
+                                                                    />
+                                                                )}
+                                                            </div>
+                                                            <div class="flex-1 min-w-0">
+                                                                <p class="text-xs text-[#10b981] truncate">
+                                                                    {
+                                                                        study.notifTitle
+                                                                    }
+                                                                </p>
+                                                                <p class="text-[10px] text-gray-500">
+                                                                    Il y a 2
+                                                                    minutes
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text-xs text-gray-700 line-clamp-3">
+                                                            {study.notifMessage}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Métriques */}
+                                        <div class="grid grid-cols-2 gap-4 mt-6 mb-6">
+                                            <div>
+                                                <p class="text-xs md:text-sm text-gray-700 mb-1">
+                                                    Conversion (Résultat)
+                                                </p>
+                                                <div class="text-lg md:text-xl text-[#10b981] font-playfair font-normal">
+                                                    {study.conversion}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs md:text-sm text-gray-700 mb-1">
+                                                    Performance (Cause)
+                                                </p>
+                                                <div class="text-lg md:text-xl text-[#10b981] font-playfair font-normal">
+                                                    {study.performance}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* CTA */}
+                                        <a
+                                            href="/audit-gratuit"
+                                            class="inline-flex items-center gap-2 text-[#D1A65E] hover:text-[#1A1A1A] transition-colors duration-200 mt-auto"
+                                        >
+                                            <span class="text-sm md:text-base">
+                                                Voir l'étude complète
+                                            </span>
+                                            <ArrowRight
+                                                className="w-4 h-4"
+                                                strokeWidth={2}
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </Reveal>
+            </div>
+        </div>
+    </section>
+
+    {/* 3.5. SECTION TRIADE */}
+    <section class="relative py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <Reveal client:visible width="100%">
+                <h2
+                    class="text-center mb-4 text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] font-playfair font-normal"
+                >
+                    L'Équipe Derrière Ces Résultats
+                </h2>
+                <p
+                    class="text-center mb-12 max-w-3xl mx-auto text-base md:text-lg lg:text-xl text-gray-700"
+                >
+                    Ces clients ont tous bénéficié de la même équipe d'experts.
+                    Trois garanties personnelles pour des résultats mesurables
+                    et une autonomie réelle.
+                </p>
+                <TeamBlock variant="cards-only" client:visible />
+            </Reveal>
+        </div>
+    </section>
+
+    <FinalCTA />
+</MainLayout>

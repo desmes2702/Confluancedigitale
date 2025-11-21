@@ -1,0 +1,68 @@
+# WORKFLOW DE MIGRATION HIFI : REACT (FIGMA MAKE) VERS ASTRO
+
+**Version :** 1.2 (Standardisation & Sécurité)
+**Stack Cible :** Astro 5 (SSR) + Vercel + React + Tailwind v3 (Strict)
+**Outil :** Gemini Code Assist (VS Code)
+
+---
+
+## 🔮 TROUBLESHOOTING & ANTICIPATION (LIRE AVANT DE COMMENCER)
+
+Ceci liste les erreurs critiques rencontrées lors de la Session 1 et les procédures pour les éviter (Source: Agent Post-Mortem).
+
+### 🔴 Problème 1 : Commandes Git Destructrices
+
+- **Symptôme :** L'Agent lance un `git reset --hard` qui efface tout le travail non committé (comme cela s'est produit).
+- **SOLUTION PRÉVENTIVE :**
+  1.  **INTERDICTION FORMELLE** d'utiliser ou de suggérer des commandes Git destructrices (`git reset --hard`, `git clean`).
+  2.  Toujours utiliser `git restore .` (non destructif) pour annuler les changements locaux.
+  3.  **TOUJOURS commiter** avant de lancer une mission majeure de l'Agent.
+
+### 🔴 Problème 2 : Conflit Tailwind v4 (L'erreur de l'installateur)
+
+- **Symptôme :** L'installation automatique installe la v4, incompatible avec le Legacy.
+- **SOLUTION PRÉVENTIVE :** Installer Tailwind v3 manuellement et configurer l'intégration v3 dans `astro.config.mjs` avant de lancer la migration.
+
+### 🔴 Problème 3 : Régression Visuelle (Le "Gemini Interpretation")
+
+- **Symptôme :** L'Agent "nettoie" les classes complexes (gradients, ombres) et perd la fidélité Pixel-Perfect.
+- **SOLUTION PRÉVENTIVE :**
+  1.  Utiliser des prompts de **"Clonage Littéral"** : forcer l'Agent à copier les attributs `className` du Legacy.
+  2.  Forcer la validation contre les **Règles Absolues** du `design-system.md` (ex: `font-weight: 400` sur Playfair).
+
+### 🔴 Problème 4 : Surcharge Mémoire de l'Agent (Timeout)
+
+- **Symptôme :** L'Agent plante en essayant de scanner le dossier `_LEGACY_REACT` entier en une seule fois.
+- **SOLUTION PRÉVENTIVE :** Ne jamais demander une migration complète en une seule commande. Utiliser des prompts ultra-ciblés (par Lot, par Fichier).
+
+---
+
+## 🛠️ WORKFLOW STANDARDISÉ (Procédure Nominale)
+
+### PHASE 1 : PRÉPARATION DU CONTEXTE
+
+1.  **Isoler :** Déplacer le code source React vers `_LEGACY_REACT/`.
+2.  **Contextualisation :** Placer les specs (`architecture.md`, `design-system.md`) dans `.gemini/specs/`.
+3.  **Lock Config :** Installer Tailwind v3 manuellement et configurer `astro.config.mjs` (output: 'server').
+
+### PHASE 2 : MIGRATION PAR LOTS (Clonage Intégral)
+
+**Règle :** Utiliser le `Prompt de Clonage Intégral` (Style + Contenu) sur chaque page.
+
+| Lot   | Type de Page                           | Stratégie                                                                                   |
+| :---- | :------------------------------------- | :------------------------------------------------------------------------------------------ |
+| **0** | **Layout Global** (Header, Footer)     | Clonage pur Astro (`.astro` statique)                                                       |
+| **1** | **Vitrine** (Offre, Méthode, Études)   | Clonage HTML/CSS strict + `<Reveal client:visible>`.                                        |
+| **2** | **Légal** (CGV, Mentions)              | Copie de texte intégral + Layout.                                                           |
+| **3** | **Apps** (Contact, Audit, Réservation) | Extraction de la logique React dans `src/components/islands/` et hydratation `client:load`. |
+
+### PHASE 3 : OPTIMISATION 100/100 (FINITION)
+
+1.  **Images :** Remplacer `<img>` par `<Image />` (`astro:assets`).
+2.  **Polices :** Remplacer les CDN par `@fontsource`.
+3.  **Hydratation :** Vérifier que `client:load` n'est utilisé que là où c'est nécessaire.
+4.  **Lighthouse :** Validation finale du score.
+
+---
+
+Veuillez créer ce fichier. Ensuite, relançons la reconstruction des pages perdues (Phase 2, Lot 1) avec cette méthodologie !

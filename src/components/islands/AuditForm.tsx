@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { toast, Toaster } from 'sonner';
+import { useState } from 'react';
 import {
     BarChart3,
     CheckCircle2,
@@ -9,9 +7,13 @@ import {
     Send,
     ArrowRightCircle,
 } from 'lucide-react';
-import { ArcGauge } from './ArcGauge';
+import { motion } from 'motion/react';
+import { toast } from 'sonner';
 import { DSButton } from '../ui/DSButton';
+import { DSCheckbox } from '../ui/DSCheckbox';
+import { ArcGauge } from './ArcGauge';
 
+// Types
 interface FormData {
     website: string;
     name: string;
@@ -39,7 +41,7 @@ interface FormTouched {
     rgpdConsent: boolean;
 }
 
-export const AuditForm = () => {
+export function AuditForm() {
     // État du formulaire (Terminal de Saisie Dynamique)
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState<FormData>({
@@ -166,13 +168,10 @@ export const AuditForm = () => {
     };
 
     return (
-        <div className="w-full max-w-2xl py-16 mx-auto">
-            <Toaster position="top-center" />
-
+        <div className="w-full max-w-2xl py-16">
             {/* Titre H2 */}
             <motion.h2
-                className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] text-center mb-2"
-                style={{ fontFamily: 'Playfair Display, serif' }}
+                className="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] text-center mb-2 font-playfair font-normal"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -183,8 +182,7 @@ export const AuditForm = () => {
 
             {/* Sous-titre "(1 minute)" */}
             <motion.p
-                className="text-2xl md:text-3xl lg:text-4xl text-[#D1A65E] text-center mb-12"
-                style={{ fontFamily: 'Playfair Display, serif' }}
+                className="text-2xl md:text-3xl lg:text-4xl text-[#D1A65E] text-center mb-12 font-playfair font-normal"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -260,9 +258,9 @@ export const AuditForm = () => {
                                             }
                                         }}
                                         autoFocus
-                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl transition-all duration-200 outline-none ${errors.website && touched.website
-                                            ? 'border-[#A32E3A]'
-                                            : 'border-gray-300 focus:border-[#D1A65E]'
+                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl lg:text-4xl font-light transition-all duration-200 outline-none ${errors.website && touched.website
+                                                ? 'border-[#A32E3A]'
+                                                : 'border-gray-300 focus:border-[#D1A65E]'
                                             }`}
                                         style={{ fontFamily: 'Inter, sans-serif' }}
                                     />
@@ -327,9 +325,9 @@ export const AuditForm = () => {
                                             }
                                         }}
                                         autoFocus
-                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl transition-all duration-200 outline-none ${errors.name && touched.name
-                                            ? 'border-[#A32E3A]'
-                                            : 'border-gray-300 focus:border-[#D1A65E]'
+                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl lg:text-4xl font-light transition-all duration-200 outline-none ${errors.name && touched.name
+                                                ? 'border-[#A32E3A]'
+                                                : 'border-gray-300 focus:border-[#D1A65E]'
                                             }`}
                                         style={{ fontFamily: 'Inter, sans-serif' }}
                                     />
@@ -394,9 +392,9 @@ export const AuditForm = () => {
                                             }
                                         }}
                                         autoFocus
-                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl transition-all duration-200 outline-none ${errors.email && touched.email
-                                            ? 'border-[#A32E3A]'
-                                            : 'border-gray-300 focus:border-[#D1A65E]'
+                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl lg:text-4xl font-light transition-all duration-200 outline-none ${errors.email && touched.email
+                                                ? 'border-[#A32E3A]'
+                                                : 'border-gray-300 focus:border-[#D1A65E]'
                                             }`}
                                         style={{ fontFamily: 'Inter, sans-serif' }}
                                     />
@@ -460,9 +458,9 @@ export const AuditForm = () => {
                                             }
                                         }}
                                         autoFocus
-                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl transition-all duration-200 outline-none ${errors.secteur && touched.secteur
-                                            ? 'border-[#A32E3A]'
-                                            : 'border-gray-300 focus:border-[#D1A65E]'
+                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl lg:text-4xl font-light transition-all duration-200 outline-none ${errors.secteur && touched.secteur
+                                                ? 'border-[#A32E3A]'
+                                                : 'border-gray-300 focus:border-[#D1A65E]'
                                             }`}
                                         style={{ fontFamily: 'Inter, sans-serif' }}
                                     />
@@ -491,7 +489,7 @@ export const AuditForm = () => {
 
                             {currentStep === 4 && (
                                 <p className="text-xs text-[#6B7280]">
-                                    Requis pour vérifier votre exclusivit territoriale.
+                                    Requis pour vérifier votre exclusivité territoriale.
                                 </p>
                             )}
 
@@ -532,9 +530,9 @@ export const AuditForm = () => {
                                             }
                                         }}
                                         autoFocus
-                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl transition-all duration-200 outline-none ${errors.ville && touched.ville
-                                            ? 'border-[#A32E3A]'
-                                            : 'border-gray-300 focus:border-[#D1A65E]'
+                                        className={`w-full bg-transparent border-0 border-b-2 pr-12 md:pr-20 py-3 md:py-6 text-xl md:text-3xl lg:text-4xl font-light transition-all duration-200 outline-none ${errors.ville && touched.ville
+                                                ? 'border-[#A32E3A]'
+                                                : 'border-gray-300 focus:border-[#D1A65E]'
                                             }`}
                                         style={{ fontFamily: 'Inter, sans-serif' }}
                                     />
@@ -586,20 +584,18 @@ export const AuditForm = () => {
                         >
                             {/* Checkbox RGPD */}
                             <div className="flex items-start gap-3">
-                                <input
+                                <DSCheckbox
                                     id="rgpd"
-                                    type="checkbox"
                                     checked={formData.rgpdConsent}
                                     onChange={(e) => handleChange('rgpdConsent', e.target.checked)}
-                                    className="mt-1 w-4 h-4 text-[#D1A65E] border-gray-300 rounded focus:ring-[#D1A65E] focus:ring-offset-0 cursor-pointer"
+                                    className="mt-1"
+                                    label={
+                                        <span className="text-sm text-[#374151] leading-relaxed cursor-pointer">
+                                            J'accepte que mes données soient utilisées exclusivement pour réaliser mon audit gratuit.
+                                            Aucune donnée n'est transmise à des tiers. Politique de confidentialité disponible sur demande.
+                                        </span>
+                                    }
                                 />
-                                <label
-                                    htmlFor="rgpd"
-                                    className="text-sm text-[#374151] leading-relaxed cursor-pointer"
-                                >
-                                    J'accepte que mes données soient utilisées exclusivement pour réaliser mon audit gratuit.
-                                    Aucune donnée n'est transmise à des tiers. Politique de confidentialité disponible sur demande.
-                                </label>
                             </div>
 
                             {errors.rgpdConsent && touched.rgpdConsent && (
@@ -610,10 +606,11 @@ export const AuditForm = () => {
                             )}
 
                             {/* Bouton de soumission */}
-                            <button
+                            <DSButton
                                 type="submit"
+                                variant="primary"
                                 disabled={!isFormValid() || isSubmitting}
-                                className="w-full py-6 text-lg font-medium text-white bg-[#10b981] hover:bg-[#059669] disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-300 rounded-lg flex items-center justify-center"
+                                className="w-full py-6 text-lg bg-[#10b981] hover:bg-[#059669] disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-300"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -626,8 +623,9 @@ export const AuditForm = () => {
                                         Recevoir mon Audit Gratuit
                                     </>
                                 )}
-                            </button>
+                            </DSButton>
 
+                            {/* Micro-copie de réassurance */}
                             <p className="text-xs text-center text-[#6B7280]">
                                 Réponse sous 48h • 100% Gratuit • Sans engagement
                             </p>
@@ -667,4 +665,4 @@ export const AuditForm = () => {
             )}
         </div>
     );
-};
+}

@@ -1,0 +1,89 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { Reveal } from "../components/ui/Reveal";
+import { AuditHero } from "../components/features/AuditHero";
+import {
+    AuditFeatures,
+    AuditWhyFree,
+} from "../components/features/AuditStaticSections";
+import { AuditForm } from "../components/islands/AuditForm";
+---
+
+<MainLayout
+    title="Audit Gratuit 48h | Confluence Digitale"
+    description="Obtenez une analyse technique et stratégique complète de votre site web. 100% gratuit, réponse sous 48h."
+>
+    {/* 1. Section Hero */}
+    <section
+        class="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-16 bg-[#F9FAFB]"
+    >
+        {/* Decorative background */}
+        <div
+            class="absolute top-10 right-0 w-96 h-96 bg-[#D1A65E]/5 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-10 left-0 w-96 h-96 bg-[#10b981]/5 rounded-full blur-3xl"
+        >
+        </div>
+
+        <AuditHero client:load />
+    </section>
+
+    {/* 2. Section "Ce que contient votre audit" */}
+    <section class="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <Reveal client:visible width="100%">
+                    <h2
+                        class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-4 font-playfair font-normal"
+                    >
+                        Votre Audit Gratuit (48h) : Technique, Stratégie,
+                        Pédagogie
+                    </h2>
+                    <p class="text-lg md:text-xl text-[#374151]">
+                        Nous mobilisons nos 3 garants pour vous fournir une
+                        analyse complète.
+                    </p>
+                </Reveal>
+            </div>
+
+            <AuditFeatures client:visible />
+        </div>
+    </section>
+
+    {/* 3. Section "Pourquoi c'est gratuit ?" */}
+    <section class="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <Reveal client:visible width="100%">
+                    <h2
+                        class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] font-playfair font-normal"
+                    >
+                        Pourquoi cet audit est-il vraiment gratuit ?
+                    </h2>
+                </Reveal>
+            </div>
+
+            <AuditWhyFree client:visible />
+
+            <Reveal client:visible width="100%" delay={0.5}>
+                <p
+                    class="mt-16 text-center text-lg md:text-xl text-[#1A1A1A] max-w-3xl mx-auto"
+                >
+                    Vous décidez ensuite, en toute connaissance de cause.
+                    <br />
+                    <strong>Aucune pression.</strong>
+                </p>
+            </Reveal>
+        </div>
+    </section>
+
+    {/* 4. Section Formulaire - TERMINAL DE SAISIE DYNAMIQUE */}
+    <section
+        id="terminal-audit"
+        class="relative px-4 sm:px-6 lg:px-8 bg-white flex items-center justify-center min-h-screen"
+    >
+        <AuditForm client:load />
+    </section>
+</MainLayout>

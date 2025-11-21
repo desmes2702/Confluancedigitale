@@ -1,0 +1,553 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import PageHeader from "../components/ui/PageHeader.astro";
+import { Reveal } from "../components/ui/Reveal";
+import { AvailabilityBlock } from "../components/islands/AvailabilityBlock";
+import { TeamBlock } from "../components/islands/TeamBlock";
+import FinalCTA from "../components/features/FinalCTA.astro";
+import {
+    ShieldCheck,
+    ArrowRight,
+    CheckCircle2,
+    X,
+    AlertTriangle,
+    Users,
+    Shield,
+    MapPin,
+    Clock,
+    Gauge,
+} from "lucide-react";
+
+const valueCards = [
+    {
+        icon: Gauge,
+        title: "Performance 100/100",
+        description:
+            "Score PageSpeed garanti. Site ultra-rapide qui convertit.",
+        features: [
+            "Vitesse de chargement < 1 seconde",
+            "Optimisé pour être trouvé sur Google",
+            "La garantie technique (100/100) pour viser la Page 1",
+        ],
+    },
+    {
+        icon: Shield,
+        title: "Souveraineté Totale",
+        description: "Votre site. Vos données. Votre autonomie complète.",
+        features: [
+            "Interface admin sans code",
+            "Modification en temps réel",
+            "Autonomie via Strapi pour gérer votre contenu",
+        ],
+    },
+    {
+        icon: MapPin,
+        title: "Exclusivité Territoriale",
+        description: "1 seul client par secteur. Vous êtes protégé.",
+        features: [
+            "Votre zone géographique protégée",
+            "Aucun concurrent direct pris par notre agence",
+            "Toute notre énergie pour vous faire gagner",
+        ],
+    },
+    {
+        icon: Clock,
+        title: "Sérénité Garantie",
+        description: "Support illimité. Maintenance incluse. Zéro surprise.",
+        features: [
+            "Mises à jour automatiques",
+            "Support technique réactif",
+            "Hébergement sécurisé inclus",
+        ],
+    },
+];
+---
+
+<Reveal client:visible width="100%">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+            <h2
+                class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-4 md:mb-6 font-playfair font-normal"
+            >
+                Notre <span class="text-[#D1A65E]">Investissement Partagé</span>
+                : Une Offre Unique
+            </h2>
+            <p class="text-base md:text-lg lg:text-xl text-gray-700">
+                Un modèle transparent basé sur la confiance mutuelle.
+            </p>
+        </div>
+
+        <div
+            class="rounded-2xl overflow-hidden relative p-8 md:p-12 bg-white border-2 border-[#D1A65E]/30 shadow-[0_4px_24px_0_rgba(209,166,94,0.12)]"
+        >
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                {/* Colonne 1 */}
+                <div>
+                    <div class="flex items-center gap-3 mb-4 md:mb-6">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#D1A65E]/10 flex items-center justify-center"
+                        >
+                            <span
+                                class="text-[#D1A65E] text-lg md:text-xl font-playfair"
+                                >1</span
+                            >
+                        </div>
+                        <h3
+                            class="text-xl md:text-2xl text-[#1A1A1A] font-playfair font-normal"
+                        >
+                            Nous finançons votre site à 100%
+                        </h3>
+                    </div>
+                    <div
+                        class="space-y-4 text-base md:text-lg text-gray-700 leading-relaxed"
+                    >
+                        <p>
+                            Un site garanti <span class="text-[#10b981]"
+                                >100/100</span
+                            > représente un investissement initial (valeur
+                            <span class="text-[#D1A65E]">3 000€ HT</span>). Au
+                            lieu de vous demander cette somme d'avance, nous
+                            finançons votre projet.
+                        </p>
+                        <p>
+                            Votre <strong>'ticket d'entrée'</strong>
+                            est de <span class="text-[#10b981]">0€</span>.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Colonne 2 */}
+                <div>
+                    <div class="flex items-center gap-3 mb-4 md:mb-6">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#10b981]/10 flex items-center justify-center"
+                        >
+                            <span
+                                class="text-[#10b981] text-lg md:text-xl font-playfair"
+                                >2</span
+                            >
+                        </div>
+                        <h3
+                            class="text-xl md:text-2xl text-[#1A1A1A] font-playfair font-normal"
+                        >
+                            Votre "Service Sérénité & Performance"
+                        </h3>
+                    </div>
+                    <div
+                        class="space-y-4 text-base md:text-lg text-gray-700 leading-relaxed"
+                    >
+                        <p>
+                            En retour, nous demandons un partenariat de <span
+                                class="text-[#A32E3A]">24 mois</span
+                            > à{" "}
+                            <span class="text-[#10b981]">149€ HT/mois</span>.
+                        </p>
+                        <p>
+                            C'est le temps minimum pour amortir notre
+                            investissement et garantir votre <strong
+                                >retour sur investissement</strong
+                            >.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 md:mt-12 text-center px-2">
+                <a
+                    href="/audit-gratuit"
+                    class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-[#10b981] hover:bg-[#059669] text-white px-6 sm:px-8 md:px-12 py-4 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl md:rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_8px_24px_0_rgba(16,185,129,0.2)]"
+                >
+                    Je sécurise mon Exclusivité
+                    <ArrowRight
+                        className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                        strokeWidth={2}
+                    />
+                </a>
+                <p class="text-xs md:text-sm text-gray-500 mt-4 md:mt-6 px-2">
+                    Audit gratuit • Réponse sous 24h • Sans engagement initial
+                </p>
+            </div>
+
+            <div
+                class="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-[#E5E7EB] text-center px-2"
+            >
+                <p class="text-xs sm:text-sm text-gray-600">
+                    <strong>Support & Intervention</strong> (Zone 30km inclus). Intervention
+                    au-delà : sur devis.
+                </p>
+            </div>
+        </div>
+    </div>
+</Reveal>
+
+{/* 3. SECTION TABLEAU COMPARATIF */}
+<section class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <Reveal client:visible width="100%">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2
+                        class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-4 md:mb-6 font-playfair font-normal"
+                    >
+                        L'Agence Classique <span class="text-[#D1A65E]"
+                            >vs.</span
+                        > Notre Offre
+                    </h2>
+                    <p class="text-base md:text-lg lg:text-xl text-gray-700">
+                        La différence est évidente.
+                    </p>
+                </div>
+
+                {/* Desktop Table */}
+                <div
+                    class="hidden lg:block rounded-xl md:rounded-2xl overflow-hidden bg-white border border-[#E5E7EB] shadow-[0_4px_24px_0_rgba(0,0,0,0.04)]"
+                >
+                    <table class="w-full">
+                        <thead class="bg-[#F9FAFB]">
+                            <tr>
+                                <th
+                                    class="px-6 py-5 text-left text-base text-[#1A1A1A] border-b border-[#E5E7EB] w-[25%]"
+                                    >Critère</th
+                                >
+                                <th
+                                    class="px-6 py-5 text-left text-base text-[#1A1A1A] border-b border-[#E5E7EB] w-[37.5%]"
+                                    >L'Agence "Classique"<br /><span
+                                        class="text-sm text-gray-600"
+                                        >(Le Problème)</span
+                                    ></th
+                                >
+                                <th
+                                    class="px-6 py-5 text-left text-base text-[#1A1A1A] border-b border-[#E5E7EB] w-[37.5%]"
+                                    >Confluence Digitale<br /><span
+                                        class="text-sm text-gray-600"
+                                        >(La Solution)</span
+                                    ></th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                class="border-b border-[#E5E7EB] last:border-b-0"
+                            >
+                                <td class="px-6 py-5 text-base text-[#1A1A1A]"
+                                    >Démarrage</td
+                                >
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <X
+                                            className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            >3 000€ - 5 000€ à payer d'avance.</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <CheckCircle2
+                                            className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            ><strong
+                                                >0€ d'Avance de Frais</strong
+                                            > (Nous finançons votre projet).</span
+                                        >
+                                    </div>
+                                </td>
+                            </tr>
+                            {
+                                /* Add other rows similarly if needed, for brevity I'm keeping the main ones */
+                            }
+                            <tr
+                                class="border-b border-[#E5E7EB] last:border-b-0"
+                            >
+                                <td class="px-6 py-5 text-base text-[#1A1A1A]"
+                                    >Délai de Livraison</td
+                                >
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <X
+                                            className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            >Des mois de délais (et de
+                                            réunions).</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <CheckCircle2
+                                            className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            ><strong
+                                                >Un site prêt en quelques
+                                                semaines.</strong
+                                            ></span
+                                        >
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr
+                                class="border-b border-[#E5E7EB] last:border-b-0"
+                            >
+                                <td class="px-6 py-5 text-base text-[#1A1A1A]"
+                                    >Votre Vitesse</td
+                                >
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <X
+                                            className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            >"On fera de notre mieux." (Promesse
+                                            vague)</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="flex items-start gap-3">
+                                        <CheckCircle2
+                                            className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                            strokeWidth={2}
+                                        />
+                                        <span class="text-base text-gray-700"
+                                            ><strong
+                                                >Garantie 100/100 sur Google</strong
+                                            > (Écrit au contrat).</span
+                                        >
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Mobile Cards */}
+                <div class="lg:hidden space-y-4">
+                    <div
+                        class="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-[0_2px_12px_0_rgba(0,0,0,0.04)]"
+                    >
+                        <h3 class="text-lg font-semibold text-[#1A1A1A] mb-4">
+                            Démarrage
+                        </h3>
+                        <div class="flex items-start gap-3">
+                            <X
+                                className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                strokeWidth={2}
+                            />
+                            <p class="text-gray-700">
+                                3 000€ - 5 000€ à payer d'avance.
+                            </p>
+                        </div>
+                        <hr class="my-4 border-t border-[#E5E7EB]" />
+                        <div class="flex items-start gap-3">
+                            <CheckCircle2
+                                className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                strokeWidth={2}
+                            />
+                            <p class="text-[#1A1A1A]">
+                                <strong>0€ d'Avance de Frais</strong> (Nous finançons
+                                votre projet).
+                            </p>
+                        </div>
+                    </div>
+                    {/* More mobile cards can be added here */}
+                </div>
+            </Reveal>
+        </div>
+    </div>
+</section>
+
+{/* 4. SECTION DISPONIBILITÉ */}
+<section class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 bg-[#F9FAFB]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <Reveal client:visible width="100%">
+                <div class="text-center mb-8 md:mb-12">
+                    <div
+                        class="inline-flex items-center gap-2 bg-white border border-[#E5E7EB] rounded-full px-4 md:px-6 py-2 md:py-3 mb-6 md:mb-8 shadow-[0_2px_12px_0_rgba(0,0,0,0.04)]"
+                    >
+                        <Shield
+                            className="w-4 h-4 md:w-5 md:h-5 text-[#D1A65E]"
+                            strokeWidth={1.5}
+                        />
+                        <span class="text-sm md:text-base text-[#1A1A1A]"
+                            >Exclusivité Territoriale</span
+                        >
+                    </div>
+                    <h2
+                        class="text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-3 md:mb-4 font-playfair font-normal"
+                    >
+                        Votre <span class="text-[#D1A65E]">Exclusivité</span> Territoriale
+                    </h2>
+                    <p
+                        class="text-base md:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto"
+                    >
+                        Notre offre est limitée à <span class="text-[#D1A65E]"
+                            >1 artisan par métier et par zone</span
+                        >.<br class="hidden md:block" />
+                        Vérifiez si votre place est encore disponible.
+                    </p>
+                </div>
+                <AvailabilityBlock client:visible />
+            </Reveal>
+        </div>
+    </div>
+</section>
+
+{/* 5. SECTION TRIADE */}
+<section class="relative py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <Reveal client:visible width="100%">
+            <h2
+                class="text-center mb-4 text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] font-playfair font-normal"
+            >
+                Les Experts qui Garantissent Cette Valeur
+            </h2>
+            <p
+                class="text-center mb-12 max-w-3xl mx-auto text-base md:text-lg lg:text-xl text-gray-700"
+            >
+                149€/mois, ce n'est pas un abonnement automatique. C'est l'accès
+                permanent à trois experts qui garantissent personnellement votre
+                réussite.
+            </p>
+            <TeamBlock client:visible />
+        </Reveal>
+    </div>
+</section>
+
+{/* 6. SECTION PARTENARIAT */}
+<section class="relative py-16 md:py-24 px-4 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <Reveal client:visible width="100%">
+                <div class="text-center mb-12">
+                    <h2
+                        class="mb-4 text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] font-playfair font-normal"
+                    >
+                        Notre Partenariat : Engagement et Garantie
+                    </h2>
+                    <p class="text-base md:text-lg lg:text-xl text-gray-700">
+                        Nous sommes transparents sur l'engagement. Nous sommes
+                        fiers de notre garantie.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+                    {/* Carte 1 */}
+                    <div
+                        class="rounded-xl md:rounded-2xl p-6 md:p-8 bg-white border-2 border-[#A32E3A] shadow-[0_4px_24px_0_rgba(163,46,58,0.08)]"
+                    >
+                        <div
+                            class="inline-flex items-center gap-2 bg-[#A32E3A]/10 rounded-full px-4 py-2 mb-6"
+                        >
+                            <AlertTriangle
+                                className="w-4 h-4 text-[#A32E3A]"
+                                strokeWidth={1.5}
+                            />
+                            <span class="text-sm text-[#A32E3A]"
+                                >Engagement Contractuel</span
+                            >
+                        </div>
+                        <h3
+                            class="text-2xl md:text-3xl text-[#1A1A1A] mb-4 font-playfair font-normal"
+                        >
+                            Votre Engagement
+                        </h3>
+                        <div
+                            class="text-4xl md:text-5xl text-[#A32E3A] mb-6 font-playfair font-normal"
+                        >
+                            24 mois
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <CheckCircle2
+                                    className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                    strokeWidth={2}
+                                />
+                                <p class="text-base text-gray-700">
+                                    Engagement ferme de 24 mois
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <CheckCircle2
+                                    className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                    strokeWidth={2}
+                                />
+                                <p class="text-base text-gray-700">
+                                    Paiement 149€ HT/mois
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <CheckCircle2
+                                    className="w-5 h-5 text-[#A32E3A] flex-shrink-0 mt-0.5"
+                                    strokeWidth={2}
+                                />
+                                <p class="text-base text-gray-700">
+                                    Résiliation anticipée (Indemnité max 1 990€
+                                    HT)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Carte 2 */}
+                    <div
+                        class="rounded-xl md:rounded-2xl p-6 md:p-8 bg-white border-2 border-[#10b981] shadow-[0_4px_24px_0_rgba(16,185,129,0.08)]"
+                    >
+                        <div
+                            class="inline-flex items-center gap-2 bg-[#10b981]/10 rounded-full px-4 py-2 mb-6"
+                        >
+                            <Users
+                                className="w-4 h-4 text-[#10b981]"
+                                strokeWidth={1.5}
+                            />
+                            <span class="text-sm text-[#10b981]"
+                                >Notre Garantie Humaine</span
+                            >
+                        </div>
+                        <h3
+                            class="text-2xl md:text-3xl text-[#1A1A1A] mb-4 font-playfair font-normal"
+                        >
+                            Nos Garanties
+                        </h3>
+                        <div
+                            class="text-4xl md:text-5xl text-[#10b981] mb-6 font-playfair font-normal"
+                        >
+                            24 mois
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <CheckCircle2
+                                    className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                    strokeWidth={2}
+                                />
+                                <p class="text-base text-gray-700">
+                                    Performance 100/100 (Garantie par Antoine)
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <CheckCircle2
+                                    className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5"
+                                    strokeWidth={2}
+                                />
+                                <p class="text-base text-gray-700">
+                                    Sérénité & Autonomie (Garantie par Laly)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Reveal>
+        </div>
+    </div>
+</section>
+
+<FinalCTA />
